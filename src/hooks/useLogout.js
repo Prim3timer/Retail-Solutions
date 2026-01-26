@@ -3,10 +3,10 @@ import useAuth from "./useAuth"
 import AuthContext from "../context/authProvider"
 import { useContext } from "react"
 
-const useLogout = ()=> {
-    const {setAuth} = useAuth()
-    const {setIsRotated, isRotated} = useContext(AuthContext)
-    
+const useLogout = () => {
+    const { setAuth } = useAuth()
+    const { setIsRotated, isRotated } = useContext(AuthContext)
+
     const logout = async () => {
         setAuth({})
         setIsRotated(false)
@@ -15,10 +15,10 @@ const useLogout = ()=> {
         localStorage.removeItem('memTransaction')
         console.log(isRotated)
         try {
-            const response = await axios('/auth/logout', {
+            const response = await axios.get('/auth/logout', {
                 withCredentials: true
             })
-         
+
         } catch (error) {
             console.error(error)
         }

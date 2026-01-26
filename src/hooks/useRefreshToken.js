@@ -15,7 +15,7 @@ const useRefreshToken = () => {
         })
         setAuth && setAuth(prev => {
             // console.log(JSON.stringify(prev))
-            console.log(response.data.accessToken)
+            console.log(response.data.coockerChecker)
             // console.log(response.data.refreshToken)
             return {
                 ...prev, accessToken: response.data.accessToken,
