@@ -111,9 +111,15 @@ export const AuthProvider = ({ children }) => {
     }
 
     const getUsers = async () => {
-        const response = await axiosPrivate.get('/users')
-        console.log(response.data.users)
-        setUsers(response.data.users)
+        try {
+            const response = await axiosPrivate.get('/users')
+            if (response)
+                console.log(response.data.users)
+            setUsers(response.data.users)
+
+        } catch (error) {
+            console.error(error.message)
+        }
 
     }
 
