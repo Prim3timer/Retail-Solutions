@@ -305,7 +305,7 @@ const SingleItem = () => {
                   ref={qtyRef}
                   value={state.elItem.qty === 0 ? state.elItem.qty : state.elItem.transQty}
 
-                  onClick={() => dispatch({ type: 'blank', payload: '' })}
+                  // onClick={() => dispatch({ type: 'blank', payload: '' })}
                   onChange={(e) => dispatch({ type: 'CARTFIELDCHANGE', payload: e.target.value })}
                 />
 
