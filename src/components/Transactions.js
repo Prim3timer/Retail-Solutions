@@ -290,13 +290,14 @@ const Transactions = () => {
         console.log(reverseTranses[0])
         localStorage.setItem('memTransaction', reverseTranses[0]._id)
         dispatch({ type: 'transArray', payload: [] })
-        const queryParams = new URLSearchParams(window.location.search)
-        let sessionId = queryParams.get("session_id")
-        const cusomer = queryParams.get("customer")
-        // console.log({sessionId})
+        // const queryParams = new URLSearchParams(window.location.search)
+        // let sessionId = queryParams.get("session_id")
+        let sessionId = window.location.href.split('=')[1]
+        // const cusomer = queryParams.get("customer")
+        console.log({ sessionId })
 
-        const now = new Date()
-        const date = format(now, 'dd/MM/yyyy HH:mm:ss')
+        const date = new Date()
+        // const date = format(now, 'dd/MM/yyyy HH:mm:ss')
         const dateOjb = { date }
         // console.log({date})
         try {
