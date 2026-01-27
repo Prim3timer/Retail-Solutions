@@ -110,18 +110,18 @@ export const AuthProvider = ({ children }) => {
         //   }           
     }
 
-    const getUsers = async () => {
-        try {
-            const response = await axiosPrivate.get('/users')
-            if (response)
-                console.log(response.data.users)
-            setUsers(response.data.users)
+    // const getUsers = async () => {
+    //     try {
+    //         const response = await axiosPrivate.get('/users')
+    //         if (response)
+    //             console.log(response.data.users)
+    //         setUsers(response.data.users)
 
-        } catch (error) {
-            console.error(error.message)
-        }
+    //     } catch (error) {
+    //         console.error(error.message)
+    //     }
 
-    }
+    // }
 
 
 
@@ -229,9 +229,9 @@ export const AuthProvider = ({ children }) => {
         getItems()
     }, [])
 
-    useEffect(() => {
-        getUsers()
-    }, [])
+    // useEffect(() => {
+    //     getUsers()
+    // }, [])
     return (
 
         <AuthContext.Provider value={{
