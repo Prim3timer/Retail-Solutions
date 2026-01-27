@@ -80,13 +80,13 @@ const Home = () => {
 
                 <Link
 
-                    to="/#transactions">transaction</Link>
+                    to="/transactions">transaction</Link>
 
 
 
                 <Link
 
-                    to="/#create-item">add item</Link>
+                    to="/create-item">add item</Link>
 
 
                 <Link to="/item-list">items</Link>
