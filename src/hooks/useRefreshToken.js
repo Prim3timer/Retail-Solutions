@@ -10,7 +10,7 @@ const useRefreshToken = () => {
     const { setAuth } = useContext(AuthProvider)
     const refresh = async () => {
         console.log('on refersh')
-        const response = await axios.get('http://localhost:3500/refresh', {
+        const response = await axios.get('/refresh', {
             // this allows us to send cookies with our request
             withCredentials: true
         })
