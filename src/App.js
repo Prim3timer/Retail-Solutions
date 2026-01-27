@@ -123,9 +123,9 @@ const App = () => {
               <Route element={<RequireAuth allowedRoles={[2001]} />}>
                 <Route path="item-list" element={<ItemList />} />
                 <Route path="inventory" element={<Inventory />} />
-                <Route path="#transactions" element={<Transactions />} />
+                <Route path="transactions" element={<Transactions />} />
                 {/* <Route path="/home" element={<Home home={home}/> } /> */}
-                <Route path="/#shop" element={<Shop />} />
+                <Route path="/shop" element={<Shop />} />
                 <Route path="one-receipt" element={<OneReceipt setOneReceipt={setOneReceipt} />} />
                 <Route path="cart" element={<Cart />} />
                 <Route path="order" element={<Orders />} />
