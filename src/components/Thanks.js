@@ -67,7 +67,7 @@ const Thanks = () => {
                 return
 
             } else if (!oldSession || oldSession !== sessionId) {
-                const response = await axios.post(`/sessions/thanks/${sessionId}`, dateOjb)
+                const response = await axios.post(`/#/sessions/thanks/${sessionId}`, dateOjb)
                 console.log(response.data.transaction)
                 if (response?.data) {
                     setCurrentTransaction(response.data.transaction)
