@@ -1,11 +1,10 @@
 
 import useAuth from "../hooks/useAuth"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import axios from "../app/api/axios"
 import { useEffect, useState, useContext, useRef } from "react"
 import AuthContext from "../context/authProvider";
 import { format } from "date-fns";
-import { useNavigate } from "react-router-dom";
 import { tr } from "date-fns/locale";
 import emailjs from '@emailjs/browser'
 import SendMail from "./SendMail";
@@ -14,7 +13,7 @@ const Thanks = () => {
     const [currentTtransaction, setCurrentTransaction] = useState()
     const { currentUsers } = useContext(AuthContext)
     const [transId, setTransId] = useState()
-
+    const location = useLocation()
     // const [name, setName] = useState()
     // const [email, setEmail] = useState()
     // const [orderId, setOrderId] = useState()
@@ -42,7 +41,12 @@ const Thanks = () => {
     const getRecipt = async () => {
         // e.preventDefault()
         const queryParams = new URLSearchParams(window.location.search)
-        let sessionId = queryParams.get("session_id")
+
+        let params = new URL(document.location.toString()).searchParams;
+        let name = params.get("name");
+        console.log(window.location.href.split('=')[1])
+        let sessionId = window.location.href.split('=')[1]
+        // let sessionId = queryParams.get("session_id")
         const cusomer = queryParams.get("customer")
         console.log({ currentUsers })
         console.log({ sessionId })
@@ -53,7 +57,7 @@ const Thanks = () => {
         console.log({ date })
         try {
 
-            const res = await axios.get(`/sessions/thanks/old-session/${sessionId}`)
+            const res = await axios.get(`/#/sessions/thanks/old-session/${sessionId}`)
             console.log(res)
 
             const oldSession = res.data ? res.data : ''
@@ -108,7 +112,7 @@ const Thanks = () => {
         <div className="thanks">
             {/* <h3>{alert}</h3> */}
             <h2>Thank you for your order</h2>
-            {currentTtransaction && <SendMail currentTtransaction={currentTtransaction} />}
+            {/* {currentTtransaction && <SendMail currentTtransaction={currentTtransaction} />} */}
             <article>
                 <Link to={'/shop'}><button>Shopping</button></Link>
                 {/* <Link to={'/home'}><button>Home</button></Link> */}
