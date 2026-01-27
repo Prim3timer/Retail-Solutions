@@ -23,7 +23,7 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     console.log(location.pathname)
-    const from = location.state?.from?.pathname || "/#shop";
+    const from = location.state?.from?.pathname || "/shop";
     const [isPassword, setisPassword] = useState('password')
     const [passwordCheck2, setPasswordCheck2] = useState(faEyeSlash)
     const [isPassword2, setisPassword2] = useState('password')
