@@ -166,7 +166,7 @@ const SingleItem = () => {
 
         try {
 
-          const dynamTransQty = state.elItem.unitMeasure === 'Piece (pc)' || state.elItem.unitMeasure === 'Plate (Plt)' || state.elItem.unitMeasure === 'Dozen (dz)' || state.elItem.unitMeasure === 'Bottle (Btl)' ? state.elItem.transQty : Number(qtyRef.current.value)
+          const dynamTransQty = state.elItem.unitMeasure === 'Piece (pc)' || state.elItem.unitMeasure === 'Plate (Plt)' || state.elItem.unitMeasure === 'Dozen (dz)' || state.elItem.unitMeasure === 'Bottle (Btl)' || state.elItem.unitMeasure === 'Pair (pr)' ? state.elItem.transQty : Number(qtyRef.current.value)
 
 
 
@@ -175,7 +175,8 @@ const SingleItem = () => {
           ]
 
           console.log(item)
-          if (state.elItem.qty >= qtyRef.current.value) {
+          if (state.elItem.qty >= qtyRef.current.value || state.elItem.qty >= state.elItem.transQty) {
+            console.log(state.elItem.transQty)
 
             const response = await axios.post('/sessions/create-checkout-session', item)
             if (response) {
@@ -186,7 +187,7 @@ const SingleItem = () => {
             dispatch({ type: 'success', payload: true })
             dispatch({ type: 'ALERTMSG', payload: `pls select qty less than or equal to ${numberWithCommas(Number(state.elItem.qty).toFixed(2))}` })
 
-            dispatch({ type: 'elItem', payload: 1 })
+            // dispatch({ type: 'elItem', payload: 1 })
             setTimeout(() => {
               dispatch({ type: 'success', payload: false })
               // dispatch({type: 'ALERTMSG', payload: '' })
@@ -309,7 +310,7 @@ const SingleItem = () => {
 
 
 
-                {state.elItem.unitMeasure === 'Piece (pc)' || state.elItem.unitMeasure === 'Plate (Plt)' || state.elItem.unitMeasure === 'Dozen (dz)' || state.elItem.unitMeasure === 'Bottle (Btl)' ? <div className="plus-input"><p onClick={decrease}><FaMinus /></p><p>{state.elItem.transQty}</p><p onClick={increase}><FaPlus /></p></div> : <input
+                {state.elItem.unitMeasure === 'Piece (pc)' || state.elItem.unitMeasure === 'Plate (Plt)' || state.elItem.unitMeasure === 'Dozen (dz)' || state.elItem.unitMeasure === 'Bottle (Btl)' || state.elItem.unitMeasure === 'Pair (pr)' ? <div className="plus-input"><p onClick={decrease}><FaMinus /></p><p>{state.elItem.transQty}</p><p onClick={increase}><FaPlus /></p></div> : <input
                   className="qty-input"
                   type="text"
                   ref={qtyRef}
