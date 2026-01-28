@@ -297,8 +297,7 @@ const SingleItem = () => {
               </div>
 
             </section>
-            <p> {state.elItem.unitMeasure === 'Kilogram (kg)' || state.elItem.unitMeasure === 'Kilowatthour (kWh)'
-              || state.elItem.unitMeasure === 'Kilowatt (kW)' || state.elItem.unitMeasure === 'Pound (lbs)' || state.elItem.unitMeasure === 'Litre (L)' ? parseFloat(state.elItem.qty).toFixed(2) : state.elItem.qty}{state.elItem.unitMeasure && state.elItem.unitMeasure.split(' ')[1].slice(1, -1)} Left</p>
+            <p className={state.elItem.qty == 0 ? "invent-alarm" : "invent-info"}>{state.elItem.qty <= 0 ? 'out of stock' : ''}</p>
             <div className="single-item-texts">
               <p className="description">{readMore ? state.elItem.description : `${state.elItem.description.substring(0, 20)}${!readMore ? '...' : ''}`}
                 {/* <hr style={{width: '90vw', border:  '.2px solid black'}}></hr> */}
