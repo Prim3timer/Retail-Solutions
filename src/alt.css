@@ -428,8 +428,8 @@
 
 .show-more {
   color: brown;
-  padding: .2rem .5rem;
-  font-size: 1rem;
+  padding: .2rem 0rem;
+  font-size: 1.2rem;
   white-space: nowrap;
   /* margin: .5rem 0; */
   /* width: ; */
