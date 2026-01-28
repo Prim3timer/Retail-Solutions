@@ -213,15 +213,12 @@ const Payment = () => {
                             <section>
                                 <p>{item.name}</p>
                                 {/* <h3>price: ${item.price}</h3> */}
-                                {item.unitMeasure === 'Piece (pc)' || item.unitMeasure === 'Plate (Plt)' || item.unitMeasure === 'Dozen (dz)' || item.unitMeasure === 'Bottle (Btl)' || item.unitMeasure === 'Pair (pr)' ? <div className="plus-input"><p onClick={() => decrease(item.id)}><FaMinus /></p><p>{item.transQty}</p><p onClick={() => increase(item.id)}><FaPlus /></p></div> : <label>
-                                    Qty:
-                                    <input
-                                        className="cart-qty"
-                                        ref={cartQtyRef}
-                                        value={item.transQty}
-                                        onChange={(e) => dispatch({ type: "MAINCARTFIELD", payload: e.target.value, id: item.id })}
-                                    /> {item.unitMeasure.split(' ')[1].slice(1, -1)}
-                                </label>}
+                                {item.unitMeasure === 'Piece (pc)' || item.unitMeasure === 'Plate (Plt)' || item.unitMeasure === 'Dozen (dz)' || item.unitMeasure === 'Bottle (Btl)' || item.unitMeasure === 'Pair (pr)' ? <div className="plus-input"><p onClick={() => decrease(item.id)}><FaMinus /></p><p>{item.transQty}</p><p onClick={() => increase(item.id)}><FaPlus /></p></div> : <input
+                                    className="cart-qty"
+                                    ref={cartQtyRef}
+                                    value={item.transQty}
+                                    onChange={(e) => dispatch({ type: "MAINCARTFIELD", payload: e.target.value, id: item.id })}
+                                />}
 
                                 <h3>{currency}{numberWithCommas(parseFloat(item.total).toFixed(2))}</h3>
 

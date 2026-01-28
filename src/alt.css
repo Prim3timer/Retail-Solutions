@@ -1107,7 +1107,7 @@ padding: .2rem .5rem;
 }
 
 .plus-input>* {
-  border: 2px solid brown;
+  border: 1px solid brown;
 }
 
 .plus-input>*:nth-child(1) {
@@ -1119,7 +1119,7 @@ padding: .2rem .5rem;
 }
 
 .plus-input>*:nth-child(2) {
-  padding: .3rem 1rem;
+  padding: .305rem 1rem;
   font-size: 2rem;
   /* border-right: none; */
 }

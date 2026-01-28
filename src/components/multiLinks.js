@@ -9,11 +9,11 @@ const multiLinks = [
         name: 'add item',
         path: '/create-item'
     },
-    {
-        id: 3,
-        name: 'items',
-        path: '/item-list'
-    },
+    // {
+    //     id: 3,
+    //     name: 'items',
+    //     path: '/item-list'
+    // },
     {
         id: 4,
         name: 'inventory',
@@ -39,8 +39,9 @@ const multiLinks = [
         name: 'shop',
         path: '/shop'
     },
-    
-    {id: 9,
+
+    {
+        id: 9,
         name: 'cart',
         path: '/cart'
     },

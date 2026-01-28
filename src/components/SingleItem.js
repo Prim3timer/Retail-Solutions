@@ -306,9 +306,7 @@ const SingleItem = () => {
               <section
                 className="qty-cont"
               >
-                <span
-                  className="qty-label"
-                >Qty:</span>
+
 
 
                 {state.elItem.unitMeasure === 'Piece (pc)' || state.elItem.unitMeasure === 'Plate (Plt)' || state.elItem.unitMeasure === 'Dozen (dz)' || state.elItem.unitMeasure === 'Bottle (Btl)' ? <div className="plus-input"><p onClick={decrease}><FaMinus /></p><p>{state.elItem.transQty}</p><p onClick={increase}><FaPlus /></p></div> : <input
