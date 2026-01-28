@@ -3145,7 +3145,7 @@ button:active {
     /* background-color: yellow; */
     display: flex;
     flex-direction: column;
-    row-gap: .5rem;
+    /* row-gap: .5rem; */
     width: 10.5rem;
   }
 

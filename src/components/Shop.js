@@ -89,9 +89,9 @@ const Shop = () => {
                 {item.img.length && <img className='shop-img' src={`${picUrl}/images/${item.name}/${item.img[0].name}`} alt={item.name} />}
                 <div className="shop-item-texts">
                   <h4>{currency}{numberWithCommas(item.price)}</h4>
-                  <p style={{
+                  <h4 style={{
                     // text
-                  }}>{item.name}</p>
+                  }}>{item.name}</h4>
                   {/* <p className={item.qty < 20 ? "invent-alarm" : "invent-info"}>{item.qty > 0 ? `${item.unitMeasure === 'Kilogram (kg)' || item.unitMeasure === 'Kilowatthour (kWh)'
                     || item.unitMeasure === 'Kilowatt (kW)' || item.unitMeasure === 'Pound (lbs)' || item.unitMeasure === 'Litre (L)' ? parseFloat(item.qty).toFixed(2) : item.qty}${item.unitMeasure.split(' ')[1].slice(1, -1)} left` : 'out of stock'}</p> */}
                   <p className={item.qty == 0 ? "invent-alarm" : "invent-info"}>{item.qty <= 0 ? 'out of stock' : ''}</p>
