@@ -1097,6 +1097,42 @@ padding: .2rem .5rem;
   grid-row: 4/ 5;
 }
 
+.plus-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* column-gap: .5rem; */
+  /* background-color: tomato; */
+  padding: 5px 0;
+}
+
+.plus-input>* {
+  border: 2px solid brown;
+}
+
+.plus-input>*:nth-child(1) {
+  display: flex;
+  align-items: center;
+  padding: .45rem;
+  font-size: 2rem;
+  border-right: none;
+}
+
+.plus-input>*:nth-child(2) {
+  padding: .3rem 1rem;
+  font-size: 2rem;
+  /* border-right: none; */
+}
+
+.plus-input>*:nth-child(3) {
+  display: flex;
+  align-items: center;
+  padding: .45rem;
+  font-size: 2rem;
+  border-left: none;
+
+}
+
 
 
 .user-select-header {

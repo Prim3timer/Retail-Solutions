@@ -12,7 +12,7 @@ import useAxiosPrivate from "../hooks/useAxiosPrivate"
 import AuthContext from "../context/authProvider"
 import { format } from 'date-fns'
 import { Link, resolvePath } from 'react-router-dom'
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
+import { FaChevronLeft, FaChevronRight, FaPlus, FaMinus } from "react-icons/fa"
 
 {/* ₦ */ }
 
@@ -246,10 +246,22 @@ const SingleItem = () => {
     })
   }
 
+  const increase = () => {
+    dispatch({ type: 'INCREMENT' })
+  }
+  const decrease = () => {
+    dispatch({ type: 'SHOPDECREMENT' })
+    console.log('dec')
+  }
+
 
   useEffect(() => {
     getItem()
   }, [state.alertMsg])
+
+  useEffect(() => {
+    dispatch({ type: 'SINGLETOTAL' })
+  }, [state.elItem.transQty])
 
   //  function numberWithCommas(x) {
   //         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -299,7 +311,7 @@ const SingleItem = () => {
                 >Qty:</span>
 
 
-                <input
+                {state.elItem.unitMeasure === 'Piece (pc)' || state.elItem.unitMeasure === 'Plate (Plt)' || state.elItem.unitMeasure === 'Dozen (dz)' || state.elItem.unitMeasure === 'Bottle (Btl)' ? <div className="plus-input"><p onClick={decrease}><FaMinus /></p><p>{state.elItem.transQty}</p><p onClick={increase}><FaPlus /></p></div> : <input
                   className="qty-input"
                   type="text"
                   ref={qtyRef}
@@ -307,7 +319,7 @@ const SingleItem = () => {
 
                   // onClick={() => dispatch({ type: 'blank', payload: '' })}
                   onChange={(e) => dispatch({ type: 'CARTFIELDCHANGE', payload: e.target.value })}
-                />
+                />}
 
                 <p className="no-qty-alert">{state.elItem.qty === '' ? 'invalid quantity' : state.elItem.qty === 0 ? 'out of stock' : ''}</p>
 
