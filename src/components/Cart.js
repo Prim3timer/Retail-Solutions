@@ -74,6 +74,7 @@ const Payment = () => {
         console.log(state.cartArray)
         const latest = cartItems.map((item) => {
             const done = currentCartItems.find((currentItem) => currentItem._id === item.id)
+            console.log(done)
             if (done) return { ...item, quantity: done.qty }
         })
         const now = new Date()
@@ -218,7 +219,8 @@ const Payment = () => {
                                     ref={cartQtyRef}
                                     value={item.transQty}
                                     onChange={(e) => dispatch({ type: "MAINCARTFIELD", payload: e.target.value, id: item.id })}
-                                />}
+                                />
+                                }
 
                                 <h3>{currency}{numberWithCommas(parseFloat(item.total).toFixed(2))}</h3>
 

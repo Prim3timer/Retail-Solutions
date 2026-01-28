@@ -143,6 +143,7 @@ const SingleItem = () => {
   const date = format(now, 'dd/MM/yyyy\tHH:mm:ss')
   const doneSales = async (e) => {
     e.preventDefault()
+    console.log(state.elItem)
     try {
       const { elItem } = state
       state.singleItemArray.push(elItem)
@@ -164,8 +165,13 @@ const SingleItem = () => {
 
 
         try {
+
+          const dynamTransQty = state.elItem.unitMeasure === 'Piece (pc)' || state.elItem.unitMeasure === 'Plate (Plt)' || state.elItem.unitMeasure === 'Dozen (dz)' || state.elItem.unitMeasure === 'Bottle (Btl)' ? state.elItem.transQty : Number(qtyRef.current.value)
+
+
+
           const item = [userId,
-            { id: elItem._id, transQty: Number(qtyRef.current.value), name: elItem.name, total: elItem.total, unitMeasure: elItem.unitMeasure, },
+            { id: elItem._id, transQty: dynamTransQty, name: elItem.name, total: elItem.total, unitMeasure: elItem.unitMeasure, },
           ]
 
           console.log(item)
@@ -263,9 +269,6 @@ const SingleItem = () => {
     dispatch({ type: 'SINGLETOTAL' })
   }, [state.elItem.transQty])
 
-  //  function numberWithCommas(x) {
-  //         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  //     }
 
   return (
     isLoading ? <h2 className="single-item">Loading...</h2> :
