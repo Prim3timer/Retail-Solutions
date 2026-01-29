@@ -988,7 +988,7 @@ padding: .2rem .5rem;
   width: 90vw;
   justify-content: center;
   align-items: center;
-  row-gap: 3rem;
+  row-gap: 2rem;
 }
 
 .cart-item-image {
@@ -1003,7 +1003,7 @@ padding: .2rem .5rem;
   text-align: center;
   display: flex;
   flex-direction: column;
-  row-gap: 1rem;
+  /* row-gap: 2rem; */
   width: 100%;
   align-items: center;
   /* background-color: yellow; */
@@ -1014,7 +1014,7 @@ padding: .2rem .5rem;
   /* background-color: blue; */
   /* width: 200px; */
   display: grid;
-  row-gap: 1rem;
+  row-gap: .5rem;
   justify-content: center;
   align-items: center;
 
