@@ -455,9 +455,7 @@ const Transactions = () => {
 
                                 id="flex-article"
                             >
-                                <span
-
-                                >Qty:</span>
+                                
                                 {/* <section> */}
                                 <input
                                     type="text"
