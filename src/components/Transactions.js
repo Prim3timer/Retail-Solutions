@@ -419,7 +419,7 @@ const Transactions = () => {
             </section>
 
             <h3
-                className={noShow ? 'err-msg' : firstRedChecker ? 'no-err-msg' : 'hide-err-msg'}
+                className={noShow ? 'delete' : firstRedChecker ? 'trans-list-alert' : 'hide-err-msg'}
 
             >
                 {state.errMsg}</h3>
