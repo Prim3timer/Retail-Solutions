@@ -1010,6 +1010,10 @@ padding: .2rem .5rem;
 
 }
 
+.cart-header-status{
+ text-align: center;
+}
+
 .cart-items-container section {
   /* background-color: blue; */
   /* width: 200px; */

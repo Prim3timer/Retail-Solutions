@@ -199,61 +199,64 @@ const Payment = () => {
         !state.cartArray ? <h2>Loading</h2> : <div className="checkout"
             onClick={falseIsRotated}
         >
-            <h2>Your Cart:</h2>
+            <div className="cart-header-status">
+            <h5 >Your Cart:</h5>
 
+{state.cartArray.length ? <h4>{parseFloat(state.cartAmount).toFixed(2)} item{plural2}, {state.cartArray.length} product{plural}</h4> : 'Empty'}
 
-            {state.cartArray.length ? <h3>{parseFloat(state.cartAmount).toFixed(2)} item{plural2}, {state.cartArray.length} product{plural}</h3> : 'Empty'}
-
-            <div className="cart-main-container" >
-            {state.cartArray && state.cartArray.map((item) => {
-                // console.log(item.img[0].name)
-                // console.log(item.name)
-                return (
-                        <article className="cart-items-container">
-                            {item.img ? <img className="cart-item-image" src={`${picUrl}/images/${item.name}/${item.img[0].name}`} alt={item.name} /> : ''}
-                            <section>
-                                <p>{item.name}</p>
-                                {/* <h3>price: ${item.price}</h3> */}
-                                {item.unitMeasure === 'Piece (pc)' || item.unitMeasure === 'Plate (Plt)' || item.unitMeasure === 'Dozen (dz)' || item.unitMeasure === 'Bottle (Btl)' || item.unitMeasure === 'Pair (pr)' ? <div className="plus-input"><p onClick={() => decrease(item.id)}><FaMinus /></p><p>{item.transQty}</p><p onClick={() => increase(item.id)}><FaPlus /></p><p id="cart-unit">{item.unitMeasure.split(' ')[1].slice(1, -1)}</p>  <p onClick={() => removeItem(item.id)}
-                                className="cart-trash"
-                                id="cart-trash"
-                            >
-                                <FaTrash role="button" />
-                            </p></div> : <div className="input-input"><input
-                                    className="cart-qty"
-                                    ref={cartQtyRef}
-                                    value={item.transQty}
-                                    onChange={(e) => dispatch({ type: "MAINCARTFIELD", payload: e.target.value, id: item.id })}
-                                /><p id="cart-unit">{item.unitMeasure.split(' ')[1].slice(1, -1)}</p><p onClick={() => removeItem(item.id)}
-                                className="cart-trash"
-                                id="cart-trash"
-                            >
-                                <FaTrash role="button" />
-                            </p></div>
-                                }
-                                   
-                                <h3>{currency}{numberWithCommas(parseFloat(item.total).toFixed(2))}</h3>
-
-                            </section>
-                          
-                        </article>
-                )
-            })}
             </div>
-            <h2>Total: {currency}{numberWithCommas(parseFloat(state.totalCart).toFixed(2))}</h2>
-            {/* <hr></hr> */}
-            {/* <hr></hr> */}
-            <div className="cart-action">
-                <button
-                    onClick={doneSales}
-                >Checkout</button>
-                <Link to={'/shop'} className="cart-shop-linker">  <button className="cart-action-button2"> Shop</button></Link>
-                <button onClick={clearCart}>Clear Cart</button>
-            </div>
-            <h3 className={state.success ? 'update-alert' : 'hide-update-alert'}>{state.alertMsg}</h3>
 
 
-        </div>
+<div className="cart-main-container" >
+{state.cartArray && state.cartArray.map((item) => {
+// console.log(item.img[0].name)
+// console.log(item.name)
+return (
+    <article className="cart-items-container">
+        {item.img ? <img className="cart-item-image" src={`${picUrl}/images/${item.name}/${item.img[0].name}`} alt={item.name} /> : ''}
+        <section>
+            <p>{item.name}</p>
+            {/* <h3>price: ${item.price}</h3> */}
+            {item.unitMeasure === 'Piece (pc)' || item.unitMeasure === 'Plate (Plt)' || item.unitMeasure === 'Dozen (dz)' || item.unitMeasure === 'Bottle (Btl)' || item.unitMeasure === 'Pair (pr)' ? <div className="plus-input"><p onClick={() => decrease(item.id)}><FaMinus /></p><p>{item.transQty}</p><p onClick={() => increase(item.id)}><FaPlus /></p><p id="cart-unit">{item.unitMeasure.split(' ')[1].slice(1, -1)}</p>  <p onClick={() => removeItem(item.id)}
+            className="cart-trash"
+            id="cart-trash"
+        >
+            <FaTrash role="button" />
+        </p></div> : <div className="input-input"><input
+                className="cart-qty"
+                ref={cartQtyRef}
+                value={item.transQty}
+                onChange={(e) => dispatch({ type: "MAINCARTFIELD", payload: e.target.value, id: item.id })}
+            /><p id="cart-unit">{item.unitMeasure.split(' ')[1].slice(1, -1)}</p><p onClick={() => removeItem(item.id)}
+            className="cart-trash"
+            id="cart-trash"
+        >
+            <FaTrash role="button" />
+        </p></div>
+            }
+                
+            <h4>{currency}{numberWithCommas(parseFloat(item.total).toFixed(2))}</h4>
+
+        </section>
+        
+    </article>
+    )
+    })}
+    </div>
+    <h3>Total: {currency}{numberWithCommas(parseFloat(state.totalCart).toFixed(2))}</h3>
+    {/* <hr></hr> */}
+    {/* <hr></hr> */}
+    <div className="cart-action">
+        <button
+            onClick={doneSales}
+        >Checkout</button>
+        <Link to={'/shop'} className="cart-shop-linker">  <button className="cart-action-button2"> Shop</button></Link>
+        <button onClick={clearCart}>Clear Cart</button>
+    </div>
+    <h3 className={state.success ? 'update-alert' : 'hide-update-alert'}>{state.alertMsg}</h3>
+
+
+</div>
     )
 }
 
