@@ -310,7 +310,7 @@ const SingleItem = () => {
 
 
 
-                {state.elItem.unitMeasure === 'Piece (pc)' || state.elItem.unitMeasure === 'Plate (Plt)' || state.elItem.unitMeasure === 'Dozen (dz)' || state.elItem.unitMeasure === 'Bottle (Btl)' || state.elItem.unitMeasure === 'Pair (pr)' ? <div className="plus-input"><p onClick={decrease}><FaMinus /></p><p>{state.elItem.transQty}</p><p onClick={increase}><FaPlus /></p></div> : <input
+                {state.elItem.unitMeasure === 'Piece (pc)' || state.elItem.unitMeasure === 'Plate (Plt)' || state.elItem.unitMeasure === 'Dozen (dz)' || state.elItem.unitMeasure === 'Bottle (Btl)' || state.elItem.unitMeasure === 'Pair (pr)' ? <div className="single-plus-input"><p onClick={decrease}><FaMinus /></p><p>{state.elItem.transQty}</p><p onClick={increase}><FaPlus /></p><p id="cart-unit">{state.elItem.unitMeasure.split(' ')[1].slice(1, -1)}</p></div> : <div><input
                   className="qty-input"
                   type="text"
                   ref={qtyRef}
@@ -318,7 +318,7 @@ const SingleItem = () => {
 
                   // onClick={() => dispatch({ type: 'blank', payload: '' })}
                   onChange={(e) => dispatch({ type: 'CARTFIELDCHANGE', payload: e.target.value })}
-                />}
+                /><span id="cart-unit">{state.elItem.unitMeasure.split(' ')[1].slice(1, -1)}</span></div>}
 
                 <p className="no-qty-alert">{state.elItem.qty === '' ? 'invalid quantity' : state.elItem.qty === 0 ? 'out of stock' : ''}</p>
 
