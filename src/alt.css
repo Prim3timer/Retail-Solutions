@@ -986,12 +986,13 @@ padding: .2rem .5rem;
 }
 
 .cart-main-container {
-  /* background-color: yellow; */
+  /* background-color: yellow;   */
   display: flex;
+  flex-direction: column;
   width: 90vw;
   justify-content: center;
   align-items: center;
-  /* row-gap: 3rem; */
+  row-gap: 3rem;
 }
 
 .cart-item-image {
@@ -1008,6 +1009,8 @@ padding: .2rem .5rem;
   row-gap: 1rem;
   width: 100%;
   align-items: center;
+  /* background-color: yellow; */
+
 }
 
 .cart-items-container section {

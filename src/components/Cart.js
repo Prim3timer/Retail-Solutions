@@ -204,11 +204,11 @@ const Payment = () => {
 
             {state.cartArray.length ? <h3>{parseFloat(state.cartAmount).toFixed(2)} item{plural2}, {state.cartArray.length} product{plural}</h3> : 'Empty'}
 
+            <div className="cart-main-container" >
             {state.cartArray && state.cartArray.map((item) => {
                 // console.log(item.img[0].name)
                 // console.log(item.name)
                 return (
-                    <div className="cart-main-container" >
                         <article className="cart-items-container">
                             {item.img ? <img className="cart-item-image" src={`${picUrl}/images/${item.name}/${item.img[0].name}`} alt={item.name} /> : ''}
                             <section>
@@ -237,9 +237,9 @@ const Payment = () => {
                             </section>
                           
                         </article>
-                    </div>
                 )
             })}
+            </div>
             <h2>Total: {currency}{numberWithCommas(parseFloat(state.totalCart).toFixed(2))}</h2>
             {/* <hr></hr> */}
             {/* <hr></hr> */}
