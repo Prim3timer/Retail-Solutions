@@ -44,6 +44,7 @@ import AuthContext from "./context/authProvider"
 import GenSales from "./components/GenSales"
 import GenShopping from "./components/GenReceipt"
 import Orders from "./components/Order"
+import DeleteAccount from "./components/DeleteAccount"
 
 // import SearchItem from "./SearchItem";
 
@@ -129,6 +130,7 @@ const App = () => {
                 <Route path="one-receipt" element={<OneReceipt setOneReceipt={setOneReceipt} />} />
                 <Route path="cart" element={<Cart />} />
                 <Route path="order" element={<Orders />} />
+                <Route path="delete-account" element={<DeleteAccount/>}/>
               </Route>
 
 

@@ -2355,6 +2355,24 @@ button:active {
   /* background-color: red; */
 }
 
+.deleted-prompt {
+   position: fixed;
+    margin: 1rem 0;
+    top: 40%;
+    left: 30%;
+    width: 40%;
+    text-align: center;
+    padding: 1rem;
+    background-color: lightpink;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    opacity: '.85'
+  }
+
+  .no-deleted-prompt {
+    display: none;
+  }
+
 
 @media screen and (max-width: 391px) {
 

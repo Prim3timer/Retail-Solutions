@@ -46,7 +46,7 @@ const logout = useLogout()
     return (
       // making the class name dynamic because of the 'retail tracker' text conflicing with the first element, 'transaction' in
       // the header list of items
-         <div  className={location.pathname === '/' || location.pathname === '/login' || location.pathname === '/register' ? 'plain-header' : 'header'}
+         <div  className={location.pathname === '/' || location.pathname === '/login' || location.pathname === '/register'  ? 'plain-header' : 'header'}
          ref={navRef}
          >
  

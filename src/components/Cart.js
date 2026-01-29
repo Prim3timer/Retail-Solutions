@@ -234,7 +234,7 @@ const Payment = () => {
                     </div>
                 )
             })}
-            <h2>Total:{currency}{numberWithCommas(parseFloat(state.totalCart).toFixed(2))}</h2>
+            <h2>Total: {currency}{numberWithCommas(parseFloat(state.totalCart).toFixed(2))}</h2>
             {/* <hr></hr> */}
             {/* <hr></hr> */}
             <div className="cart-action">

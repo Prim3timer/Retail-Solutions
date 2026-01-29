@@ -45,11 +45,11 @@ const multiLinks = [
         name: 'cart',
         path: '/cart'
     },
-    // {
-    //     id: 10,
-    //     name: 'single item',
-    //     path: '/single-item'
-    // }
+    {
+        id: 10,
+        name: 'delete account',
+        path: '/delete-account'
+    }
 ]
 
 export default multiLinks
