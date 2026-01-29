@@ -1048,8 +1048,9 @@ padding: .2rem .5rem;
 }
 
 .plus-input>*:nth-child(2) {
-  padding: .35rem 1rem;
-  /* font-size: 2rem; */
+  /* padding: .45rem; */
+  padding: .036rem 1rem;
+  font-size: 2rem;
   /* border-right: none; */
 }
 
