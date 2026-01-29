@@ -2394,7 +2394,7 @@ button:active {
 }
 
 .delete-user>*:nth-child(2){
-  background-color: red;
+color: crimson;
   grid-column: 8 /9;
  /* justify-content: center; */
   grid-row: 6/ 7;
