@@ -2927,6 +2927,7 @@ color: crimson;
     grid-template-rows: repeat(2, 1fr);
     gap: .5rem;
     align-items: center;
+    justify-content: center;
     max-width: 100vw;
     /* background-color: red; */
   }

@@ -132,12 +132,9 @@ const Payment = () => {
             dispatch({ type: 'REMOVECARTITEM', payload: id })
             console.log(response.data)
             if (response) {
-                dispatch({ type: 'success', payload: true })
+              
                 dispatch({ type: 'ALERTMSG', payload: response.data })
-                setTimeout(() => {
-                    dispatch({ type: 'success', payload: false })
-                    dispatch({ type: 'ALERTMSG', payload: '' })
-                }, 3000)
+               
             }
         } catch (error) {
             dispatch({ type: 'errMsg', payload: error.message })
@@ -189,8 +186,21 @@ const Payment = () => {
     }, [])
 
     useEffect(() => {
-        console.log('changed')
         dispatch({ type: 'GETCARTTOTAL' })
+    }, [state.cartArray])
+    
+    
+    useEffect(()=>{
+        
+        console.log('changed')
+          dispatch({ type: 'success', payload: true })
+                    // dispatch({ type: 'ALERTMSG', payload: response.data })
+                    setTimeout(() => {
+                        dispatch({ type: 'success', payload: false })
+                        dispatch({ type: 'ALERTMSG', payload: '' })
+                    }, 3000)
+        
+      
     }, [state.cartArray])
     const plural = state.cartArray.length === 1 ? '' : 's'
     const plural2 = state.cartAmount.length === 1 ? '' : 's'
@@ -253,7 +263,7 @@ return (
         <Link to={'/shop'} className="cart-shop-linker">  <button className="cart-action-button2"> Shop</button></Link>
         <button onClick={clearCart}>Clear Cart</button>
     </div>
-    <h3 className={state.success ? 'update-alert' : 'hide-update-alert'}>{state.alertMsg}</h3>
+    <h3 className={state.success ? 'delete' : 'hide-update-alert'}>{state.alertMsg}</h3>
 
 
 </div>
