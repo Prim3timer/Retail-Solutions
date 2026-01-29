@@ -132,7 +132,12 @@ const Payment = () => {
             dispatch({ type: 'REMOVECARTITEM', payload: id })
             console.log(response.data)
             if (response) {
-              
+                dispatch({ type: 'success', payload: true })
+                    dispatch({ type: 'ALERTMSG', payload: response.data })
+                    setTimeout(() => {
+                        dispatch({ type: 'success', payload: false })
+                        dispatch({ type: 'ALERTMSG', payload: '' })
+                    }, 3000)
                 dispatch({ type: 'ALERTMSG', payload: response.data })
                
             }
@@ -190,18 +195,6 @@ const Payment = () => {
     }, [state.cartArray])
     
     
-    useEffect(()=>{
-        
-        console.log('changed')
-          dispatch({ type: 'success', payload: true })
-                    // dispatch({ type: 'ALERTMSG', payload: response.data })
-                    setTimeout(() => {
-                        dispatch({ type: 'success', payload: false })
-                        dispatch({ type: 'ALERTMSG', payload: '' })
-                    }, 3000)
-        
-      
-    }, [state.cartArray])
     const plural = state.cartArray.length === 1 ? '' : 's'
     const plural2 = state.cartAmount.length === 1 ? '' : 's'
 
