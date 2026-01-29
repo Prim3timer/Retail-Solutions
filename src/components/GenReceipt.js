@@ -18,7 +18,7 @@ const [state, dispatch] = useReducer(reducer, initialState)
 const [oneId, setOneId] = useState('')
 const { auth} = useAuth();
 const [currentUser, setCurrentUser] = useState('')
-const {atHome, getUsers, currentUsers, setIsRotated, falseRotated, currency, users, oneShow} = useContext(AuthContext)
+const {atHome, getUsers, currentUsers, setIsRotated, falseRotated, currency, users, oneShow, bizName} = useContext(AuthContext)
 
 // const theDay = new Date(inv.date).getDate()
 //     const aDate = format(inv.date.substring(0, 10), `${theDay} MMM, yyyy`)
@@ -168,7 +168,7 @@ function numberWithCommas(x) {
                  id="receipts"
                     >
                         {/* <h5>cashierID: {item.cashierID}</h5> */}
-                         <h2 className="receipt-title">{item.title}</h2>
+                         <h2 className="receipt-title">{bizName}</h2>
                         <p>{theDay}</p>
                         <p>{item._id}</p>
                         {item.goods && item.goods.map((good)=> {

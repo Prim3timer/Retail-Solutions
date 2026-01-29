@@ -208,7 +208,7 @@ const Payment = () => {
                 // console.log(item.img[0].name)
                 // console.log(item.name)
                 return (
-                    <div className="cart-main-container">
+                    <div className="cart-main-container" >
                         <article className="cart-items-container">
                             {item.img ? <img className="cart-item-image" src={`${picUrl}/images/${item.name}/${item.img[0].name}`} alt={item.name} /> : ''}
                             <section>

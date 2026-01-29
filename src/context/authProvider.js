@@ -42,6 +42,8 @@ export const AuthProvider = ({ children }) => {
         'centimiters (cm)', 'Kilogram (kg)', 'Kilowatthour (kWh)', 'Kilowatt (kW)', 'Litre (L)', 'Pound (lbs)'
     ]
 
+    const bizName = 'Retail Tracker'
+
 
     const axiosPrivate = useAxiosPrivate()
     const navigate = useNavigate();
@@ -251,7 +253,7 @@ const oneShow = (id) => {
             search, setSearch, setSearch2, search2, sales, user, currentUser,
             setCurrentUser, setCurrentUser2, currentUser2, users, setUsers, transactions, atHome, setAtHome,
             currentUsers, setCurrentUsers, setIsRotated, isRotated, barRef, persistor, setPersistor, falseIsRotated, measurements,
-            genTrans, setGenTrans, currency, items, oneItem, userPage, picUrl, getItems, oneShow
+            genTrans, setGenTrans, currency, items, oneItem, userPage, picUrl, getItems, oneShow, bizName
 
         }}>
             {children}

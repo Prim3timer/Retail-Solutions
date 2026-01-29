@@ -17,7 +17,7 @@ const [state, dispatch] = useReducer(reducer, initialState)
 const [oneId, setOneId] = useState('')
 const { auth, setAuth } = useAuth();
 const [currentUser, setCurrentUser] = useState('')
-const {atHome, getUsers, currentUsers, setIsRotated, oneShow} = useContext(AuthContext)
+const {atHome, getUsers, currentUsers, setIsRotated, oneShow, bizName} = useContext(AuthContext)
 console.log(state.atHome)
 const refresh = useRefreshToken()
 const getItems = async ()=> {
@@ -198,7 +198,7 @@ function numberWithCommas(x) {
                  id="receipts"
                     >
                         {/* <h5>cashierID: {item.cashierID}</h5> */}
-                         <h2 className="receipt-title">{item.title}</h2>
+                         <h2 className="receipt-title">{bizName}</h2>
                         <p>Date: {item.date}</p>
                         <p>TransID: {item._id}</p>
                         {item.goods && item.goods.map((good)=> {

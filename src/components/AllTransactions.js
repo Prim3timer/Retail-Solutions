@@ -14,7 +14,7 @@ const {auth} = useAuth()
 const [state, dispatch] = useReducer(reducer, initialState)
 const [allTransi, setAllTransi] = useState([])
 
-const {falseIsRotated, currency, oneShow} = useContext(AuthContext)
+const {falseIsRotated, currency, oneShow, bizName} = useContext(AuthContext)
 
     const getItems = async ()=> {
         try {
@@ -142,6 +142,7 @@ function numberWithCommas(x) {
                                 }}
                                 onClick={() => oneShow(item._id)}
                                 >
+                                    <h2>{bizName}</h2>
                                     <p>{new Date(item.date).toDateString().substring(4, 15)}</p>
                                     <p>{item._id}</p>
                                     {item.goods.map((good)=> {

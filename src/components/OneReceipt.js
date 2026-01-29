@@ -15,7 +15,7 @@ const [currentUser, setCurrentUser] = useState()
 const [currentTrans, setCurrentTrans] = useState()
 const [state, dispatch] = useReducer(reducer, initialState)
 const {auth, setAuth} = useAuth()
-const {currentUsers, setIsRotated, falseRotated, currency} = useContext(AuthContext)
+const {currentUsers, setIsRotated, falseRotated, currency, bizName} = useContext(AuthContext)
 const navigate = useNavigate()
 setOneReceipt(true)
 
@@ -114,7 +114,7 @@ style={{
   
    >
        {/* <h5>cashierID: {item.cashierID}</h5> */}
-                                           <h2 className="receipt-title">{currentTrans.title}</h2>
+                                           <h2 className="receipt-title">{bizName}</h2>
        {/* <p>{new Date(currentTrans.date).toDateString().substring(4, 15)}</p> */}
        <p>{theDay}</p>
        <p>{currentTrans._id}</p>
