@@ -997,7 +997,8 @@ padding: .2rem .5rem;
 
 .cart-item-image {
   /* margin-left: 1rem; */
-  width: 350px;
+  width: 250px;
+  height: 250px;
   object-fit: cover;
 }
 
