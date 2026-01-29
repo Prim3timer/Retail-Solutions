@@ -14,11 +14,11 @@ import { Link } from "react-router-dom";
 
 const GenShopping = ()=> {
 const [state, dispatch] = useReducer(reducer, initialState)
-const [showOne, setShowOne] = useState(false)
+// const [showOne, setShowOne] = useState(false)
 const [oneId, setOneId] = useState('')
 const { auth} = useAuth();
 const [currentUser, setCurrentUser] = useState('')
-const {atHome, getUsers, currentUsers, setIsRotated, falseRotated, currency, users} = useContext(AuthContext)
+const {atHome, getUsers, currentUsers, setIsRotated, falseRotated, currency, users, oneShow} = useContext(AuthContext)
 
 // const theDay = new Date(inv.date).getDate()
 //     const aDate = format(inv.date.substring(0, 10), `${theDay} MMM, yyyy`)
@@ -78,15 +78,6 @@ const handleRemove = async ()=> {
         
     dispatch({type: 'getNames', payload: newGraw})
 }
-
-const oneShow = (id) => {
-    localStorage.setItem('memTransaction', id)
-    auth.picker2 = id
-    
-    setShowOne(true)
-    // setReceipts(false)
-}
-
 const remainDelete = ()=> {
     // this condition statement is to enable the removal of the confirm window once any part of the 
     // page is touched.

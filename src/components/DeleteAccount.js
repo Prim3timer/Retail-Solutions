@@ -104,7 +104,7 @@ const DeleteAccount = () => {
                             margin: '.5rem auto',
                             //   display: 'flex',
                         }}
-                    > Delete  Account?</h3>
+                    > Delete  Your Account?</h3>
                     <article
                         style={{
                             display: 'flex',
@@ -125,7 +125,7 @@ const DeleteAccount = () => {
 
              
                 <div
-                 className={ACTION.SUCCESS ? 'deleted-promt' : 'no-deleted-promt'}
+              
                 >
                     <h4>{state.selectUser}</h4>
                 </div>

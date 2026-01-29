@@ -27,8 +27,26 @@
 .home-links {
   color: whitesmoke;
   font-size: 1rem;
+  white-space: nowrap;
   /* transform: scale(1.5);
   font-size: bold; */
+}
+
+.all-transactions-header {
+            display: flex;
+            margin: 0 0 0 1rem;
+           text-align: center;
+           align-items: center;
+           height: 100vh;
+           justify-content: center;
+}
+
+.all-transactions-body {
+    display: flex;
+    margin: 2rem 1rem 0;
+    text-align: center;
+    min-height: 100vh;
+    justify-content: center;
 }
 
 .current-path {
@@ -2354,24 +2372,6 @@ button:active {
   align-self: center;
   /* background-color: red; */
 }
-
-.deleted-prompt {
-   position: fixed;
-    margin: 1rem 0;
-    top: 40%;
-    left: 30%;
-    width: 40%;
-    text-align: center;
-    padding: 1rem;
-    background-color: lightpink;
-    border-radius: 5px;
-    font-size: 1.5rem;
-    opacity: '.85'
-  }
-
-  .no-deleted-prompt {
-    display: none;
-  }
 
 
 @media screen and (max-width: 391px) {

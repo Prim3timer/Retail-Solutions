@@ -13,11 +13,11 @@ import { Link } from "react-router-dom";
 
 const Shopping = ()=> {
 const [state, dispatch] = useReducer(reducer, initialState)
-const [showOne, setShowOne] = useState(false)
+
 const [oneId, setOneId] = useState('')
 const { auth, setAuth } = useAuth();
 const [currentUser, setCurrentUser] = useState('')
-const {atHome, getUsers, currentUsers, setIsRotated} = useContext(AuthContext)
+const {atHome, getUsers, currentUsers, setIsRotated, oneShow} = useContext(AuthContext)
 console.log(state.atHome)
 const refresh = useRefreshToken()
 const getItems = async ()=> {
@@ -104,14 +104,7 @@ const handleRemove = async ()=> {
     dispatch({type: 'getNames', payload: newGraw})
 }
 
-const oneShow = (id) => {
-    dispatch({type: 'id', payload: id})
-    auth.picker2 = id
-    console.log(auth)
-    // console.log(oneId)
-    setShowOne(true)
-    // setReceipts(false)
-}
+
 
 const remainDelete = ()=> {
     // this condition statement is to enable the removal of the confirm window once any part of the 

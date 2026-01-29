@@ -12,30 +12,16 @@ import { Link } from "react-router-dom";
 const AllTransactions = () => {
 const {auth} = useAuth()
 const [state, dispatch] = useReducer(reducer, initialState)
-const [showOne, setShowOne] = useState(false)
-const [oneId, setOneId] = useState('')
 const [allTransi, setAllTransi] = useState([])
 
-const {falseIsRotated, currency} = useContext(AuthContext)
+const {falseIsRotated, currency, oneShow} = useContext(AuthContext)
 
     const getItems = async ()=> {
-        console.log('picker3 is : ', auth.picker3)
-        console.log('picker is: ', auth.picker)
         try {
             const response = await axios.get('/transactions')
             if (response){
-                // const newRes = response.data.map((item)=> {
-                //     if (!item.cashierID){
-                //         item.cashierID = 'unavailable'
-                //         item.cashier = 'unavailable'
-                //     }
-                //     return item
-                // })
-                
-                // const cashierTrans = newRes.filter((item) => item.cashierID === picker)
                 console.log({responseDate: response.data})
                 dispatch({type: 'getNames', payload: response.data})
-                // dispatch({type: 'getNames', payload: cashierTrans})
                 setAllTransi(response.data)
                 console.log(allTransi)
     console.log(state.getNames)
@@ -52,12 +38,6 @@ const {falseIsRotated, currency} = useContext(AuthContext)
        
         
     }
-
-
-
-
-console.log(state.cancel)
-
 const assertain = (id) => {
     if (auth.roles.includes(5150)){
         console.log("deleted")
@@ -83,26 +63,12 @@ const handleRemove = async ()=> {
     const response = await axios.delete(`/transactions/${state.id}`)
     // const newGraw = state.items && state.items.filter((item)=> item._id !== state.id)
     console.log(response)
-
-
-    // e.preventDefault()     
-    // removeInventory(id)
-        // await axios.delete(`/transactions/${id}`)
         
         const newGraw = response && allTransi.filter((item)=> item._id !== state.id)
         console.log('removed')
     setAllTransi(newGraw)
 }
 
-const oneShow = (id) => {
-    dispatch({type: 'id', payload: id})
-    auth.picker2 = id
-   setOneId(id)
-//    dispatch({type: 'id', payload: id})
-    console.log(oneId)
-    // setShowOne(true)
-    // setReceipts(false)
-}
 
 const remainDelete = ()=> {
     // this condition statement is to enable the removal of the confirm window once any part of the 
@@ -111,10 +77,6 @@ const remainDelete = ()=> {
 
         dispatch({type: 'cancel', payload: false})
     }
-    // if (state.isEdit){
-
-    //     dispatch({type: 'isEdit', payload: false})
-    // }
 }
 
 useEffect(()=> {
@@ -126,38 +88,16 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-
-
-
-
     return (
         !state.getNames.length ? <h2
-        style={{
-            display: 'flex',
-            margin: ' 0 0 0 1rem',
-           textAlign: 'center',
-           alignItems: 'center',  
-           height: '100vh',
-           justifyContent: 'center',
-        }}
+       className="all-transactions-header"
         >Loading...</h2> : <div
+        className="all-transactions-body"
         onClick={falseIsRotated}
-        style={{
-            display: 'flex',
-        //   backgroundColor: 'blue',
-            margin: ' 2rem 1rem 0',
-           textAlign: 'center',
-           minHeight: '100vh',
-           justifyContent: 'center',
-        //    backgroundColor: 'blue'
-        }}
-        // onClick={remainDelete}
         >
-
             {<div
            onClick={remainDelete}
-                    >
-            
+                    >      
             <article id="form-cont">
                         <form  className="search-form"   onSubmit={(e)=> e.preventDefault()}>
                     <input 
@@ -182,8 +122,6 @@ function numberWithCommas(x) {
                         }}
                         >All Reciepts {allTransi.length}</h2>
                         {allTransi.map((item)=> {
-                            // console.log(item.goods)
-                            // console.log(item)
                             return (
                                 <section>
                                     <Link to={"/one-receipt"}
@@ -204,7 +142,6 @@ function numberWithCommas(x) {
                                 }}
                                 onClick={() => oneShow(item._id)}
                                 >
-                                    {/* <h5>cashierID: {item.cashierID}</h5> */}
                                     <p>{new Date(item.date).toDateString().substring(4, 15)}</p>
                                     <p>{item._id}</p>
                                     {item.goods.map((good)=> {
@@ -239,7 +176,6 @@ function numberWithCommas(x) {
                                  
                                 </article>
                                 </Link>
-                                {/* <h3 onClick={(id)=> handleRemove(item._id)} */}
                                 <h3 onClick={(e)=> assertain(item._id, e)}
                                         style={{
                                             textAlign: 'center',
@@ -256,18 +192,8 @@ function numberWithCommas(x) {
                         })}
                         
                         <div
-                        style={{
-                            display: `${state.cancel ? 'block' : 'none'}`,
-                            position: 'fixed',
-                        textAlign: 'center',
-                        top: '35%',
-                        left: '5%',
-                        width: '90%',
-                         padding: '1rem',
-                           backgroundColor: '#DBBFDB',
-                           borderRadius: '5px',
-                           opacity: '.85'
-                     }}
+                         className={state.cancel ? 'delete' : 'no-delete'}
+                       
                      >
                          <h3
                       id="verify-header"

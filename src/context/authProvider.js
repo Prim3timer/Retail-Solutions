@@ -28,6 +28,7 @@ export const AuthProvider = ({ children }) => {
     const [search2, setSearch2] = useState('')
     const itemRef = useRef()
     const barRef = useRef(null)
+    const [showOne, setShowOne] = useState(false)
     // const currency = '₦'
     // const picUrl = 'https://mawuhi-back.onrender.com/images'
     // const picUrl = 'http://localhost:3500/images'
@@ -220,7 +221,14 @@ export const AuthProvider = ({ children }) => {
         setIsRotated(false)
     }
 
-
+const oneShow = (id) => {
+    localStorage.setItem('memTransaction', id)
+    auth.picker2 = id
+    console.log(auth)
+    // console.log(oneId)
+    setShowOne(true)
+    // setReceipts(false)
+}
 
 
     useEffect(() => {
@@ -243,7 +251,7 @@ export const AuthProvider = ({ children }) => {
             search, setSearch, setSearch2, search2, sales, user, currentUser,
             setCurrentUser, setCurrentUser2, currentUser2, users, setUsers, transactions, atHome, setAtHome,
             currentUsers, setCurrentUsers, setIsRotated, isRotated, barRef, persistor, setPersistor, falseIsRotated, measurements,
-            genTrans, setGenTrans, currency, items, oneItem, userPage, picUrl, getItems
+            genTrans, setGenTrans, currency, items, oneItem, userPage, picUrl, getItems, oneShow
 
         }}>
             {children}
