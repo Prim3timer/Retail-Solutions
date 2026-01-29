@@ -213,9 +213,9 @@ const Payment = () => {
 // console.log(item.name)
 return (
     <article className="cart-items-container">
+<p>{item.name}</p>
         {item.img ? <img className="cart-item-image" src={`${picUrl}/images/${item.name}/${item.img[0].name}`} alt={item.name} /> : ''}
         <section>
-            <p>{item.name}</p>
             {/* <h3>price: ${item.price}</h3> */}
             {item.unitMeasure === 'Piece (pc)' || item.unitMeasure === 'Plate (Plt)' || item.unitMeasure === 'Dozen (dz)' || item.unitMeasure === 'Bottle (Btl)' || item.unitMeasure === 'Pair (pr)' ? <div className="plus-input"><p onClick={() => decrease(item.id)}><FaMinus /></p><p>{item.transQty}</p><p onClick={() => increase(item.id)}><FaPlus /></p><p id="cart-unit">{item.unitMeasure.split(' ')[1].slice(1, -1)}</p>  <p onClick={() => removeItem(item.id)}
             className="cart-trash"
