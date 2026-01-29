@@ -97,13 +97,6 @@ const Transactions = () => {
 
     }
 
-    // const getItems = async () => {
-    //     const response = await axiosPrivate.get('/items')
-    //     console.log(response.data.items)
-    //     setItems(response.data.items)
-    // }
-
-
     const removeItem = async (id) => {
 
         dispatch({ type: 'remove', payload: id })
@@ -448,9 +441,9 @@ const Transactions = () => {
 
                             <section className="trans-name-and-img">
 
-                                <img className="trans-img" src={`${picUrl}/images/${item.name}/${item.img[0].name}`} alt={item.name} />
+                                <img className="trans-img" src={`${picUrl}/images/${item.name}/${item.img[0].name}`} alt={item.name.substring(0, 10)} />
                                 <h5
-
+                                    className="trans-item-name"
                                 >
 
                                     {item.name}
