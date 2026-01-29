@@ -61,7 +61,9 @@ const logout = useLogout()
                     const {id, name, path} = link
                 return (
                   // <div className="link-names">
-                    <Link to={path} className={location.pathname === path ? "current-path" : "home-links"} key={id}>{name}</Link>
+                    <Link 
+                    onClick={() => localStorage.setItem('memUser', auth.picker)}
+                    to={path} className={location.pathname === path ? "current-path" : "home-links"} key={id}>{name}</Link>
                  
                     // </div>
                

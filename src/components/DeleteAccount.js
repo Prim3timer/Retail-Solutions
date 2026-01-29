@@ -25,7 +25,7 @@ const DeleteAccount = () => {
     const { auth, setAuth } = useAuth()
     const [state, dispatch] = useReducer(reducer, initialState)
     const axiosPrivate = useAxiosPrivate()
-    const {setIsRotated} = useContext(AuthContext)
+    const {falseIsRotated} = useContext(AuthContext)
     const [users,   setUsers] = useState('')
     const location = useLocation()
     console.log(users)
@@ -50,7 +50,7 @@ const DeleteAccount = () => {
         }, 3000)
         if (response) {
                console.log(location.pathname)
-            setIsRotated(false)
+           falseIsRotated()
             setAuth(prev => {
                 return {...prev, accessToken: ''}
             })
@@ -66,6 +66,8 @@ const DeleteAccount = () => {
         // this condition statement is to enable the removal of the confirm window once any part
         // of the 
         // page is touched.
+        console.log('reamined')
+      falseIsRotated()
         if (state.cancel) {
 
             dispatch({ type: 'cancel', payload: false })
@@ -74,16 +76,13 @@ const DeleteAccount = () => {
     }
 
     return ( 
-            <div className="edit-user"
+            <div className="delete-user"
             onClick={remainDelete}
             >
-                <h2 id="user-edit-header">Delete Your Account</h2>        
-        <section className="roles-actions-cont">
-            <form onSubmit={(e) => e.preventDefault()}
-                id="roles"
-            >
-                <article className="usersetting-actions">
-                    
+                <h2 >Delete Your Account</h2>        
+        <section 
+        // className="roles-actions-cont"
+        >
                     <button
                         className="user-action"
 
@@ -91,8 +90,6 @@ const DeleteAccount = () => {
                         onClick={assertain}
                         tableindex='0'
                         /> </button>
-                </article>
-            </form>
         </section>
 
                 <div

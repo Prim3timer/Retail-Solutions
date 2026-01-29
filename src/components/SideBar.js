@@ -15,8 +15,7 @@ const SideBar = () => {
     const location = useLocation()
     const logout = useLogout()
     const moreThanLogout = ()=> {
-        // logout()
-
+localStorage.setItem('memUser', auth.picker)
             setIsRotated(false)
 
     }
@@ -47,7 +46,9 @@ const SideBar = () => {
                     const {id, name, path} = mainLink
                 return (
                     
-                            <Link  key={id} to={path} className={location.pathname === path ? "side-current-path" : "side-links"} onClick={moreThanLogout} ><li key={id} >{name}</li></Link>
+                            <Link  
+                           
+                            key={id} to={path} className={location.pathname === path ? "side-current-path" : "side-links"} onClick={moreThanLogout} ><li key={id} >{name}</li></Link>
                             
                         
                     )

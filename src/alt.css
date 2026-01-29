@@ -50,6 +50,7 @@
 }
 
 .current-path {
+  white-space: nowrap;
   font-size: 1rem;
   /* text-decoration: none;
   color: tomato; */
@@ -2371,6 +2372,32 @@ button:active {
 .usersetting-first-form>*:nth-child(4) {
   align-self: center;
   /* background-color: red; */
+}
+
+.delete-user {
+  display: grid;
+  grid-template-rows: repeat(10, 1fr);
+  grid-template-columns: repeat(15, 1fr);
+  align-items: center;
+  height: 80vh;
+  padding-left: 2px;
+  /* justify-content: center; */
+  /* background-color: red; */
+}
+
+.delete-user>*:nth-child(1){
+  /* width: 80vw; */
+  grid-row: 4/ 5;
+  grid-column: 1 /16;
+  /* background-color: red; */
+  text-align: center;
+}
+
+.delete-user>*:nth-child(2){
+  background-color: red;
+  grid-column: 8 /9;
+ /* justify-content: center; */
+  grid-row: 6/ 7;
 }
 
 

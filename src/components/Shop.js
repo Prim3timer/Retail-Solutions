@@ -17,7 +17,7 @@ const { v4: uuid } = require('uuid')
 const Shop = () => {
   // window.history.pushState(null, null, '/home');
   const [state, dispatch] = useReducer(reducer, initialState)
-  const { falseIsRotated, currency, items, oneItem, picUrl } = useContext(AuthContext)
+  const { falseIsRotated, currency, items, oneItem, picUrl} = useContext(AuthContext)
   const [shopItems, setShopItems] = useState([])
   const axiosPrivate = useAxiosPrivate()
   const [readMore, setReadMore] = useState(true)
