@@ -875,7 +875,7 @@ padding: .2rem .5rem;
 }
 
 .shipping-address,
-.email {
+.email, .phone, .main-status {
   background-color: whitesmoke;
   padding: .5rem;
 

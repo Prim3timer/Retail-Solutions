@@ -219,7 +219,7 @@ const SingleItem = () => {
 
   }
 
-  console.log(state.onlineQty)
+  // console.log(state.elItem.description.length)
 
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -303,7 +303,7 @@ const SingleItem = () => {
             </section>
             <p className={state.elItem.qty == 0 ? "invent-alarm" : "invent-info"}>{state.elItem.qty <= 0 ? 'out of stock' : ''}</p>
             <div className="single-item-texts">
-              <p className="description">{readMore ? state.elItem.description : `${state.elItem.description.substring(0, 40)}`}<span className="show-more" onClick={() => setReadMore(!readMore)}>{readMore ? ' show less' : state.elItem.description.length >= 40 ? '...read more' : ''}</span></p>
+              <p className="description">{readMore ? state.elItem.description : `${state.elItem.description.substring(0, 37)}`}<span className="show-more" onClick={() => setReadMore(!readMore)}>{readMore ? ' show less' : state.elItem.description.length >= 36 ? '...read more' : ''}</span></p>
               <section
                 className="qty-cont"
               >
