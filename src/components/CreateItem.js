@@ -88,7 +88,7 @@ let CreateItem = () => {
             dispatch({type: 'IMAGE', payload: '' })
             setDescription('')
             dispatch({type: 'ole', payload: ''})
-            dispatch({type: 'category', payload: ''})
+            // dispatch({type: 'category', payload: ''})
            
         }  
         } catch (error) {
