@@ -963,6 +963,10 @@ padding: .2rem .5rem;
   font-size: 1rem;
 }
 
+.shop-item-price {
+  font-size: 1.3rem;
+}
+
 .invent-alarm {
   color: red
 }

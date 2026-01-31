@@ -29,6 +29,7 @@ export const AuthProvider = ({ children }) => {
     const itemRef = useRef()
     const barRef = useRef(null)
     const [showOne, setShowOne] = useState(false)
+
     // const currency = '₦'
     // const picUrl = 'https://mawuhi-back.onrender.com/images'
     // const picUrl = 'http://localhost:3500/images'
@@ -43,6 +44,13 @@ export const AuthProvider = ({ children }) => {
     ]
 
     const bizName = 'Retail Tracker'
+
+    const catArray = [
+        "Phone",
+        "Eletronics",
+        "Apparel",
+        "Groceries"
+    ]
 
 
     const axiosPrivate = useAxiosPrivate()
@@ -253,7 +261,7 @@ const oneShow = (id) => {
             search, setSearch, setSearch2, search2, sales, user, currentUser,
             setCurrentUser, setCurrentUser2, currentUser2, users, setUsers, transactions, atHome, setAtHome,
             currentUsers, setCurrentUsers, setIsRotated, isRotated, barRef, persistor, setPersistor, falseIsRotated, measurements,
-            genTrans, setGenTrans, currency, items, oneItem, userPage, picUrl, getItems, oneShow, bizName
+            genTrans, setGenTrans, currency, items, oneItem, userPage, picUrl, getItems, oneShow, bizName, catArray
 
         }}>
             {children}

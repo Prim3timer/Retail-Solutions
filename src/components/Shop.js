@@ -88,7 +88,7 @@ const Shop = () => {
               >
                 {item.img.length && <img className='shop-img' src={`${picUrl}/images/${item.name}/${item.img[0].name}`} alt={item.name} />}
                 <div className="shop-item-texts">
-                  <h4>{currency}{numberWithCommas(item.price)}</h4>
+                  <h4 className="shop-item-price">{currency}{numberWithCommas(item.price)}</h4>
                   <h4 style={{
                     // text
                   }}>{item.name}</h4>

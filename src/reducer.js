@@ -254,6 +254,9 @@ const reducer = (state, action) => {
     case 'SINGLEITEMARRAY':
       return { ...state, singleItemArray: action.payload }
 
+      case 'CATEGORY':
+        return {...state, category: action.payload}
+
     default:
       throw new Error()
   }

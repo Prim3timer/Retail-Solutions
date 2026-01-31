@@ -19,13 +19,15 @@ let CreateItem = () => {
        const now = new Date()
        const [description, setDescription] = useState('')
  
-    const {falseIsRotated, measurements} = useContext(AuthContext)
+    const {falseIsRotated, measurements, catArray} = useContext(AuthContext)
+    console.log(catArray)
      const refresh = useRefreshToken()
  const axiosPrivate = useAxiosPrivate()
 
     const handleSubmit = async (e)=> {
         e.preventDefault()
-        const theBigPics = files.filter((pic) =>  pic.size > 2000000)
+        if (files){
+             const theBigPics = files.filter((pic) =>  pic.size > 2000000)
         console.log(theBigPics)
         if (theBigPics.length ){
             dispatch({type: 'success', payload: true})
@@ -33,11 +35,13 @@ let CreateItem = () => {
             setTimeout(()=> {
                 dispatch({type: 'success', payload: false})
             }, 3000)
-        } else {
+        }
+        }
+        else {
               setShowUpdate(true)
         dispatch({type: 'isMatched', payload: 'creating item...'})
         e.preventDefault()
-        const {name, price, unitMeasure, image, ole} = state
+        const {name, price, unitMeasure, image, ole, category} = state
         const formData = new FormData()
         if (files){
             files.map((file) => formData.append('images', file))
@@ -53,13 +57,14 @@ let CreateItem = () => {
                 unitMeasure: unitMeasure,
                 description,
                 qty: ole,
+                category,
                 // image: files,
                 now
             }
             
 
 
-        console.log(newItem.name)
+        console.log(newItem)
         const theMatch = state.items && state.items.data.find((item)=> item.name.toString().toLowerCase() === newItem.name.toLowerCase()) 
         if (theMatch){
 
@@ -82,6 +87,8 @@ let CreateItem = () => {
             dispatch({type: 'piecesUnit', payload: '' })
             dispatch({type: 'IMAGE', payload: '' })
             setDescription('')
+            dispatch({type: 'ole', payload: ''})
+            dispatch({type: 'category', payload: ''})
            
         }  
         } catch (error) {
@@ -138,13 +145,7 @@ const handleUpload = async (e) => {
         onChange={(e)=> dispatch({type: 'unitMeasure', payload: e.target.value})}
         value={state.unitMeasure}
         />
-        {/* </h3> */}
-        {/* <label>unitMeasure:</label> */}
         <datalist id="measure"
-        style={{backgroundColor: 'blue',
-            // fontSize: '2.5rem'
-
-        }}
         >
             {measurements.map((measurement, i)=> {
                 return (
@@ -178,6 +179,25 @@ const handleUpload = async (e) => {
                 onChange={(e)=> dispatch({type: 'ole', payload: e.target.value})}
               
                 />
+                <br/>   
+                <h4>category:</h4>
+                <input
+                type="text"
+                id="catogory"
+                required
+                value={state.category}
+                onChange={(e)=> dispatch({type: 'CATEGORY', payload: e.target.value})}
+              
+                />
+                <datalist>
+                    {catArray.map((cat)=> {
+                        return (
+                           <option
+                           value={cat}
+                           >{cat}</option>
+                        )
+                    })}
+                </datalist>
                 <br/>   
                   <p>Description:</p>
                 <textarea maxLength={300}

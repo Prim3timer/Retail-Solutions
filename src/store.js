@@ -56,7 +56,8 @@ const initialState = {
   image: '',
   isEdited: false,
   email: '',
-  validEmail: false
+  validEmail: false,
+  category: ''
 
 
 }
