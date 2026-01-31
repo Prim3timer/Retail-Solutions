@@ -26,7 +26,7 @@ let CreateItem = () => {
 
     const handleSubmit = async (e)=> {
         e.preventDefault()
-        if (files){
+      
              const theBigPics = files.filter((pic) =>  pic.size > 2000000)
         console.log(theBigPics)
         if (theBigPics.length ){
@@ -35,7 +35,6 @@ let CreateItem = () => {
             setTimeout(()=> {
                 dispatch({type: 'success', payload: false})
             }, 3000)
-        }
         }
         else {
               setShowUpdate(true)
