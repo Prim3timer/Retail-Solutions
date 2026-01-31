@@ -57,7 +57,7 @@ let CreateItem = () => {
                 unitMeasure: unitMeasure,
                 description,
                 qty: ole,
-                category,
+                // category,
                 // image: files,
                 now
             }
@@ -180,7 +180,7 @@ const handleUpload = async (e) => {
               
                 />
                 <br/>   
-                <h4>category:</h4>
+                {/* <h4>category:</h4>
                 <input
                 type="text"
                 id="catogory"
@@ -197,7 +197,7 @@ const handleUpload = async (e) => {
                            >{cat}</option>
                         )
                     })}
-                </datalist>
+                </datalist> */}
                 <br/>   
                   <p>Description:</p>
                 <textarea maxLength={300}
