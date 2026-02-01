@@ -137,7 +137,7 @@ const Register = () => {
         <section className="success">
           <h1>Success!</h1>
           <p>
-            <Link to="/login">Sign In</Link>
+            <Link to="/#login">Sign In</Link>
           </p>
         </section>
       ) : (
