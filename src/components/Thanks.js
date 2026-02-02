@@ -99,6 +99,7 @@ const Thanks = () => {
     <div className="thanks">
       {/* <h3>{alert}</h3> */}
       <h2>Thank you for your order</h2>
+      <p>We will send you tracking details as soon as your order ships</p>
       {/* {currentTtransaction && <SendMail currentTtransaction={currentTtransaction} />} */}
       <article>
         <Link to={"/shop"}>

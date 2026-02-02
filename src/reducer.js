@@ -278,7 +278,13 @@ const reducer = (state, action) => {
     case "SEX":
       return { ...state, sex: action.payload };
     case "SHOESIZE":
-      return { ...state, shoeSize: action.payload };
+      const newArrayCartArray = state.cartArray.map((item) => {
+        if (item.id === action.id) {
+          return { ...item, size: action.payload };
+        }
+        return item;
+      });
+      return { ...state, cartArray: newArrayCartArray };
 
     default:
       throw new Error();

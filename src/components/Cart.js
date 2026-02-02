@@ -73,7 +73,7 @@ const Payment = () => {
         (currentItem) => currentItem._id === item.id,
       );
       console.log(done);
-      if (done) return { ...item, quantity: done.qty };
+      if (done) return { ...item, quantity: done.qty, size: state.shoeSize };
     });
     const now = new Date();
 
@@ -176,9 +176,9 @@ const Payment = () => {
     dispatch({ type: "CARTDECREMENT", payload: id });
   };
 
-  const onShoeSizeChange = (e) => {
+  const onShoeSizeChange = (e, id) => {
     console.log(e.target.value);
-    dispatch({ type: "SHOESIZE", payload: e.target.value });
+    dispatch({ type: "SHOESIZE", payload: e.target.value, id });
     // setUnitMeasure(e.target.value)
   };
 
@@ -294,7 +294,7 @@ const Payment = () => {
                         className="size-options"
                         size={"1"}
                         value={item.size}
-                        onChange={(e) => onShoeSizeChange(e)}
+                        onChange={(e) => onShoeSizeChange(e, item.id)}
                       >
                         {options}
                       </select>
@@ -302,6 +302,7 @@ const Payment = () => {
                   ) : (
                     ""
                   )}
+                  {/* <p>size: {item.size}</p> */}
                   <h4>
                     {currency}
                     {numberWithCommas(parseFloat(item.total).toFixed(2))}
