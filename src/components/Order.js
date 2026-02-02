@@ -24,6 +24,7 @@ const Order = () => {
   const [cat, setCat] = useState("all");
 
   const setTransArray = () => {
+    console.log(genTrans);
     const filterate = genTrans.filter((item) =>
       item.status.toLowerCase().includes(search.toLowerCase()),
     );
@@ -149,7 +150,7 @@ const Order = () => {
                   </div>
                 </section>
                 <article>
-                  <h4 className="order-h4">items quantity</h4>
+                  <h4 className="order-h4">item details</h4>
                   <section className="item-dets">
                     {tran.goods.map((good, i) => {
                       return (
@@ -157,7 +158,7 @@ const Order = () => {
                           <p>
                             {good.name}: {good.qty}{" "}
                             {good.unitMeasure.split(" ")[0]}
-                            {good.qty > 1 ? "s" : ""}
+                            {good.qty > 1 ? "s" : ""} {good.size && good.size}
                           </p>
                         </div>
                       );

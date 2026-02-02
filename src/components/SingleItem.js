@@ -33,7 +33,9 @@ const SingleItem = () => {
   console.log(state.transArray);
   const { auth, setAuth, users } = useAuth();
   const axiosPrivate = useAxiosPrivate();
-  const { falseIsRotated, currency, items, picUrl } = useContext(AuthContext);
+  const { falseIsRotated, currency, items, picUrl, footSize } =
+    useContext(AuthContext);
+
   const [userId, setUserId] = useState("");
   const [index, setIndex] = useState(0);
   const [justPics, setJustPics] = useState([]);
@@ -42,6 +44,7 @@ const SingleItem = () => {
   const getItem = async () => {
     const useId = localStorage.getItem("memId");
     const memUser = localStorage.getItem("memUser");
+    dispatch({ type: "SHOESIZE", payload: footSize[0] });
     console.log(memUser);
 
     try {
@@ -68,7 +71,7 @@ const SingleItem = () => {
         const newGoods = { ...goods, transQty: 1, total: goods.price };
         const picsOnly =
           newGoods && newGoods.img.filter((item) => item.name !== "no image");
-        console.log(picsOnly);
+        console.log(newGoods);
         dispatch({ type: "elItem", payload: newGoods });
         setJustPics(picsOnly);
       }
@@ -90,13 +93,14 @@ const SingleItem = () => {
       const actualItem = {
         name: elItem.name,
         id: elItem._id,
-        // userId: auth.picker,
+        category: elItem.category,
         quantity: elItem.qty,
         transQty: elItem.transQty,
         price: elItem.price,
         total: elItem.total,
         unitMeasure: elItem.unitMeasure,
         img: elItem.img,
+        size: elItem.category === "Foot Wears" ? state.shoeSize : "",
       };
       console.log(actualItem);
 
@@ -139,6 +143,16 @@ const SingleItem = () => {
     // }
   };
 
+  const onShoeSizeChange = (e) => {
+    console.log(e.target.value);
+    dispatch({ type: "SHOESIZE", payload: e.target.value });
+    // setUnitMeasure(e.target.value)
+  };
+
+  const options = footSize.map((size) => {
+    return <option className="update-form-unit-measure">{size}</option>;
+  });
+
   // Rhinohorn1#
   const now = new Date();
   const date = format(now, "dd/MM/yyyy\tHH:mm:ss");
@@ -174,13 +188,14 @@ const SingleItem = () => {
               : Number(qtyRef.current.value);
 
           const item = [
-            userId,
+            { userId, name: "buy now" },
             {
               id: elItem._id,
               transQty: dynamTransQty,
               name: elItem.name,
               total: elItem.total,
               unitMeasure: elItem.unitMeasure,
+              size: state.shoeSize,
             },
           ];
 
@@ -341,57 +356,74 @@ const SingleItem = () => {
                       : ""}
                 </span>
               </p>
-              <section className="qty-cont">
-                {state.elItem.unitMeasure === "Piece (pc)" ||
-                state.elItem.unitMeasure === "Plate (Plt)" ||
-                state.elItem.unitMeasure === "Dozen (dz)" ||
-                state.elItem.unitMeasure === "Bottle (Btl)" ||
-                state.elItem.unitMeasure === "Pair (pr)" ? (
-                  <div className="single-plus-input">
-                    <p onClick={decrease}>
-                      <FaMinus />
-                    </p>
-                    <p>{state.elItem.transQty}</p>
-                    <p onClick={increase}>
-                      <FaPlus />
-                    </p>
-                    <p id="cart-unit">
-                      {state.elItem.unitMeasure.split(" ")[1].slice(1, -1)}
-                    </p>
-                  </div>
-                ) : (
-                  <div>
-                    <input
-                      className="qty-input"
-                      type="text"
-                      ref={qtyRef}
-                      value={
-                        state.elItem.qty === 0
-                          ? state.elItem.qty
-                          : state.elItem.transQty
-                      }
-                      // onClick={() => dispatch({ type: 'blank', payload: '' })}
-                      onChange={(e) =>
-                        dispatch({
-                          type: "CARTFIELDCHANGE",
-                          payload: e.target.value,
-                        })
-                      }
-                    />
-                    <span id="cart-unit">
-                      {state.elItem.unitMeasure.split(" ")[1].slice(1, -1)}
-                    </span>
-                  </div>
-                )}
+              <article className="qty-measure-size">
+                <section className="qty-cont">
+                  {state.elItem.unitMeasure === "Piece (pc)" ||
+                  state.elItem.unitMeasure === "Plate (Plt)" ||
+                  state.elItem.unitMeasure === "Dozen (dz)" ||
+                  state.elItem.unitMeasure === "Bottle (Btl)" ||
+                  state.elItem.unitMeasure === "Pair (pr)" ? (
+                    <div className="single-plus-input">
+                      <p onClick={decrease}>
+                        <FaMinus />
+                      </p>
+                      <p>{state.elItem.transQty}</p>
+                      <p onClick={increase}>
+                        <FaPlus />
+                      </p>
+                      <p id="cart-unit">
+                        {state.elItem.unitMeasure.split(" ")[1].slice(1, -1)}
+                      </p>
+                    </div>
+                  ) : (
+                    <div>
+                      <input
+                        className="qty-input"
+                        type="text"
+                        ref={qtyRef}
+                        value={
+                          state.elItem.qty === 0
+                            ? state.elItem.qty
+                            : state.elItem.transQty
+                        }
+                        // onClick={() => dispatch({ type: 'blank', payload: '' })}
+                        onChange={(e) =>
+                          dispatch({
+                            type: "CARTFIELDCHANGE",
+                            payload: e.target.value,
+                          })
+                        }
+                      />
+                      <span id="cart-unit">
+                        {state.elItem.unitMeasure.split(" ")[1].slice(1, -1)}
+                      </span>
+                    </div>
+                  )}
 
-                <p className="no-qty-alert">
-                  {state.elItem.qty === ""
-                    ? "invalid quantity"
-                    : state.elItem.qty === 0
-                      ? "out of stock"
-                      : ""}
-                </p>
-              </section>
+                  <p className="no-qty-alert">
+                    {state.elItem.qty === ""
+                      ? "invalid quantity"
+                      : state.elItem.qty === 0
+                        ? "out of stock"
+                        : ""}
+                  </p>
+                </section>
+                {state.elItem.category === "Foot Wears" ? (
+                  <label>
+                    size
+                    <select
+                      className="unit-measure-options"
+                      size={"1"}
+                      value={state.shoeSize}
+                      onChange={(e) => onShoeSizeChange(e)}
+                    >
+                      {options}
+                    </select>
+                  </label>
+                ) : (
+                  ""
+                )}
+              </article>
             </div>
             <h3>
               {currency}

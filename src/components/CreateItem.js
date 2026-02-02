@@ -17,7 +17,8 @@ let CreateItem = () => {
   const now = new Date();
   const [description, setDescription] = useState("");
 
-  const { falseIsRotated, measurements, catArray } = useContext(AuthContext);
+  const { falseIsRotated, measurements, catArray, gender } =
+    useContext(AuthContext);
   console.log(catArray);
   const refresh = useRefreshToken();
   const axiosPrivate = useAxiosPrivate();
@@ -40,7 +41,7 @@ let CreateItem = () => {
       setShowUpdate(true);
       dispatch({ type: "isMatched", payload: "creating item..." });
       e.preventDefault();
-      const { name, price, unitMeasure, image, ole, category } = state;
+      const { name, price, unitMeasure, image, ole, category, sex } = state;
       const formData = new FormData();
       if (files) {
         files.map((file) => formData.append("images", file));
@@ -56,6 +57,7 @@ let CreateItem = () => {
           description,
           qty: ole,
           category,
+          gender: sex,
           // image: files,
           now,
         };
@@ -94,7 +96,8 @@ let CreateItem = () => {
           dispatch({ type: "IMAGE", payload: "" });
           setDescription("");
           dispatch({ type: "ole", payload: "" });
-          // dispatch({type: 'category', payload: ''})
+          dispatch({ type: "CATEGORY", payload: "" });
+          dispatch({ type: "SEX", payload: "" });
         }
       } catch (error) {
         dispatch({ type: "errMsg", payload: `${error.message}` });
@@ -191,6 +194,19 @@ let CreateItem = () => {
         />
         <datalist id="category">
           {catArray.map((cat) => {
+            return <option value={cat}>{cat}</option>;
+          })}
+        </datalist>
+        <h4>gender:</h4>
+        <input
+          type="text"
+          //   id="catogory"
+          list="gender"
+          value={state.sex}
+          onChange={(e) => dispatch({ type: "SEX", payload: e.target.value })}
+        />
+        <datalist id="gender">
+          {gender.map((cat) => {
             return <option value={cat}>{cat}</option>;
           })}
         </datalist>

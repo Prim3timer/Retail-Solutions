@@ -63,7 +63,20 @@ export const AuthProvider = ({ children }) => {
 
   const bizName = "Retail Tracker";
 
-  const catArray = ["Phone", "Eletronics", "Apparel", "Groceries", "Shoes"];
+  const catArray = [
+    "Cell Phones",
+    "Eletronics",
+    "Apparels",
+    "Groceries",
+    "Foot Wears",
+    "Liquors",
+    "Jewelries",
+    "Funitures",
+  ];
+
+  const gender = ["Men", "Women"];
+
+  const footSize = [8, 8.5, 8, 9.5, 10, 10.5, 11, 11.5, 12, 12.5, 13, 13.5, 14];
 
   const axiosPrivate = useAxiosPrivate();
   const navigate = useNavigate();
@@ -306,6 +319,8 @@ export const AuthProvider = ({ children }) => {
         oneShow,
         bizName,
         catArray,
+        gender,
+        footSize,
       }}
     >
       {children}
