@@ -291,7 +291,7 @@ const Payment = () => {
                     <label>
                       size
                       <select
-                        className="unit-measure-options"
+                        className="size-options"
                         size={"1"}
                         value={item.size}
                         onChange={(e) => onShoeSizeChange(e)}

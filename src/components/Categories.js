@@ -23,7 +23,7 @@ const Categories = () => {
   const uniqueArray = [...new Set(getDistinctCategories)];
   console.log(uniqueArray);
   return (
-    <div>
+    <div className="shop">
       <div className="home-shop">
         <h2>Shop</h2>
       </div>
