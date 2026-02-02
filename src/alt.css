@@ -448,6 +448,7 @@
   column-gap: 4cap;
   /* background-color: yellow; */
   width: 90vw;
+
   align-items: center;
   margin: 1rem 0;
   display: flex;
@@ -762,7 +763,7 @@ input {
   row-gap: 1rem;
   align-items: center;
   width: 100vw;
-  height: 80vh;
+  /* height: 80vh; */
   padding-bottom: 1rem;
   background-color: snow;
 }
