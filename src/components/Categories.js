@@ -14,9 +14,11 @@ import Category from "./Category";
 const Categories = () => {
   const { falseIsRotated, currency, items, oneItem, picUrl } =
     useContext(AuthContext);
-  const getDistinctCategories = items.map((item) => {
-    return item.category;
-  });
+  const getDistinctCategories =
+    items &&
+    items.map((item) => {
+      return item.category;
+    });
 
   const uniqueArray = [...new Set(getDistinctCategories)];
   console.log(uniqueArray);
@@ -25,11 +27,15 @@ const Categories = () => {
       <div className="home-shop">
         <h2>Shop</h2>
       </div>
-      <article className="shop-inner-container">
-        {uniqueArray.map((item) => {
-          return <Category itemCat={item} />;
-        })}
-      </article>
+      {getDistinctCategories.length ? (
+        <article className="shop-inner-container">
+          {uniqueArray.map((item) => {
+            return <Category itemCat={item} />;
+          })}
+        </article>
+      ) : (
+        <h4>Empty List</h4>
+      )}
     </div>
   );
 };

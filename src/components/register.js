@@ -6,13 +6,7 @@ import {
   faEye,
   faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
-import {
-  faCheck,
-  faTimes,
-  faInfoCircle,
-  faEye,
-  faEyeSlash,
-} from "@fortawesome/free-solid-svg-icons";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "../app/api/axios";
 import initialState from "../store";
