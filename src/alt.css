@@ -1042,7 +1042,7 @@ padding: .2rem .5rem;
 
 .single-size-container {
   display: flex;
-  /* background-color: red; */
+  background-color: red;
   align-items: center;
   column-gap: .5rem;
 }
