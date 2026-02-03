@@ -280,12 +280,15 @@ const reducer = (state, action) => {
     case "SHOESIZE":
       const newArrayCartArray = state.cartArray.map((item) => {
         if (item.id === action.id) {
+          console.log(action.payload);
           return { ...item, size: action.payload };
         }
         return item;
       });
+      console.log(newArrayCartArray);
       return { ...state, cartArray: newArrayCartArray };
-
+    case "SINGLESHOE":
+      return { ...state, shoeSize: action.payload };
     default:
       throw new Error();
   }

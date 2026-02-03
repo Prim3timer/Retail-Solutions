@@ -65,6 +65,7 @@ const SingleItem = () => {
       //     console.log(userItems)
       //   console.log('user items are: ', userItems)
       dispatch({ type: "SINGLEITEMARRAY", payload: currentUser.cart });
+      dispatch({ type: "SINGLESHOE", payload: state.elItem.size });
       setIsLoading(false);
       const goods = items.find((item) => item._id === useId);
       if (goods) {
@@ -145,7 +146,7 @@ const SingleItem = () => {
 
   const onShoeSizeChange = (e) => {
     console.log(e.target.value);
-    dispatch({ type: "SHOESIZE", payload: e.target.value });
+    dispatch({ type: "SINGLESHOE", payload: e.target.value });
     // setUnitMeasure(e.target.value)
   };
 

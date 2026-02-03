@@ -177,6 +177,7 @@ const Payment = () => {
   };
 
   const onShoeSizeChange = (e, id) => {
+    console.log(id);
     console.log(e.target.value);
     dispatch({ type: "SHOESIZE", payload: e.target.value, id });
     // setUnitMeasure(e.target.value)

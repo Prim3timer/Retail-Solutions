@@ -158,7 +158,7 @@ const Order = () => {
                           <p>
                             {good.name}: {good.qty}{" "}
                             {good.unitMeasure.split(" ")[0]}
-                            {good.qty > 1 ? "s" : ""} size{" "}
+                            {good.qty > 1 ? "s" : ""} {good.size && "size"}{" "}
                             {good.size && good.size}
                           </p>
                         </div>
