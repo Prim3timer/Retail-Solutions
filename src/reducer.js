@@ -281,6 +281,7 @@ const reducer = (state, action) => {
       const newArrayCartArray = state.cartArray.map((item) => {
         if (item.id === action.id) {
           console.log(action.payload);
+          console.log(state.cartArray);
           return { ...item, size: action.payload };
         }
         return item;

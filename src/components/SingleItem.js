@@ -44,7 +44,7 @@ const SingleItem = () => {
   const getItem = async () => {
     const useId = localStorage.getItem("memId");
     const memUser = localStorage.getItem("memUser");
-    dispatch({ type: "SHOESIZE", payload: footSize[0] });
+    dispatch({ type: "SINGLESHOE", payload: footSize[0] });
     console.log(memUser);
 
     try {
@@ -65,11 +65,16 @@ const SingleItem = () => {
       //     console.log(userItems)
       //   console.log('user items are: ', userItems)
       dispatch({ type: "SINGLEITEMARRAY", payload: currentUser.cart });
-      dispatch({ type: "SINGLESHOE", payload: state.elItem.size });
+      // dispatch({ type: "SINGLESHOE", payload: state.elItem.size });
       setIsLoading(false);
       const goods = items.find((item) => item._id === useId);
       if (goods) {
-        const newGoods = { ...goods, transQty: 1, total: goods.price };
+        const newGoods = {
+          ...goods,
+          transQty: 1,
+          total: goods.price,
+          size: state.shoeSize,
+        };
         const picsOnly =
           newGoods && newGoods.img.filter((item) => item.name !== "no image");
         console.log(newGoods);
@@ -104,12 +109,13 @@ const SingleItem = () => {
         size: elItem.category === "Foot Wears" ? state.shoeSize : "",
       };
       console.log(actualItem);
+      console.log(state.elItem.qty);
 
       console.log({ actualItem: actualItem });
       const foundItem = state.singleItemArray.find(
         (item) => item.name === actualItem.name,
       );
-      if (actualItem.quantity === 0) {
+      if (actualItem.quantity <= 0) {
         dispatch({ type: "ALERTMSG", payload: "item is out of stock" });
       } else if (state.elItem.qty < qtyRef.current.value) {
         dispatch({
@@ -157,6 +163,7 @@ const SingleItem = () => {
   // Rhinohorn1#
   const now = new Date();
   const date = format(now, "dd/MM/yyyy\tHH:mm:ss");
+
   const doneSales = async (e) => {
     e.preventDefault();
     console.log(state.elItem);
@@ -215,7 +222,11 @@ const SingleItem = () => {
               window.location = response.data?.session?.url;
               console.log(response);
             }
-          } else {
+          } else if (
+            (state.elItem.qty > 0 &&
+              state.elItem.qty < state.elItem.transQty) ||
+            state.elItem.qty < qtyRef.current.value
+          ) {
             dispatch({ type: "success", payload: true });
             dispatch({
               type: "ALERTMSG",
@@ -226,6 +237,12 @@ const SingleItem = () => {
             setTimeout(() => {
               dispatch({ type: "success", payload: false });
               // dispatch({type: 'ALERTMSG', payload: '' })
+            }, 3000);
+          } else {
+            dispatch({ type: "success", payload: true });
+            dispatch({ type: "ALERTMSG", payload: "item is of stock" });
+            setTimeout(() => {
+              dispatch({ type: "success", payload: false });
             }, 3000);
           }
         } catch (error) {

@@ -73,7 +73,7 @@ const Payment = () => {
         (currentItem) => currentItem._id === item.id,
       );
       console.log(done);
-      if (done) return { ...item, quantity: done.qty, size: state.shoeSize };
+      if (done) return { ...item, quantity: done.qty };
     });
     const now = new Date();
 
