@@ -427,8 +427,8 @@ const SingleItem = () => {
                   </p>
                 </section>
                 {state.elItem.category === "Foot Wears" ? (
-                  <label>
-                    size
+                  <div className="single-size-container">
+                    <label>size</label>
                     <select
                       className="size-options"
                       size={"1"}
@@ -437,7 +437,7 @@ const SingleItem = () => {
                     >
                       {options}
                     </select>
-                  </label>
+                  </div>
                 ) : (
                   ""
                 )}

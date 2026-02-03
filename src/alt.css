@@ -1040,6 +1040,21 @@ padding: .2rem .5rem;
 
 
 
+.single-size-container {
+  display: flex;
+  background-color: red;
+  align-items: center;
+  column-gap: .5rem;
+}
+.single-size-container select {
+  /* display: flex; */
+  /* background-color: red; */
+  padding: 5px 0;
+  font-size: 1.5rem;
+  width: 5rem;
+  /* column-gap: .5rem; */
+}
+
 .plus-input {
   display: grid;
   align-items: center;
@@ -1062,13 +1077,14 @@ padding: .2rem .5rem;
   padding: .45rem;
   /* font-size: 1rem; */
   border-right: none;
-  grid-column: 4/5;
+  grid-column: 2/3;
 }
 
 .plus-input>*:nth-child(2) {
   /* padding: .45rem; */
   padding: .036rem 1rem;
   font-size: 2rem;
+  /* grid-column: 3/4; */
   /* border-right: none; */
 }
 
@@ -1096,9 +1112,24 @@ padding: .2rem .5rem;
    padding: .45rem;
   font-size: 1.5rem;
   border-left: none;
+    /* background-color: blue; */
+    /* column-gap: 1rem; */
 
   border: none;
-  grid-column: 9/10;
+  grid-column: 8/9;
+}
+
+.cart-item-size {
+  display: flex;
+  column-gap: .5rem;
+  width: 60vw;
+  justify-self: center;
+  align-items: center;
+  
+}
+.cart-item-size select {
+  font-size: 1.5rem;
+  height: 2.5rem;
 }
 
 .cart-trash {
@@ -1221,6 +1252,8 @@ padding: .2rem .5rem;
   width: 100px;
   height: 100px;
 }
+
+
 
 #foot-size {
   /* background-color: red; */

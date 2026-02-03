@@ -92,6 +92,8 @@ const Payment = () => {
         console.log(excessCheck);
         dispatch({
           type: "ALERTMSG",
+
+          // grammer
           payload: `${excessItem.length > 1 ? "quantities" : "quantity"} of ${excessItem.map((item) => item).join(", ")} slected ${excessItem.length > 1 ? "exceed" : "exceeds"} the quantity in stock`,
         });
         setTimeout(() => {
@@ -289,17 +291,17 @@ const Payment = () => {
                     </div>
                   )}
                   {item.category === "Foot Wears" ? (
-                    <label>
-                      size
+                    <div className="cart-item-size">
+                      <label>size</label>
                       <select
-                        className="size-options"
+                        // className="size-options"
                         size={"1"}
                         value={item.size}
                         onChange={(e) => onShoeSizeChange(e, item.id)}
                       >
                         {options}
                       </select>
-                    </label>
+                    </div>
                   ) : (
                     ""
                   )}
