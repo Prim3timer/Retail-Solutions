@@ -1472,15 +1472,25 @@ padding: .2rem .5rem;
 
 .asinged-roles-cont {
 
-  /* margin: 1rem 0; */
   display: flex;
   flex-direction: column;
-  /* row-gap: 3rem; */
-  /* background-color: red; */
-
-
+}
+.colours-cont {
+  justify-self: center;
+  margin: 1rem 0;
+ width: 15rem;
+  display: flex;
+  flex-direction: column;
 }
 
+.colours-cont select {
+  padding: .5rem;
+}
+
+
+.colours-cont option {
+  font-size: 1.5rem;
+}
 .user-action {
 
 

@@ -208,7 +208,7 @@ let CreateItem = () => {
             return <option value={cat}>{cat}</option>;
           })}
         </datalist>
-        <div className="asinged-roles-cont">
+        <div className="colours-cont">
           <h4>Available Colours</h4>
           <select
             size={3}
