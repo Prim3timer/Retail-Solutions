@@ -304,7 +304,9 @@ const Payment = () => {
                     </div>
                   ) : (
                     ""
-                  )}
+                  )}{" "}
+                  <h4 className="cart-colour">{item.colour}</h4>
+                  {console.log(item.colour)}
                   {/* <p>size: {item.size}</p> */}
                   <h4>
                     {currency}

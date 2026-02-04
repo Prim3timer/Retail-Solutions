@@ -154,13 +154,15 @@ const Order = () => {
                   <section className="item-dets">
                     {tran.goods.map((good, i) => {
                       return (
-                        <div key={i}>
+                        <div key={i} className="order-qty-cont">
+                          <p>{good.name}: </p>{" "}
                           <p>
-                            {good.name}: {good.qty}{" "}
+                            qty: {good.qty}
                             {good.unitMeasure.split(" ")[0]}
-                            {good.qty > 1 ? "s" : ""} {good.size && "size"}{" "}
-                            {good.size && good.size}
+                            {good.qty > 1 ? "s" : ""},
                           </p>
+                          {good.size && <p>size: {good.size},</p>}
+                          {good.colour && <p>colour: {good.colour}</p>}
                         </div>
                       );
                     })}

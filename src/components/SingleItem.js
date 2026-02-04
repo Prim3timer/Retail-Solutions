@@ -33,13 +33,20 @@ const SingleItem = () => {
   console.log(state.transArray);
   const { auth, setAuth, users } = useAuth();
   const axiosPrivate = useAxiosPrivate();
-  const { falseIsRotated, currency, items, picUrl, footSize } =
-    useContext(AuthContext);
+  const {
+    falseIsRotated,
+    currency,
+    items,
+    picUrl,
+    footSize,
+    availableColours,
+  } = useContext(AuthContext);
 
   const [userId, setUserId] = useState("");
   const [index, setIndex] = useState(0);
   const [justPics, setJustPics] = useState([]);
   const [readMore, setReadMore] = useState(false);
+  const [colour, setColour] = useState("");
 
   const getItem = async () => {
     const useId = localStorage.getItem("memId");
@@ -107,6 +114,7 @@ const SingleItem = () => {
         unitMeasure: elItem.unitMeasure,
         img: elItem.img,
         size: elItem.category === "Foot Wears" ? state.shoeSize : "",
+        colour: colour && colour,
       };
       console.log(actualItem);
       console.log(state.elItem.qty);
@@ -204,6 +212,7 @@ const SingleItem = () => {
               total: elItem.total,
               unitMeasure: elItem.unitMeasure,
               size: state.shoeSize,
+              colour,
             },
           ];
 
@@ -303,6 +312,10 @@ const SingleItem = () => {
   const decrease = () => {
     dispatch({ type: "SHOPDECREMENT" });
     console.log("dec");
+  };
+
+  const handleColour = (i) => {
+    setColour(availableColours[i]);
   };
 
   useEffect(() => {
@@ -437,6 +450,15 @@ const SingleItem = () => {
                     >
                       {options}
                     </select>
+                  </div>
+                ) : (
+                  ""
+                )}
+                {state.elItem.colours ? (
+                  <div className="colour-container">
+                    {state.elItem.colours.map((color, i) => (
+                      <span onClick={(e) => handleColour(i)}>{color}</span>
+                    ))}
                   </div>
                 ) : (
                   ""

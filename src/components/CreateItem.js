@@ -16,10 +16,10 @@ let CreateItem = () => {
   const [files, setFiles] = useState();
   const now = new Date();
   const [description, setDescription] = useState("");
+  const [colours, setColours] = useState([]);
 
-  const { falseIsRotated, measurements, catArray, gender } =
+  const { falseIsRotated, measurements, catArray, gender, availableColours } =
     useContext(AuthContext);
-  console.log(catArray);
   const refresh = useRefreshToken();
   const axiosPrivate = useAxiosPrivate();
 
@@ -58,6 +58,7 @@ let CreateItem = () => {
           qty: ole,
           category,
           gender: sex,
+          colours,
           // image: files,
           now,
         };
@@ -128,6 +129,15 @@ let CreateItem = () => {
     );
     console.log(response.data);
   };
+
+  const onColourChange = (e) => {
+    const values = Array.from(
+      e.target.selectedOptions,
+      (option) => option.value,
+    );
+    setColours(values);
+  };
+
   return (
     <div className="create-item" onClick={falseIsRotated}>
       <h2 id="create-item-heading">Create Item</h2>
@@ -198,6 +208,20 @@ let CreateItem = () => {
             return <option value={cat}>{cat}</option>;
           })}
         </datalist>
+        <div className="asinged-roles-cont">
+          <h4>Available Colours</h4>
+          <select
+            size={3}
+            name="colour"
+            value={colours}
+            multiple={true}
+            onChange={(e) => onColourChange(e)}
+          >
+            {availableColours.map((colour) => {
+              return <option>{colour}</option>;
+            })}
+          </select>
+        </div>
         <h4>gender:</h4>
         <input
           type="text"
