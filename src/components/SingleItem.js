@@ -312,8 +312,8 @@ const SingleItem = () => {
   };
 
   const handleColour = (e, i) => {
-    console.log(e.target.value);
     setColour(e.target.value);
+    console.log(e.target.value);
   };
   const handleStorage = (e, i) => {
     console.log(e.target.value);
@@ -441,7 +441,7 @@ const SingleItem = () => {
                         : ""}
                   </p>
                 </section>
-                {state.elItem.category === "Foot Wears" ? (
+                {state.elItem.size ? (
                   <div className="single-size-container">
                     <label>size</label>
                     <select
@@ -456,30 +456,44 @@ const SingleItem = () => {
                 ) : (
                   ""
                 )}
-                {state.elItem.availableColours ? (
-                  <fieldset>
-                    <legend>color select</legend>
-                    <ul className="colour-container">
-                      {state.elItem.availableColours.map((colour, i) => (
-                        <div>
-                          <li>{colour}</li>
-                          <input
-                            // className="single-item-colour"
-                            type="radio"
-                            name="colour"
-                            value={colour}
-                            onClick={(e) => handleColour(e, i)}
-                          />
-                        </div>
-                      ))}
-                    </ul>
-                  </fieldset>
+                {state.elItem.availableColours.length ? (
+                  <div className="single-size-container">
+                    <label>available colours</label>
+                    <select
+                      className="size-options"
+                      size={"1"}
+                      value={colour}
+                      onChange={(e) => handleColour(e)}
+                    >
+                      {state.elItem.availableColours.map((colour, i) => {
+                        return <option>{colour}</option>;
+                      })}
+                    </select>
+                  </div>
+                ) : (
+                  ""
+                )}
+                {state.elItem.availableStorage.length ? (
+                  <div className="single-size-container">
+                    <label>available storage</label>
+                    <select
+                      className="size-options"
+                      size={"1"}
+                      value={storage}
+                      onChange={(e) => handleColour(e)}
+                    >
+                      {state.elItem.availableStorage.map((storage, i) => {
+                        return <option>{storage}</option>;
+                      })}
+                    </select>
+                  </div>
                 ) : (
                   ""
                 )}
               </article>
-
-              {state.elItem.availableStorage ? (
+              {console.log("storage is: ", state.elItem.availableStorage)}
+              {/* 
+              {state.elItem.availableStorage.length !== 0 ? (
                 <fieldset>
                   <legend>storage select</legend>
                   <ul className="storage-container">
@@ -499,7 +513,7 @@ const SingleItem = () => {
                 </fieldset>
               ) : (
                 ""
-              )}
+              )} */}
             </div>
             <h3>
               {currency}
