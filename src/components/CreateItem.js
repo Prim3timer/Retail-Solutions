@@ -16,9 +16,10 @@ let CreateItem = () => {
   const [files, setFiles] = useState();
   const now = new Date();
   const [description, setDescription] = useState("");
-  const [colours, setColours] = useState([]);
+  const [availableColours, setAvailableColours] = useState([]);
+  const [availableStorage, setAvailableStorage] = useState([]);
 
-  const { falseIsRotated, measurements, catArray, gender, availableColours } =
+  const { falseIsRotated, measurements, catArray, gender, colours, storage } =
     useContext(AuthContext);
   const refresh = useRefreshToken();
   const axiosPrivate = useAxiosPrivate();
@@ -58,7 +59,8 @@ let CreateItem = () => {
           qty: ole,
           category,
           gender: sex,
-          colours,
+          availableColours,
+          availableStorage,
           // image: files,
           now,
         };
@@ -135,7 +137,16 @@ let CreateItem = () => {
       e.target.selectedOptions,
       (option) => option.value,
     );
-    setColours(values);
+    setAvailableColours(values);
+  };
+
+  const onStorageChange = (e) => {
+    const values = Array.from(
+      e.target.selectedOptions,
+      (option) => option.value,
+    );
+    console.log(values);
+    setAvailableStorage(values);
   };
 
   return (
@@ -184,6 +195,30 @@ let CreateItem = () => {
           onChange={(e) => dispatch({ type: "price", payload: e.target.value })}
         />
         <br />
+        <section className="create-item-price-header"></section>
+        {/* <div className="create-item-price-cont">
+          <h4>Abailbale Prices</h4>
+          <form>
+            <input type="text" />
+            <input type="text" />
+            <input type="text" />
+            <input type="text" />
+          </form>
+        </div> */}
+        <article className="colours-cont">
+          <h4>Available Storage</h4>
+          <select
+            size={3}
+            name="storage"
+            value={availableStorage}
+            multiple={true}
+            onChange={(e) => onStorageChange(e)}
+          >
+            {storage.map((item) => {
+              return <option>{item}</option>;
+            })}
+          </select>
+        </article>
         <h4>in stock:</h4>
         <input
           type="text"
@@ -213,11 +248,11 @@ let CreateItem = () => {
           <select
             size={3}
             name="colour"
-            value={colours}
+            value={availableColours}
             multiple={true}
             onChange={(e) => onColourChange(e)}
           >
-            {availableColours.map((colour) => {
+            {colours.map((colour) => {
               return <option>{colour}</option>;
             })}
           </select>

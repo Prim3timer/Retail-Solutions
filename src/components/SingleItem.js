@@ -33,20 +33,15 @@ const SingleItem = () => {
   console.log(state.transArray);
   const { auth, setAuth, users } = useAuth();
   const axiosPrivate = useAxiosPrivate();
-  const {
-    falseIsRotated,
-    currency,
-    items,
-    picUrl,
-    footSize,
-    availableColours,
-  } = useContext(AuthContext);
+  const { falseIsRotated, currency, items, picUrl, footSize } =
+    useContext(AuthContext);
 
   const [userId, setUserId] = useState("");
   const [index, setIndex] = useState(0);
   const [justPics, setJustPics] = useState([]);
   const [readMore, setReadMore] = useState(false);
   const [colour, setColour] = useState("");
+  const [storage, setStorage] = useState("");
 
   const getItem = async () => {
     const useId = localStorage.getItem("memId");
@@ -115,6 +110,7 @@ const SingleItem = () => {
         img: elItem.img,
         size: elItem.category === "Foot Wears" ? state.shoeSize : "",
         colour: colour && colour,
+        storage: storage && storage,
       };
       console.log(actualItem);
       console.log(state.elItem.qty);
@@ -213,6 +209,7 @@ const SingleItem = () => {
               unitMeasure: elItem.unitMeasure,
               size: state.shoeSize,
               colour,
+              storage,
             },
           ];
 
@@ -314,8 +311,13 @@ const SingleItem = () => {
     console.log("dec");
   };
 
-  const handleColour = (i) => {
-    setColour(availableColours[i]);
+  const handleColour = (e, i) => {
+    console.log(e.target.value);
+    setColour(e.target.value);
+  };
+  const handleStorage = (e, i) => {
+    console.log(e.target.value);
+    setStorage(e.target.value);
   };
 
   useEffect(() => {
@@ -387,7 +389,7 @@ const SingleItem = () => {
                       : ""}
                 </span>
               </p>
-              <article className="qty-measure-size">
+              <article className="qty-measure-size-colour-storage">
                 <section className="qty-cont">
                   {state.elItem.unitMeasure === "Piece (pc)" ||
                   state.elItem.unitMeasure === "Plate (Plt)" ||
@@ -454,16 +456,50 @@ const SingleItem = () => {
                 ) : (
                   ""
                 )}
-                {state.elItem.colours ? (
-                  <div className="colour-container">
-                    {state.elItem.colours.map((color, i) => (
-                      <span onClick={(e) => handleColour(i)}>{color}</span>
-                    ))}
-                  </div>
+                {state.elItem.availableColours ? (
+                  <fieldset>
+                    <legend>color select</legend>
+                    <ul className="colour-container">
+                      {state.elItem.availableColours.map((colour, i) => (
+                        <div>
+                          <li>{colour}</li>
+                          <input
+                            // className="single-item-colour"
+                            type="radio"
+                            name="colour"
+                            value={colour}
+                            onClick={(e) => handleColour(e, i)}
+                          />
+                        </div>
+                      ))}
+                    </ul>
+                  </fieldset>
                 ) : (
                   ""
                 )}
               </article>
+
+              {state.elItem.availableStorage ? (
+                <fieldset>
+                  <legend>storage select</legend>
+                  <ul className="storage-container">
+                    {state.elItem.availableStorage.map((storage, i) => (
+                      <div>
+                        <li>{storage}GB</li>
+                        <input
+                          className="single-item-colour"
+                          type="radio"
+                          name="storage"
+                          value={storage}
+                          onClick={(e) => handleStorage(e, i)}
+                        />
+                      </div>
+                    ))}
+                  </ul>
+                </fieldset>
+              ) : (
+                ""
+              )}
             </div>
             <h3>
               {currency}

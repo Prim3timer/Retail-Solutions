@@ -191,6 +191,12 @@ const GenShopping = () => {
                           </p>
                           {good.size && <p>size: {good.size}</p>}
                           {good.colour && <p>color: {good.colour}</p>}
+                          {good.storage && (
+                            <p>
+                              storage: {good.storage}{" "}
+                              {good.storage == 1000 ? "T" : "GB"}
+                            </p>
+                          )}
                           <p>
                             Sub Total:{" "}
                             {numberWithCommas(
