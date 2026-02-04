@@ -14,24 +14,48 @@ import Category from "./Category";
 const Categories = () => {
   const { falseIsRotated, currency, items, oneItem, picUrl } =
     useContext(AuthContext);
+
+  const [filterate, setFilterate] = useState([]);
   const getDistinctCategories =
     items &&
     items.map((item) => {
       return item.category;
     });
 
+  const [state, dispatch] = useReducer(reducer, initialState);
+
   const uniqueArray = [...new Set(getDistinctCategories)];
   console.log(uniqueArray);
+  const filterCat = () => {
+    console.log(state.search);
+    const newArray = uniqueArray.filter((item) =>
+      item.toLowerCase().includes(state.search.toLowerCase()),
+    );
+    setFilterate(newArray);
+  };
+
+  useEffect(() => {
+    filterCat();
+  }, [state.search]);
   return (
     <div className="shop">
       <div className="home-shop">
-        <h2>Shop</h2>
+        <form>
+          <input
+            placeholder="filter by category"
+            value={state.search}
+            onChange={(e) =>
+              dispatch({ type: "search", payload: e.target.value })
+            }
+          />
+        </form>
       </div>
       {getDistinctCategories.length ? (
         <article className="shop-inner-container">
-          {uniqueArray.map((item) => {
-            return <Category itemCat={item} />;
-          })}
+          {filterate &&
+            filterate.map((item) => {
+              return <Category itemCat={item} />;
+            })}
         </article>
       ) : (
         <h4>Empty List</h4>

@@ -136,7 +136,7 @@ let CreateItem = () => {
         <input
           ref={itemRef}
           type="text"
-          // required
+          required
           value={state.name}
           onChange={(e) => dispatch({ type: "name", payload: e.target.value })}
         />
@@ -149,6 +149,7 @@ let CreateItem = () => {
           onChange={(e) =>
             dispatch({ type: "unitMeasure", payload: e.target.value })
           }
+          required
           value={state.unitMeasure}
         />
         <datalist id="measure">
@@ -168,7 +169,7 @@ let CreateItem = () => {
         <h4>Price:</h4>
         <input
           type="text"
-          // required
+          required
           value={state.price}
           onChange={(e) => dispatch({ type: "price", payload: e.target.value })}
         />

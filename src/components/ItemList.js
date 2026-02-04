@@ -117,7 +117,9 @@ const Items = () => {
                             item.unitMeasure === "Litre (L)"
                               ? parseFloat(item.qty).toFixed(2)
                               : item.qty
-                          }${item.unitMeasure.split(" ")[1].slice(1, -1)} left`
+                          }
+                          ${item.unitMeasure.split(" ")[1].slice(1, -1)} 
+                          left`
                         : "out of stock"}
                     </p>
 
