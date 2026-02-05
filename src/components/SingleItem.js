@@ -19,18 +19,14 @@ import { format } from "date-fns";
 import { Link, resolvePath } from "react-router-dom";
 import { FaChevronLeft, FaChevronRight, FaPlus, FaMinus } from "react-icons/fa";
 
-{
-  /* ₦ */
-}
-
 const SingleItem = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [state, dispatch] = useReducer(reducer, initialState);
   const upArrow = "+";
   const downArrow = "-";
   const qtyRef = useRef("");
-  console.log(qtyRef.current.value);
-  console.log(state.transArray);
+  // console.log(qtyRef.current.value);
+  // console.log(state.transArray);
   const { auth, setAuth, users } = useAuth();
   const axiosPrivate = useAxiosPrivate();
   const { falseIsRotated, currency, items, picUrl, footSize } =
@@ -43,13 +39,17 @@ const SingleItem = () => {
   const [colour, setColour] = useState("");
   const [storage, setStorage] = useState("");
   const [price, setPrice] = useState("");
+  const [priceIndex, setPriceIndex] = useState(0);
 
   const getItem = async () => {
     const useId = localStorage.getItem("memId");
     const memUser = localStorage.getItem("memUser");
 
     try {
-      dispatch({ type: "SINGLESHOE", payload: footSize[0] });
+      dispatch({
+        type: "SINGLESHOE",
+        payload: state.elItem.availableFootSizes,
+      });
       setColour(
         state.elItem.availableColours && state.elItem.availableColours[0],
       );
@@ -57,7 +57,7 @@ const SingleItem = () => {
         state.elItem.availableStorage && state.elItem.availableStorage[0],
       );
 
-      console.log(memUser);
+      // console.log(memUser);
       if (!state.elItem) {
         throw new Error("no items found");
       }
@@ -68,7 +68,7 @@ const SingleItem = () => {
       const currentUser =
         users &&
         users.data.users.find((user) => user._id === auth.picker && memUser);
-      console.log(currentUser.cart);
+      // console.log(currentUser.cart);
       setUserId(currentUser._id);
 
       //     const userItems = cartItems.data.filter((item) => item.userId === auth.picker)
@@ -78,18 +78,18 @@ const SingleItem = () => {
       // dispatch({ type: "SINGLESHOE", payload: state.elItem.size });
       setIsLoading(false);
       const goods = items.find((item) => item._id === useId);
-      console.log(goods);
+      // console.log(goods);
       if (goods) {
         const newGoods = {
           ...goods,
           transQty: 1,
-          price: goods.prices[0],
-          total: goods.prices[0],
+          price: goods.availablePrices[priceIndex],
+          total: goods.availablePrices[priceIndex],
           // size: state.shoeSize,
         };
         const picsOnly =
           newGoods && newGoods.img.filter((item) => item.name !== "no image");
-        console.log(newGoods);
+        // console.log(newGoods);
         dispatch({ type: "elItem", payload: newGoods });
         setJustPics(picsOnly);
       }
@@ -97,11 +97,11 @@ const SingleItem = () => {
       dispatch({ type: "errMsg", payload: error.message });
       console.log(error.message);
     }
-    console.log(state.elItem);
+    // console.log(state.elItem);
   };
 
   const addToCart = async () => {
-    console.log(auth);
+    console.log(state.shoeSize);
     dispatch({ type: "success", payload: true });
     try {
       console.log(auth);
@@ -118,14 +118,11 @@ const SingleItem = () => {
         total: elItem.total,
         unitMeasure: elItem.unitMeasure,
         img: elItem.img,
-        size: elItem.category === "Foot Wears" ? state.shoeSize : "",
-        colour: elItem.colour,
-        storage: elItem.storage,
+        size: state.shoeSize,
+        colour,
+        storage,
       };
-      console.log(actualItem);
-      console.log(state.elItem.qty);
 
-      console.log({ actualItem: actualItem });
       const foundItem = state.singleItemArray.find(
         (item) => item.name === actualItem.name,
       );
@@ -148,7 +145,7 @@ const SingleItem = () => {
           `/users/sessions/${auth.picker}`,
           actualItem,
         );
-        console.log(response.data);
+
         dispatch({ type: "ALERTMSG", payload: response.data.message });
         setTimeout(() => {
           dispatch({ type: "success", payload: false });
@@ -165,14 +162,13 @@ const SingleItem = () => {
   };
 
   const onShoeSizeChange = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     dispatch({ type: "SINGLESHOE", payload: e.target.value });
     // setUnitMeasure(e.target.value)
   };
-
-  const options = footSize.map((size) => {
-    return <option className="update-form-unit-measure">{size}</option>;
-  });
+  {
+    console.log(state.elItem);
+  }
 
   // Rhinohorn1#
   const now = new Date();
@@ -180,7 +176,6 @@ const SingleItem = () => {
 
   const doneSales = async (e) => {
     e.preventDefault();
-    console.log(state.elItem);
     try {
       const { elItem } = state;
       state.singleItemArray.push(elItem);
@@ -191,10 +186,6 @@ const SingleItem = () => {
         grandTotal: elItem.total,
         date,
       };
-
-      console.log(goodsObject);
-      console.log(elItem);
-      console.log(auth);
 
       const { SingleItemArray, total } = state;
       // transArray.push(elItem)
@@ -220,23 +211,20 @@ const SingleItem = () => {
               size: state.shoeSize,
               colour,
               storage,
+              // priceIndex,
             },
           ];
 
-          console.log(item);
           if (
             state.elItem.qty >= qtyRef.current.value ||
             state.elItem.qty >= state.elItem.transQty
           ) {
-            console.log(state.elItem.transQty);
-
             const response = await axios.post(
               "/sessions/create-checkout-session",
               item,
             );
             if (response) {
               window.location = response.data?.session?.url;
-              console.log(response);
             }
           } else if (
             (state.elItem.qty > 0 &&
@@ -318,15 +306,14 @@ const SingleItem = () => {
   };
   const decrease = () => {
     dispatch({ type: "SHOPDECREMENT" });
-    console.log("dec");
   };
 
   const handleColour = (e, i) => {
     setColour(e.target.value);
-    console.log(e.target.value);
   };
   const handleStorage = (e, i) => {
-    console.log(e.target.value);
+    const strorageIndex = state.elItem.availableStorage.indexOf(e.target.value);
+    setPriceIndex(strorageIndex);
     setStorage(e.target.value);
   };
 
@@ -366,7 +353,7 @@ const SingleItem = () => {
               <div className="single-item-array">
                 {justPics &&
                   justPics.map((image, i) => {
-                    console.log(image);
+                    // console.log(image);
                     return (
                       <img
                         className={i === index ? "onview" : "no-onview"}
@@ -460,7 +447,13 @@ const SingleItem = () => {
                       value={state.shoeSize}
                       onChange={(e) => onShoeSizeChange(e)}
                     >
-                      {options}
+                      {state.elItem.availableFootSizes.map((size) => {
+                        return (
+                          <option className="update-form-unit-measure">
+                            {size}
+                          </option>
+                        );
+                      })}
                     </select>
                   </div>
                 }
@@ -488,10 +481,10 @@ const SingleItem = () => {
                       className="size-options"
                       size={"1"}
                       value={storage}
-                      onChange={(e) => handleColour(e)}
+                      onChange={(e) => handleStorage(e)}
                     >
-                      {state.elItem.availableStorage.map((storage, i) => {
-                        return <option>{storage}</option>;
+                      {state.elItem.availableStorage.map((store, i) => {
+                        return <option>{store}</option>;
                       })}
                     </select>
                   </div>
@@ -499,7 +492,7 @@ const SingleItem = () => {
                   ""
                 )}
               </article>
-              {console.log("storage is: ", state.elItem.availableStorage)}
+              {/* {console.log("storage is: ", state.elItem.availableStorage)} */}
               {/* 
               {state.elItem.availableStorage.length !== 0 ? (
                 <fieldset>
@@ -525,7 +518,7 @@ const SingleItem = () => {
             </div>
             <h3>
               {currency}
-              {console.log(state.elItem)}
+              {/* {console.log(state.elItem)} */}
               {numberWithCommas(parseFloat(state.elItem.total).toFixed(2))}
             </h3>
             <section className="cart-action">

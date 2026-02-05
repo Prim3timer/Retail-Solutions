@@ -76,6 +76,7 @@ const Shop = () => {
       <section className="shop-inner-container">
         {shopItems &&
           shopItems.map((item, i) => {
+            console.log(item);
             return (
               <Link to={"/single-item"} className="linker" key={item._id}>
                 <article
@@ -92,7 +93,7 @@ const Shop = () => {
                   <div className="shop-item-texts">
                     <h4 className="shop-item-price">
                       {currency}
-                      {numberWithCommas(item.prices[0])}
+                      {numberWithCommas(item.availablePrices[0])}
                     </h4>
                     <h4
                       style={

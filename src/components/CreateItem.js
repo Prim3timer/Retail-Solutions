@@ -18,7 +18,7 @@ let CreateItem = () => {
   const [description, setDescription] = useState("");
   const [availableColours, setAvailableColours] = useState([]);
   const [availableStorage, setAvailableStorage] = useState([]);
-  const [availableFootSizes, setAvailableShoesizes] = useState([]);
+  const [availableFootSizes, setAvailableFootSizes] = useState([]);
   const [availablePrices, setAvailablePrices] = useState([]);
   const [firstPrice, setFirstPrice] = useState("");
   const [secondPrice, setSecondPrice] = useState("");
@@ -74,7 +74,7 @@ let CreateItem = () => {
       try {
         const newItem = {
           name: `${name}`,
-          prices: withValue,
+          availablePrices: withValue,
           unitMeasure: unitMeasure,
           description,
           qty: ole,
@@ -176,7 +176,7 @@ let CreateItem = () => {
       e.target.selectedOptions,
       (option) => option.value,
     );
-    setAvailableShoesizes(values);
+    setAvailableFootSizes(values);
   };
 
   const handleFirstPrice = (e) => {

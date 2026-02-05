@@ -290,9 +290,9 @@ const Payment = () => {
                       </p>
                     </div>
                   )}
-                  {item.category === "Foot Wears" ? (
+                  {item.size ? (
                     <div className="cart-item-size">
-                      <label>size</label>
+                      {/* <label>size</label>
                       <select
                         // className="size-options"
                         size={"1"}
@@ -300,21 +300,31 @@ const Payment = () => {
                         onChange={(e) => onShoeSizeChange(e, item.id)}
                       >
                         {options}
-                      </select>
+                      </select> */}
+                      {item.size && <p>size: {item.size},</p>}
+                      {item.colour && (
+                        <hp className="cart-colour">color: {item.colour},</hp>
+                      )}
+
+                      {item.storage && (
+                        <p className="cart-colour">
+                          storage: {item.storage}
+                          {item.storage == 1000 ? "TB" : "GB"},
+                        </p>
+                      )}
                     </div>
                   ) : (
                     ""
                   )}{" "}
-                  <div className="cart-props">
+                  {/* <p>{item.storage}</p> */}
+                  {/* <div className="cart-props">
                     <h4 className="cart-colour">{item.colour}</h4>
-                    {console.log(item.storage)}
+
                     <h4 className="cart-colour">
                       {item.storage}
                       {item.storage == 1000 ? "T" : "GB"}
                     </h4>
-                  </div>
-                  {console.log(item.colour)}
-                  {/* <p>size: {item.size}</p> */}
+                  </div> */}
                   <h4>
                     {currency}
                     {numberWithCommas(parseFloat(item.total).toFixed(2))}
