@@ -74,7 +74,8 @@ const SingleItem = () => {
         const newGoods = {
           ...goods,
           transQty: 1,
-          total: goods.price,
+          price: goods.prices[0],
+          total: goods.prices,
           size: state.shoeSize,
         };
         const picsOnly =
