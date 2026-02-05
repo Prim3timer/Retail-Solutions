@@ -18,9 +18,22 @@ let CreateItem = () => {
   const [description, setDescription] = useState("");
   const [availableColours, setAvailableColours] = useState([]);
   const [availableStorage, setAvailableStorage] = useState([]);
+  const [availableFootSizes, setAvailableShoesizes] = useState([]);
+  const [availablePrices, setAvailablePrices] = useState([]);
+  const [firstPrice, setFirstPrice] = useState("");
+  const [secondPrice, setSecondPrice] = useState("");
+  const [thirdPrice, setThirdPrice] = useState("");
+  const [fourthPrice, setFouthPrice] = useState("");
 
-  const { falseIsRotated, measurements, catArray, gender, colours, storage } =
-    useContext(AuthContext);
+  const {
+    falseIsRotated,
+    measurements,
+    catArray,
+    gender,
+    colours,
+    storage,
+    footSize,
+  } = useContext(AuthContext);
   const refresh = useRefreshToken();
   const axiosPrivate = useAxiosPrivate();
 
@@ -42,7 +55,7 @@ let CreateItem = () => {
       setShowUpdate(true);
       dispatch({ type: "isMatched", payload: "creating item..." });
       e.preventDefault();
-      const { name, price, unitMeasure, image, ole, category, sex } = state;
+      const { name, unitMeasure, image, ole, category, sex } = state;
       const formData = new FormData();
       if (files) {
         files.map((file) => formData.append("images", file));
@@ -50,10 +63,18 @@ let CreateItem = () => {
       console.log(formData);
 
       console.log(files);
+      const prices = [
+        Number(firstPrice),
+        Number(secondPrice),
+        Number(thirdPrice),
+        Number(fourthPrice),
+      ];
+      const withValue = prices.filter((item) => item !== 0);
+      console.log(withValue);
       try {
         const newItem = {
           name: `${name}`,
-          price: price,
+          prices: withValue,
           unitMeasure: unitMeasure,
           description,
           qty: ole,
@@ -61,6 +82,7 @@ let CreateItem = () => {
           gender: sex,
           availableColours,
           availableStorage,
+          availableFootSizes,
           // image: files,
           now,
         };
@@ -149,6 +171,28 @@ let CreateItem = () => {
     setAvailableStorage(values);
   };
 
+  const onFootSizeChange = (e) => {
+    const values = Array.from(
+      e.target.selectedOptions,
+      (option) => option.value,
+    );
+    setAvailableShoesizes(values);
+  };
+
+  const handleFirstPrice = (e) => {
+    setFirstPrice(e.target.value);
+  };
+  const handleSecondPrice = (e) => {
+    setSecondPrice(e.target.value);
+  };
+
+  const handleThirdPrice = (e) => {
+    setThirdPrice(e.target.value);
+  };
+
+  const handleFouthPrice = (e) => {
+    setFouthPrice(e.target.value);
+  };
   return (
     <div className="create-item" onClick={falseIsRotated}>
       <h2 id="create-item-heading">Create Item</h2>
@@ -188,25 +232,55 @@ let CreateItem = () => {
         </datalist>
 
         <h4>Price:</h4>
-        <input
+        {/* <input
           type="text"
           required
           value={state.price}
           onChange={(e) => dispatch({ type: "price", payload: e.target.value })}
-        />
+        /> */}
         <br />
         <section className="create-item-price-header"></section>
-        {/* <div className="create-item-price-cont">
+        <div className="create-item-price-cont">
           <h4>Abailbale Prices</h4>
           <form>
-            <input type="text" />
-            <input type="text" />
-            <input type="text" />
-            <input type="text" />
+            <input
+              type="text"
+              value={firstPrice}
+              onChange={(e) => handleFirstPrice(e)}
+            />
+            <input
+              type="text"
+              value={secondPrice}
+              onChange={(e) => handleSecondPrice(e)}
+            />
+            <input
+              type="text"
+              value={thirdPrice}
+              onChange={(e) => handleThirdPrice(e)}
+            />
+            <input
+              type="text"
+              value={fourthPrice}
+              onChange={(e) => handleFouthPrice(e)}
+            />
           </form>
-        </div> */}
+        </div>
         <article className="colours-cont">
-          <h4>Available Storage</h4>
+          <h4>Foot Sizes</h4>
+          <select
+            size={3}
+            name="storage"
+            value={availableFootSizes}
+            multiple={true}
+            onChange={(e) => onFootSizeChange(e)}
+          >
+            {footSize.map((item) => {
+              return <option>{item}</option>;
+            })}
+          </select>
+        </article>
+        <article className="colours-cont">
+          <h4>Storage</h4>
           <select
             size={3}
             name="storage"
@@ -244,7 +318,7 @@ let CreateItem = () => {
           })}
         </datalist>
         <div className="colours-cont">
-          <h4>Available Colours</h4>
+          <h4>Colours</h4>
           <select
             size={3}
             name="colour"

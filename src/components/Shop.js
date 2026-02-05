@@ -92,7 +92,7 @@ const Shop = () => {
                   <div className="shop-item-texts">
                     <h4 className="shop-item-price">
                       {currency}
-                      {numberWithCommas(item.price)}
+                      {numberWithCommas(item.prices[0])}
                     </h4>
                     <h4
                       style={

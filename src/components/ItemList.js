@@ -31,7 +31,7 @@ const Items = () => {
       dispatch({ type: "errMsg", payload: "" });
 
       // dispatch({type: 'items', payload: items})
-      // console.log(response.data.items )
+      console.log(response.data.items);
 
       const filterItems =
         response &&
@@ -93,7 +93,7 @@ const Items = () => {
                   <div className="shop-item-texts">
                     <h4>
                       {currency}
-                      {numberWithCommas(item.price)}
+                      {/* {numberWithCommas(item[0])} */}
                     </h4>
                     <h5>{item.category}</h5>
                     <p
