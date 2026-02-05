@@ -105,7 +105,7 @@ const reducer = (state, action) => {
       return { ...state, elItem: item2 };
 
     case "SINGLETOTAL":
-      const newTotal = state.elItem.transQty * state.elItem.price;
+      const newTotal = state.elItem.transQty * state.elItem.prices;
       const newItem = { ...state.elItem, total: newTotal };
       return { ...state, elItem: newItem };
 

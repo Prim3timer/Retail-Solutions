@@ -42,14 +42,22 @@ const SingleItem = () => {
   const [readMore, setReadMore] = useState(false);
   const [colour, setColour] = useState("");
   const [storage, setStorage] = useState("");
+  const [price, setPrice] = useState("");
 
   const getItem = async () => {
     const useId = localStorage.getItem("memId");
     const memUser = localStorage.getItem("memUser");
-    dispatch({ type: "SINGLESHOE", payload: footSize[0] });
-    console.log(memUser);
 
     try {
+      dispatch({ type: "SINGLESHOE", payload: footSize[0] });
+      setColour(
+        state.elItem.availableColours && state.elItem.availableColours[0],
+      );
+      setStorage(
+        state.elItem.availableStorage && state.elItem.availableStorage[0],
+      );
+
+      console.log(memUser);
       if (!state.elItem) {
         throw new Error("no items found");
       }
@@ -70,12 +78,13 @@ const SingleItem = () => {
       // dispatch({ type: "SINGLESHOE", payload: state.elItem.size });
       setIsLoading(false);
       const goods = items.find((item) => item._id === useId);
+      console.log(goods);
       if (goods) {
         const newGoods = {
           ...goods,
           transQty: 1,
-          total: goods.price,
-          size: state.shoeSize,
+          total: goods.prices,
+          // size: state.shoeSize,
         };
         const picsOnly =
           newGoods && newGoods.img.filter((item) => item.name !== "no image");
@@ -109,8 +118,8 @@ const SingleItem = () => {
         unitMeasure: elItem.unitMeasure,
         img: elItem.img,
         size: elItem.category === "Foot Wears" ? state.shoeSize : "",
-        colour: colour && colour,
-        storage: storage && storage,
+        colour: elItem.colour,
+        storage: elItem.storage,
       };
       console.log(actualItem);
       console.log(state.elItem.qty);
@@ -303,7 +312,7 @@ const SingleItem = () => {
     });
   };
 
-  const increase = () => {
+  const increase = (i) => {
     dispatch({ type: "INCREMENT" });
   };
   const decrease = () => {
@@ -441,7 +450,7 @@ const SingleItem = () => {
                         : ""}
                   </p>
                 </section>
-                {state.elItem.size ? (
+                {
                   <div className="single-size-container">
                     <label>size</label>
                     <select
@@ -453,12 +462,10 @@ const SingleItem = () => {
                       {options}
                     </select>
                   </div>
-                ) : (
-                  ""
-                )}
-                {state.elItem.availableColours.length ? (
+                }
+                {state.elItem.availableColours ? (
                   <div className="single-size-container">
-                    <label>available colours</label>
+                    <label>colour</label>
                     <select
                       className="size-options"
                       size={"1"}
@@ -473,9 +480,9 @@ const SingleItem = () => {
                 ) : (
                   ""
                 )}
-                {state.elItem.availableStorage.length ? (
+                {state.elItem.availableStorage ? (
                   <div className="single-size-container">
-                    <label>available storage</label>
+                    <label>storage</label>
                     <select
                       className="size-options"
                       size={"1"}
@@ -517,6 +524,7 @@ const SingleItem = () => {
             </div>
             <h3>
               {currency}
+              {console.log(state.elItem)}
               {numberWithCommas(parseFloat(state.elItem.total).toFixed(2))}
             </h3>
             <section className="cart-action">
