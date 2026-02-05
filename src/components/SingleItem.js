@@ -44,20 +44,16 @@ const SingleItem = () => {
   const getItem = async () => {
     const useId = localStorage.getItem("memId");
     const memUser = localStorage.getItem("memUser");
-
+    const goods = items.find((item) => item._id === useId);
     try {
       dispatch({
         type: "SINGLESHOE",
-        payload: state.elItem.availableFootSizes,
+        payload: goods.availableFootSizes[0],
       });
-      setColour(
-        state.elItem.availableColours && state.elItem.availableColours[0],
-      );
-      setStorage(
-        state.elItem.availableStorage && state.elItem.availableStorage[0],
-      );
+      setColour(goods.availableColours[0]);
+      setStorage(goods.availableStorage[0]);
 
-      // console.log(memUser);
+      console.log(goods);
       if (!state.elItem) {
         throw new Error("no items found");
       }
@@ -77,7 +73,7 @@ const SingleItem = () => {
       dispatch({ type: "SINGLEITEMARRAY", payload: currentUser.cart });
       // dispatch({ type: "SINGLESHOE", payload: state.elItem.size });
       setIsLoading(false);
-      const goods = items.find((item) => item._id === useId);
+
       // console.log(goods);
       if (goods) {
         const newGoods = {
@@ -122,6 +118,8 @@ const SingleItem = () => {
         colour,
         storage,
       };
+
+      console.log(actualItem);
 
       const foundItem = state.singleItemArray.find(
         (item) => item.name === actualItem.name,
@@ -438,7 +436,7 @@ const SingleItem = () => {
                         : ""}
                   </p>
                 </section>
-                {
+                {state.shoeSize?.length && (
                   <div className="single-size-container">
                     <label>size</label>
                     <select
@@ -456,8 +454,8 @@ const SingleItem = () => {
                       })}
                     </select>
                   </div>
-                }
-                {state.elItem.availableColours ? (
+                )}
+                {state.elItem.availableColours?.length ? (
                   <div className="single-size-container">
                     <label>colour</label>
                     <select
@@ -474,7 +472,7 @@ const SingleItem = () => {
                 ) : (
                   ""
                 )}
-                {state.elItem.availableStorage ? (
+                {state.elItem.availableStorage?.length ? (
                   <div className="single-size-container">
                     <label>storage</label>
                     <select

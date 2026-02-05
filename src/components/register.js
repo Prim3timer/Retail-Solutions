@@ -202,7 +202,7 @@ const Register = () => {
               <br />
               Must begin with a letter.
               <br />
-              Letters, numbers, underscores, hyphens are allowed.
+              numbers, underscores, hyphens are allowed.
             </p>
 
             <label htmlFor="email">

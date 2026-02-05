@@ -77,7 +77,7 @@ export const AuthProvider = ({ children }) => {
 
   const gender = ["Men", "Women"];
 
-  const footSize = [8, 8.5, 8, 9.5, 10, 10.5, 11, 11.5, 12, 12.5, 13, 13.5, 14];
+  const footSize = [8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.5, 13, 13.5, 14];
 
   const colours = [
     "black",
@@ -88,6 +88,14 @@ export const AuthProvider = ({ children }) => {
     "dark brown",
     "yellowish brown",
     "white",
+    "icy blue",
+    "graphite",
+    "gold",
+    "silver",
+    "crafted black",
+    "navy",
+    "pink",
+    "silver shadow",
   ];
 
   const storage = [64, 128, 256, 512, 1000];
