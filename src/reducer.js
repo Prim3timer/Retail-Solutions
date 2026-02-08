@@ -212,7 +212,7 @@ const reducer = (state, action) => {
     case "getTotal":
       const { amount, total } = state.transArray.reduce(
         (cartTotal, cartItem) => {
-          cartTotal.total += cartItem.price * cartItem.qty;
+          cartTotal.total += cartItem.availablePrices[0] * cartItem.qty;
           cartTotal.amount += Number(cartItem.qty);
           return cartTotal;
         },
