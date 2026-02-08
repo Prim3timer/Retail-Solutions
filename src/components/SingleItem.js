@@ -16,7 +16,7 @@ import {
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import AuthContext from "../context/authProvider";
 import { format } from "date-fns";
-import { Link, resolvePath } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaChevronLeft, FaChevronRight, FaPlus, FaMinus } from "react-icons/fa";
 
 const SingleItem = () => {
@@ -40,11 +40,15 @@ const SingleItem = () => {
   const [storage, setStorage] = useState("");
   const [price, setPrice] = useState("");
   const [priceIndex, setPriceIndex] = useState(0);
+  const navigate = useNavigate();
 
   const getItem = async () => {
     const useId = localStorage.getItem("memId");
     const memUser = localStorage.getItem("memUser");
     const goods = items.find((item) => item._id === useId);
+    if (!auth.accessToken) {
+      navigate("/login");
+    }
     try {
       dispatch({
         type: "SINGLESHOE",
@@ -165,7 +169,7 @@ const SingleItem = () => {
     // setUnitMeasure(e.target.value)
   };
   {
-    console.log(state.elItem);
+    // console.log(state.elItem);
   }
 
   // Rhinohorn1#

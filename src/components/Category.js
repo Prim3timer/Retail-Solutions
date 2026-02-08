@@ -53,9 +53,9 @@ const Category = ({ itemCat }) => {
           </h4>
           {/* <p className={firstItem.qty < 20 ? "invent-alarm" : "invent-info"}>{firstItem.qty > 0 ? `${firstItem.unitMeasure === 'Kilogram (kg)' || firstItem.unitMeasure === 'Kilowatthour (kWh)'
                      || firstItem.unitMeasure === 'Kilowatt (kW)' || firstItem.unitMeasure === 'Pound (lbs)' || firstItem.unitMeasure === 'Litre (L)' ? parseFloat(firstItem.qty).toFixed(2) : firstItem.qty}${firstItem.unitMeasure.split(' ')[1].slice(1, -1)} left` : 'out of stock'}</p> */}
-          <p className={firstItem.qty == 0 ? "invent-alarm" : "invent-info"}>
+          {/* <p className={firstItem.qty == 0 ? "invent-alarm" : "invent-info"}>
             {firstItem.qty <= 0 ? "out of stock" : ""}
-          </p>
+          </p> */}
 
           {/* <p>{firstItem.description.substring(0, 30)}...</p> */}
         </div>
