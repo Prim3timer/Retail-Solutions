@@ -160,7 +160,7 @@ const reducer = (state, action) => {
           return {
             ...item,
             qty: action.payload,
-            total: item.price * action.payload,
+            total: item.availablePrices[0] * action.payload,
           };
         }
         return item;

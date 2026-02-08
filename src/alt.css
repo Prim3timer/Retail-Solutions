@@ -807,11 +807,34 @@ input {
   background-color: snow;
 }
 
+.search-formm{
+   /* background-color: red; */
+  position: absolute;
+  margin-top: -16.5rem;  
+  max-width: 40vw;
+  z-index: 100;
+}
+
+
+.searcher-form input {
+  /* background-color: red; */
+  position: absolute;
+  margin-top: -16.5rem;  
+  max-width: 40vw;
+  z-index: 100;
+}
+
 .home-shop {
   /* text-align: center; */
   /* width: 100vw; */
   margin: 2rem 0;
   /* background-color: red; */
+}
+
+.the-navbar {
+  display: flex;
+  height: 4rem;
+  align-items: flex-end;
 }
 
 .shop form {

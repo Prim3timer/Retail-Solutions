@@ -40,7 +40,7 @@ const Categories = () => {
   return (
     <div className="shop">
       <div className="home-shop">
-        <form>
+        <form className="searcher-form">
           <input
             placeholder="filter by category"
             value={state.search}
