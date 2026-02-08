@@ -3425,7 +3425,7 @@ color: crimson;
     width: 80vw !important;
     right: 20% !important;
     overflow-x: hidden;
-    box-shadow: 0.2em 0.3em 0.8em gray;
+    /* box-shadow: 0.2em 0.3em 0.8em gray; */
   }
 
   .no-side {
@@ -3606,7 +3606,7 @@ color: crimson;
     /* background-color: darkolivegreen; */
     max-height: 90vh;
     /* background-color:blue; */
-    margin-top: -4.5rem;
+    margin-top: -3.49rem;
     width: 50vw;
     right: 50%;
     overflow-x: hidden;
