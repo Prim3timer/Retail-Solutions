@@ -302,20 +302,19 @@ const Payment = () => {
                         {options}
                       </select> */}
                       {item.size && <p>size: {item.size},</p>}
-                      {item.colour && (
-                        <hp className="cart-colour">color: {item.colour},</hp>
-                      )}
-
-                      {item.storage && (
-                        <p className="cart-colour">
-                          storage: {item.storage}
-                          {item.storage == 1000 ? "TB" : "GB"},
-                        </p>
-                      )}
                     </div>
                   ) : (
                     ""
                   )}{" "}
+                  {item.colour && (
+                    <hp className="cart-colour">color: {item.colour},</hp>
+                  )}
+                  {item.storage && (
+                    <p className="cart-colour">
+                      storage: {item.storage == 1000 ? 1 : item.storage}
+                      {item.storage == 1000 ? "TB" : "GB"},
+                    </p>
+                  )}
                   {/* <p>{item.storage}</p> */}
                   {/* <div className="cart-props">
                     <h4 className="cart-colour">{item.colour}</h4>

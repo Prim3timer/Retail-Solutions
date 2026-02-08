@@ -55,7 +55,7 @@ const SingleItem = () => {
         payload: goods.availableFootSizes[0],
       });
       setColour(goods.availableColours[0]);
-      setStorage(goods.availableStorage[0]);
+      setStorage(goods.availableStorage[priceIndex]);
 
       console.log(goods);
       if (!state.elItem) {
@@ -121,6 +121,7 @@ const SingleItem = () => {
         size: state.shoeSize,
         colour,
         storage,
+        priceIndex,
       };
 
       console.log(actualItem);
@@ -213,7 +214,7 @@ const SingleItem = () => {
               size: state.shoeSize,
               colour,
               storage,
-              // priceIndex,
+              priceIndex,
             },
           ];
 
@@ -222,7 +223,7 @@ const SingleItem = () => {
             state.elItem.qty >= state.elItem.transQty
           ) {
             const response = await axios.post(
-              "/sessions/create-checkout-session",
+              `/sessions/create-checkout-session`,
               item,
             );
             if (response) {
@@ -321,7 +322,7 @@ const SingleItem = () => {
 
   useEffect(() => {
     getItem();
-  }, [state.alertMsg]);
+  }, [state.alertMsg, priceIndex]);
 
   useEffect(() => {
     dispatch({ type: "SINGLETOTAL" });
