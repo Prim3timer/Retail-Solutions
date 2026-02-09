@@ -96,7 +96,12 @@ const Items = () => {
                       {currency}
                       {numberWithCommas(item.availablePrices[0])}
                     </h4>
-                    <h5>{item.category}</h5>
+                    <h5>
+                      {" "}
+                      {item.category.includes("Foot Wears")
+                        ? item.category.substring(0, 10)
+                        : item.category}
+                    </h5>
                     <p
                       style={
                         {

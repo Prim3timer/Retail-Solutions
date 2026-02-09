@@ -41,10 +41,8 @@ const Shop = () => {
         item.name.toLowerCase().includes(state.search.toLowerCase()),
       );
 
-      const secondFilterate = filterItems.filter((item) => item.gender !== "");
-
       const finalProduct = filterItems.filter((item) =>
-        item.gender.includes(search2),
+        item.gender.toLowerCase().includes(search2.toLowerCase()),
       );
 
       // console.log(secondFilterate);
@@ -79,7 +77,7 @@ const Shop = () => {
           }
         />
         <input
-          placeholder="filter by gender eg 'ladies'"
+          placeholder="'ladies' or 'gentlemen'"
           value={search2}
           onChange={(e) => setSearch2(e.target.value)}
         />
