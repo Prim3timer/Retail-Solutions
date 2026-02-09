@@ -128,7 +128,7 @@ const GenShopping = () => {
       {/* <Link to="one-receipt"> */}
       <article id="form-cont">
         <form
-          className="receipt-search-form"
+          // className="receipt-search-form"
           onSubmit={(e) => e.preventDefault()}
         >
           <input
