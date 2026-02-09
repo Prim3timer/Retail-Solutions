@@ -76,11 +76,11 @@ const Shop = () => {
             dispatch({ type: "search", payload: e.target.value })
           }
         />
-        <input
+        {/* <input
           placeholder="filter by gender eg 'men'"
           value={search2}
           onChange={(e) => setSearch2(e.target.value)}
-        />
+        /> */}
       </form>
       <section className="shop-inner-container">
         {shopItems &&

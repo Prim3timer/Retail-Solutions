@@ -814,7 +814,7 @@ input {
   position: fixed;
   font-size: 1rem;
   z-index: 100;
-  column-gap: 2rem;
+  column-gap: 1rem;
   /* background-color: red; */
   /* width: 100%; */
   width: 60vw;
@@ -1737,15 +1737,6 @@ input {
   justify-content: center;
 }
 
-
-/* .links-container{
-  display: none;
-} */
-
-/* .side {
-  display: none;
-} */
-
 .no-side {
   position: absolute;
   opacity: 0;
@@ -1773,13 +1764,6 @@ input {
   justify-self: center; */
 }
 
-/* .inventory-spec {
-  background-color: red;
-  padding: none;
-} */
-
-
-
 #create-item-form button {
   font-size: 1.5rem;
   margin-top: 1rem;
@@ -1788,10 +1772,6 @@ input {
 
 .invent-header {
   text-align: center;
-  /* color: darkslateblue; */
-  /* margin: 2rem 0 0 0; */
-  /* width: 100%; */
-  /* background-color: red; */
 }
 
 
@@ -1911,17 +1891,6 @@ input {
 
 }
 
-
-
-/* .display-veryfier {
-display: block;
-    margin: 1rem auto;
-    padding: 1rem auto;
-      background-color: #DBBFDB;
-      border-radius: 5px;
-      width: 98vw;
-        
- } */
 .hide-veryfier {
   display: none;
 }
@@ -2055,14 +2024,6 @@ display: block;
   /* grid-column: 3 /5; */
 }
 
-/* .field2 > *:nth-child(2) {
-
-  grid-column: 2 /3;
-}
-.field2 > *:nth-child(3) {
- 
-  grid-column: 4 /5;
-} */
 
 .trans-add button {
   /* width: 50px; */
@@ -2149,12 +2110,6 @@ display: block;
 
 
 
-/* .head-home button {
-  width: 6rem;
-  height: 3rem;
-  box-shadow: none;
-} */
-
 .head-home-button-link {
   text-decoration: none;
   color: white;
@@ -2214,9 +2169,6 @@ display: block;
   display: grid;
   grid-auto-flow: column;
   column-gap: 1rem;
-  /* grid-column: 1/ 16 ; */
-  /* color: whitesmoke; */
-  /* background-color: red; */
   width: 100vw;
   justify-content: start;
   overflow-y: auto;
@@ -2307,16 +2259,6 @@ display: block;
   font-size: 1.5rem;
   padding: .5rem 0;
 }
-
-.public {
-  /* margin-top: 3rem;
-    display: flex;
-    flex-direction: column;
-    row-gap: 6rem;
- 
-    align-items: center; */
-}
-
 
 .App {
   /* padding: .5rem 0; */
@@ -2985,6 +2927,11 @@ color: crimson;
 @media screen and (max-width: 431px) {
 
 
+
+  .searcher {
+  width: 90vw;
+  
+}
   .sales-total>*:nth-child(1) {
 
     grid-column: 2/5;
