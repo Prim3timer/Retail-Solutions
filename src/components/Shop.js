@@ -42,12 +42,13 @@ const Shop = () => {
       );
 
       const secondFilterate = filterItems.filter((item) => item.gender !== "");
-      const finalProduct = secondFilterate.filter((item) =>
-        item.gender.toLowerCase().includes(search2),
-      );
+      console.log(secondFilterate);
+      const finalProduct =
+        secondFilterate &&
+        secondFilterate.filter((item) => item.gender.includes(search2));
 
-      setShopItems(filterItems);
-      console.log(shopItems);
+      console.log(secondFilterate);
+      setShopItems(finalProduct);
     } catch (error) {
       dispatch({ type: "errMsg", payload: error.message });
     }
@@ -55,7 +56,7 @@ const Shop = () => {
 
   useEffect(() => {
     getItems();
-  }, [state.search]);
+  }, [state.search, search2]);
 
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -76,11 +77,11 @@ const Shop = () => {
             dispatch({ type: "search", payload: e.target.value })
           }
         />
-        {/* <input
-          placeholder="filter by gender eg 'men'"
+        <input
+          placeholder="filter by gender eg 'Men'"
           value={search2}
           onChange={(e) => setSearch2(e.target.value)}
-        /> */}
+        />
       </form>
       <section className="shop-inner-container">
         {shopItems &&
