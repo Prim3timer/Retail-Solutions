@@ -61,9 +61,9 @@ const Shop = () => {
   ) : (
     <div className="shop" onClick={falseIsRotated}>
       <div className="home-shop">
-        <h4>{cat}</h4>
+        <h4> {cat.includes("Foot Wears") ? cat.substring(0, 10) : cat}</h4>
       </div>
-      <form>
+      <form className="searcher">
         <input
           placeholder="search items"
           value={state.search}
@@ -72,7 +72,6 @@ const Shop = () => {
           }
         />
       </form>
-
       <section className="shop-inner-container">
         {shopItems &&
           shopItems.map((item, i) => {

@@ -807,15 +807,20 @@ input {
   background-color: snow;
 }
 
-
+.searcher {
+  top: 5px;
+  left: 10px;
+  position: fixed;
+  z-index: 100;
+}
 .home-shop {
   /* text-align: center; */
   /* width: 100vw; */
   padding-top: .5rem;
-  /* background-color: red; */
 }
 
 .the-navbar {
+  /* background-color: red; */
   display: flex;
   height: 4rem;
   align-items: flex-end;
@@ -2147,12 +2152,13 @@ display: block;
   display: grid;
   /* grid-template-columns: repeat(15, 1fr); */
   column-gap: .5rem;
-  align-items: center;
-  /* justify-items: center; */
+  align-items: end;
+  /* justify-content: start; */
   padding: .5rem 1rem;
   top: 0;
   /* margin-bottom: 2rem; */
   overflow-x: auto;
+  height: 7rem;
 }
 
 .plain-header {
@@ -2163,6 +2169,7 @@ display: block;
   ;
   padding: .5rem;
   color: whitesmoke;
+  height: 8rem;
   /* z-index: 5; */
 }
 

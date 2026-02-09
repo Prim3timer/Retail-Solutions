@@ -66,7 +66,8 @@ const NavBar = () => {
       )}
       {auth.accessToken && <div className="head-home"></div>}
 
-      <div className={width > 739 ? "show-home-links" : "hide-home-links"}>
+      {/* <div className={width > 739 ? "show-home-links" : "hide-home-links"}> */}
+      <div className="show-home-links">
         {auth.accessToken &&
           multiLinks.map((link) => {
             const { id, name, path } = link;

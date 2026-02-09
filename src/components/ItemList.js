@@ -64,7 +64,7 @@ const Items = () => {
       <div className="home-shop">
         <h2>Items</h2>
       </div>
-      <form>
+      <form className="searcher">
         <input
           placeholder="search items"
           value={state.search}

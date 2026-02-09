@@ -124,14 +124,7 @@ const GenShopping = () => {
 
       // onClick={remainDelete}
     >
-      <h2
-        style={{
-          margin: "1rem 0",
-          // color: 'darkslateblue'
-        }}
-      >
-        Reciepts ({state.getNames.length})
-      </h2>
+      <h2>Reciepts ({state.getNames.length})</h2>
       {/* <Link to="one-receipt"> */}
       <article id="form-cont">
         <form
@@ -139,7 +132,8 @@ const GenShopping = () => {
           onSubmit={(e) => e.preventDefault()}
         >
           <input
-            id="receipt-search"
+            // id="receipt-search"
+            className="searcher"
             type="text"
             role="searchbox"
             placeholder="Search by date"
