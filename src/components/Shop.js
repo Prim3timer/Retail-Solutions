@@ -70,7 +70,7 @@ const Shop = () => {
     <h2 className="shop">Loading...</h2>
   ) : (
     <div className="shop" onClick={falseIsRotated}>
-      <button onClick={handleGender}>gendered</button>
+      {/* <button onClick={handleGender}>gendered</button> */}
       <div className="home-shop">
         <h4> {cat.includes("Foot Wears") ? cat.substring(0, 10) : cat}</h4>
       </div>
