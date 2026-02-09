@@ -813,7 +813,7 @@ input {
   position: fixed;
   font-size: 1rem;
   z-index: 100;
-  max-width: 200px;
+  max-width: 20%;
  
 }
 .home-shop {
@@ -2161,7 +2161,7 @@ display: block;
   top: 0;
   /* margin-bottom: 2rem; */
   overflow-x: auto;
-  height: 7rem;
+  height: 6rem;
 }
 
 .plain-header {
