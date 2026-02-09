@@ -19,6 +19,7 @@ const Shop = () => {
   const { falseIsRotated, currency, items, oneItem, picUrl } =
     useContext(AuthContext);
   const [shopItems, setShopItems] = useState([]);
+  const [search2, setSearch2] = useState("");
   const axiosPrivate = useAxiosPrivate();
   const [readMore, setReadMore] = useState(true);
   const cat = localStorage.getItem("category");
@@ -39,7 +40,11 @@ const Shop = () => {
       const filterItems = classifiedItems.filter((item) =>
         item.name.toLowerCase().includes(state.search.toLowerCase()),
       );
-      console.log(filterItems);
+
+      const secondFilterate = filterItems.filter((item) => item.gender !== "");
+      const finalProduct = secondFilterate.filter((item) =>
+        item.gender.toLowerCase().includes(search2),
+      );
 
       setShopItems(filterItems);
       console.log(shopItems);
@@ -70,6 +75,11 @@ const Shop = () => {
           onChange={(e) =>
             dispatch({ type: "search", payload: e.target.value })
           }
+        />
+        <input
+          placeholder="filter by gender eg 'men'"
+          value={search2}
+          onChange={(e) => setSearch2(e.target.value)}
         />
       </form>
       <section className="shop-inner-container">
