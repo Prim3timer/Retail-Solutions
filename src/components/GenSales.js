@@ -116,10 +116,9 @@ const GenSales = () => {
   ) : (
     <div className="main-sale" onClick={falseIsRotated}>
       <h2 className="heading"> Sales ({specArray.length}) rows</h2>
-      <form className="sales-search-form" onSubmit={(e) => e.preventDefault()}>
+      <form className="searcher" onSubmit={(e) => e.preventDefault()}>
         <input
-          className="searcher"
-          id="invent-search"
+          // id="invent-search"
           type="text"
           role="searchbox"
           placeholder="Search by name"
@@ -130,7 +129,7 @@ const GenSales = () => {
         />
         {/* <p className='injunction'>AND / OR</p > */}
         <input
-          id="invent-search"
+          //   id="invent-search"
           type="text"
           role="searchbox"
           placeholder="Search by date"

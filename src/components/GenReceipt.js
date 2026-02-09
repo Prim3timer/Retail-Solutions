@@ -126,28 +126,28 @@ const GenShopping = () => {
     >
       <h2>Reciepts ({state.getNames.length})</h2>
       {/* <Link to="one-receipt"> */}
-      <article id="form-cont">
-        <form
-          // className="receipt-search-form"
-          onSubmit={(e) => e.preventDefault()}
-        >
-          <input
-            // id="receipt-search"
-            className="searcher"
-            type="text"
-            role="searchbox"
-            placeholder="Search by date"
-            value={state.search}
-            onChange={(e) =>
-              dispatch({ type: "search", payload: e.target.value })
-            }
+      {/* <article id="form-cont"> */}
+      <form
+        className="searcher"
+        // className="receipt-search-form"
+        onSubmit={(e) => e.preventDefault()}
+      >
+        <input
+          // id="receipt-search"
+          type="text"
+          role="searchbox"
+          placeholder="Search by date"
+          value={state.search}
+          onChange={(e) =>
+            dispatch({ type: "search", payload: e.target.value })
+          }
 
-            // https://www.npmjs.com/package/@react-google-maps/api
-          />
-        </form>
+          // https://www.npmjs.com/package/@react-google-maps/api
+        />
+      </form>
 
-        {/* <SearchItem/> */}
-      </article>
+      {/* <SearchItem/> */}
+      {/* </article> */}
 
       {state.getNames &&
         state.getNames.map((item) => {

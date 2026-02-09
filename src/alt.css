@@ -808,13 +808,22 @@ input {
 }
 
 .searcher {
+  display: flex;
   top: 5px;
   left: 10px;
   position: fixed;
   font-size: 1rem;
   z-index: 100;
-  width: 40vw;
- 
+  column-gap: 2rem;
+  /* background-color: red; */
+  /* width: 100%; */
+  width: 60vw;
+  
+}
+
+.searcher input {
+  width: 100%; 
+  /* background-color: red; */
 }
 .home-shop {
   /* text-align: center; */
@@ -2483,7 +2492,7 @@ th {
 }
 
 #receipt-search {
-  width: 60%;
+  /* width: 60%; */
 }
 
 #update-button {
