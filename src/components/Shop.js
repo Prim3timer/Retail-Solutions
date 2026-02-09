@@ -43,9 +43,9 @@ const Shop = () => {
 
       const secondFilterate = filterItems.filter((item) => item.gender !== "");
 
-      const finalProduct =
-        secondFilterate &&
-        secondFilterate.filter((item) => item.gender.includes(search2));
+      const finalProduct = filterItems.filter((item) =>
+        item.gender.includes(search2),
+      );
 
       // console.log(secondFilterate);
       setShopItems(finalProduct);
@@ -62,10 +62,6 @@ const Shop = () => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
-  const handleGender = async () => {
-    const response = await axios.get("/gendered");
-    console.log(response.data.message);
-  };
   return !items ? (
     <h2 className="shop">Loading...</h2>
   ) : (
