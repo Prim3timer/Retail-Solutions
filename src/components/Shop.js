@@ -42,12 +42,12 @@ const Shop = () => {
       );
 
       const secondFilterate = filterItems.filter((item) => item.gender !== "");
-      console.log(secondFilterate);
+
       const finalProduct =
         secondFilterate &&
         secondFilterate.filter((item) => item.gender.includes(search2));
 
-      console.log(secondFilterate);
+      // console.log(secondFilterate);
       setShopItems(finalProduct);
     } catch (error) {
       dispatch({ type: "errMsg", payload: error.message });
@@ -62,10 +62,15 @@ const Shop = () => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
+  const handleGender = async () => {
+    const response = await axios.get("/gendered");
+    console.log(response.data.message);
+  };
   return !items ? (
     <h2 className="shop">Loading...</h2>
   ) : (
     <div className="shop" onClick={falseIsRotated}>
+      <button onClick={handleGender}>gendered</button>
       <div className="home-shop">
         <h4> {cat.includes("Foot Wears") ? cat.substring(0, 10) : cat}</h4>
       </div>
@@ -78,7 +83,7 @@ const Shop = () => {
           }
         />
         <input
-          placeholder="filter by gender eg 'Men'"
+          placeholder="filter by gender eg 'ladies'"
           value={search2}
           onChange={(e) => setSearch2(e.target.value)}
         />
