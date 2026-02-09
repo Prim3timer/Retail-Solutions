@@ -811,7 +811,10 @@ input {
   top: 5px;
   left: 10px;
   position: fixed;
+  font-size: 1rem;
   z-index: 100;
+  max-width: 200px;
+ 
 }
 .home-shop {
   /* text-align: center; */

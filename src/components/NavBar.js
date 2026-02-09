@@ -54,12 +54,12 @@ const NavBar = () => {
         <h4> Retail Tracker</h4>
       ) : width < 739 ? (
         <p>
-          <FontAwesomeIcon
+          {/* <FontAwesomeIcon
             ref={barRef}
             className={!isRotated ? "home-icon rotate-icon" : "home-icon"}
             onClick={workBar}
             icon={faBars}
-          />
+          /> */}
         </p>
       ) : (
         ""
