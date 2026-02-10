@@ -934,7 +934,7 @@ padding: .2rem .5rem;
   /* background-color: red; */
   padding: .5rem;
   /* width: 100vw; */
-  background-color: gainsboro;
+  background-color: white;
   display: flex;
   column-gap: 1rem;
 }
@@ -981,7 +981,7 @@ padding: .2rem .5rem;
 .item-dets {
   display: flex;
   flex-direction: column;
-  background-color: white;
+    background-color: gainsboro;
   padding: .2rem .5rem;
   row-gap: .5rem;
 

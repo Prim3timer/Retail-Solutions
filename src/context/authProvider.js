@@ -74,6 +74,7 @@ export const AuthProvider = ({ children }) => {
     "Funitures",
     "Beauty",
     "Liesure",
+    "Laptop",
   ];
 
   const gender = ["gentlemen", "ladies"];
@@ -103,6 +104,7 @@ export const AuthProvider = ({ children }) => {
     "beige",
     "reddish brown",
     "tan",
+    "wheat",
   ];
 
   const storage = [64, 128, 256, 512, 1000];
