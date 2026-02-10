@@ -107,7 +107,7 @@ export const AuthProvider = ({ children }) => {
     "wheat",
   ];
 
-  const storage = [64, 128, 256, 512, 1000];
+  const storage = [64, 128, 256, 500, 512, 1000];
 
   const axiosPrivate = useAxiosPrivate();
   const navigate = useNavigate();

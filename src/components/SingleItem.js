@@ -490,6 +490,7 @@ const SingleItem = () => {
                         return <option>{store}</option>;
                       })}
                     </select>
+                    GB
                   </div>
                 ) : (
                   ""
