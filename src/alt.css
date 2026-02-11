@@ -11,7 +11,8 @@
 .footer,
 .main {
   display: grid;
-  place-content: center;
+  justify-content: center;
+  /* place-content: center; */
 }
 
 .footer {
@@ -1485,7 +1486,7 @@ input[type=radio] {
 }
 
 .main-sale .heading {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 

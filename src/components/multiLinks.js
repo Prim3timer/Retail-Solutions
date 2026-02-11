@@ -21,7 +21,7 @@ const multiLinks = [
   },
   {
     id: 5,
-    name: "sales",
+    name: "purchase history",
     path: "/gen-sales",
   },
   {

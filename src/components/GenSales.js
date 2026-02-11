@@ -115,7 +115,8 @@ const GenSales = () => {
     <div>Loading...</div>
   ) : (
     <div className="main-sale" onClick={falseIsRotated}>
-      <h2 className="heading"> Sales ({specArray.length}) rows</h2>
+      {/* <h2 className="heading"> Sales ({specArray.length}) rows</h2> */}
+      <h3 className="heading">Purchase History</h3>
       <form className="searcher" onSubmit={(e) => e.preventDefault()}>
         <input
           // id="invent-search"
@@ -173,7 +174,7 @@ const GenSales = () => {
         </tbody>
       </table>
 
-      <div className="sales-total">
+      {/* <div className="sales-total">
         <h3>Total:</h3>
         <h3>
           {state.sales &&
@@ -196,7 +197,7 @@ const GenSales = () => {
                 .toFixed(2),
             )}
         </h3>
-      </div>
+      </div> */}
     </div>
   );
 };
