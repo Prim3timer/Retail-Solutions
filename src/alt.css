@@ -1135,15 +1135,20 @@ padding: .2rem .5rem;
   display: flex;
   /* background-color: red; */
   align-items: center;
+  flex-direction: column;
   column-gap: .5rem;
 }
 .single-size-container select {
   /* display: flex; */
-  /* background-color: red; */
   padding: 5px 0;
   font-size: 1.5rem;
   width: 5rem;
   /* column-gap: .5rem; */
+}
+
+.main-single-cont {
+  background-color: red;
+
 }
 
 .colour-container {
@@ -1383,11 +1388,12 @@ input[type=radio] {
 
 .qty-measure-size-colour-storage {
   /* background-color: yellow; */
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   row-gap: .5rem;
   align-items: center;
   width: 80vw;
-  column-gap: 1rem;
+  column-gap: 2rem;
 }
 
 
@@ -1412,8 +1418,8 @@ input[type=radio] {
 
 .single-item-texts {
   grid-row: 4/ 5;
-  /* background-color: red; */
 }
+
 
 .single-plus-input {
   display: flex;
@@ -2813,11 +2819,12 @@ color: crimson;
 
   }
 
-
+.gen-sales-theader {
+  text-align: left;
+}
 
   .search-form {
     /* margin-left: 1rem; */
-    /* background-color: blue; */
     /* min-width: 40%; */
   }
 

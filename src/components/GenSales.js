@@ -143,10 +143,10 @@ const GenSales = () => {
       <table className="sales">
         <tbody>
           <tr className="theader-row">
-            <th>NAME</th>
-            <th>QTY</th>
-            <th>TOTAL</th>
-            <th>DATE</th>
+            <th className="gen-sales-theader">NAME</th>
+            <th className="gen-sales-theader">QTY</th>
+            <th className="gen-sales-theader">TOTAL</th>
+            <th className="gen-sales-theader">DATE</th>
           </tr>
           {specArray &&
             specArray.map((sale, index) => {

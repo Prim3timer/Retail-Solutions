@@ -389,6 +389,7 @@ const SingleItem = () => {
                       : ""}
                 </span>
               </p>
+
               <article className="qty-measure-size-colour-storage">
                 <section className="qty-cont">
                   {state.elItem.unitMeasure === "Piece (pc)" ||
@@ -490,7 +491,7 @@ const SingleItem = () => {
                         return <option>{store}</option>;
                       })}
                     </select>
-                    GB
+                    {/* GB */}
                   </div>
                 ) : (
                   ""
@@ -520,6 +521,7 @@ const SingleItem = () => {
                 ""
               )} */}
             </div>
+
             <h3>
               {currency}
               {/* {console.log(state.elItem)} */}
