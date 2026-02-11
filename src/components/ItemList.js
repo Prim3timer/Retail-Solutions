@@ -62,7 +62,7 @@ const Items = () => {
   ) : (
     <div className="shop" onClick={falseIsRotated}>
       <div className="home-shop">
-        <h2>Items</h2>
+        <h2>Items ({shopItems.length})</h2>
       </div>
       <form className="searcher">
         <input
