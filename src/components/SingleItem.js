@@ -480,18 +480,20 @@ const SingleItem = () => {
                 )}
                 {state.elItem.availableStorage?.length ? (
                   <div className="single-size-container">
-                    <label>storage</label>
-                    <select
-                      className="size-options"
-                      size={"1"}
-                      value={storage}
-                      onChange={(e) => handleStorage(e)}
-                    >
-                      {state.elItem.availableStorage.map((store, i) => {
-                        return <option>{store}</option>;
-                      })}
-                    </select>
-                    {/* GB */}
+                    <label className="single-size-label">storage</label>
+                    <div>
+                      <select
+                        className="size-options"
+                        size={"1"}
+                        value={storage}
+                        onChange={(e) => handleStorage(e)}
+                      >
+                        {state.elItem.availableStorage.map((store, i) => {
+                          return <option>{store}</option>;
+                        })}
+                      </select>
+                      GB
+                    </div>
                   </div>
                 ) : (
                   ""

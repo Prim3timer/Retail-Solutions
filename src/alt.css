@@ -1396,6 +1396,12 @@ input[type=radio] {
   column-gap: 2rem;
 }
 
+.single-size-label {
+  text-align: left;
+  width: 100%;
+  /* background-color: red; */
+}
+
 
 .inner-single-item {
   display: flex;
