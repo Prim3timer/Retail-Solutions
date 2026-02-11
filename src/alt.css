@@ -558,6 +558,12 @@
   /* margin-right: 1rem; */
 }
 
+.edit-item-price {
+  width: 6rem;
+  font-size: 1.5rem;
+
+}
+
 .qty-unit {
   display: flex;
   column-gap: .5rem;
@@ -1383,9 +1389,6 @@ input[type=radio] {
   column-gap: 1rem;
 }
 
-.unit-measure-options {
-  width: 2rem;;
-}
 
 .inner-single-item {
   display: flex;
