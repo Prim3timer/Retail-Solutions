@@ -1391,7 +1391,7 @@ input[type=radio] {
   display: flex;
   flex-wrap: wrap;
   row-gap: .5rem;
-  align-items: center;
+  align-items: flex-end;
   width: 80vw;
   column-gap: 2rem;
 }

@@ -106,6 +106,7 @@ export const AuthProvider = ({ children }) => {
     "tan",
     "wheat",
     "purple",
+    "gray",
   ];
 
   const storage = [64, 128, 256, 500, 512, 1000];
