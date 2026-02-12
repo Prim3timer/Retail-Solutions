@@ -671,6 +671,10 @@ input {
   text-align: center;
 }
 
+.gen-sales-theader {
+  text-align: left;
+}
+
 
 .sales-items {
   text-align: left;
@@ -1194,7 +1198,7 @@ input[type=radio] {
   width: 80vw;
   /* width: 100%; */
   padding: 5px 0;
-  
+
   /* background-color: tomato; */
 }
 
@@ -2834,9 +2838,7 @@ color: crimson;
 
   }
 
-.gen-sales-theader {
-  text-align: left;
-}
+
 
   .search-form {
     /* margin-left: 1rem; */
