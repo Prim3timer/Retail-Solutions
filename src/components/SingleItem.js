@@ -491,7 +491,7 @@ const SingleItem = () => {
                         {state.elItem.availableStorage.map((store, i) => {
                           return <option>{store}</option>;
                         })}
-                      </select>
+                      </select>{" "}
                       GB
                     </div>
                   </div>
