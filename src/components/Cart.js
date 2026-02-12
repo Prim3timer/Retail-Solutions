@@ -290,9 +290,10 @@ const Payment = () => {
                       </p>
                     </div>
                   )}
-                  {item.size ? (
-                    <div className="cart-item-size">
-                      {/* <label>size</label>
+                  <article className="cart-available-things">
+                    {item.size ? (
+                      <div className="cart-item-size">
+                        {/* <label>size</label>
                       <select
                         // className="size-options"
                         size={"1"}
@@ -301,20 +302,21 @@ const Payment = () => {
                       >
                         {options}
                       </select> */}
-                      {item.size && <p>size: {item.size},</p>}
-                    </div>
-                  ) : (
-                    ""
-                  )}{" "}
-                  {item.colour && (
-                    <hp className="cart-colour">color: {item.colour},</hp>
-                  )}
-                  {item.storage && (
-                    <p className="cart-colour">
-                      storage: {item.storage == 1000 ? 1 : item.storage}
-                      {item.storage == 1000 ? "TB" : "GB"},
-                    </p>
-                  )}
+                        {item.size && <p>size: {item.size},</p>}
+                      </div>
+                    ) : (
+                      ""
+                    )}{" "}
+                    {item.colour && (
+                      <hp className="cart-colour">color: {item.colour},</hp>
+                    )}
+                    {item.storage && (
+                      <p className="cart-colour">
+                        storage: {item.storage == 1000 ? 1 : item.storage}
+                        {item.storage == 1000 ? "TB" : "GB"},
+                      </p>
+                    )}
+                  </article>
                   {/* <p>{item.storage}</p> */}
                   {/* <div className="cart-props">
                     <h4 className="cart-colour">{item.colour}</h4>
