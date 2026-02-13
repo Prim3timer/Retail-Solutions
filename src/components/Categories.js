@@ -53,8 +53,8 @@ const Categories = () => {
       {getDistinctCategories.length ? (
         <article className="shop-inner-container">
           {filterate &&
-            filterate.map((item) => {
-              return <Category itemCat={item} />;
+            filterate.map((item, i) => {
+              return <Category itemCat={item} key={i} />;
             })}
         </article>
       ) : (

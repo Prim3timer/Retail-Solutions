@@ -2599,11 +2599,12 @@ button:active {
 
 .sales-search-form article input {
   min-width: 80%;
-  /* background-color: red; */
 }
 
 .heading {
+  /* background-color: red; */
   text-align: center;
+  /* width: 100vw; */
 }
 
 .sales-total {

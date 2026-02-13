@@ -106,10 +106,12 @@ export const AuthProvider = ({ children }) => {
     "tan",
     "wheat",
     "purple",
-    "gray",
+    "gray ",
   ];
 
-  const storage = [64, 128, 256, 500, 512, 1000];
+  const storage = [64, 128, 256, 500, 512, 1000, 2000];
+
+  // sanchos boots order change ticket  104011476.
 
   const axiosPrivate = useAxiosPrivate();
   const navigate = useNavigate();
