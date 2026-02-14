@@ -34,12 +34,18 @@ const Transactions = () => {
   const [firstRedChecker, setFirstRedChecker] = useState("");
   const [success, setSuccess] = useState(false);
   const [noShow, setNoShow] = useState(false);
+  const [groceries, setGroceries] = useState([]);
   const [recipt, setReceipt] = useState({});
   console.log(items);
   const axiosPrivate = useAxiosPrivate();
 
   localStorage.setItem("memUser", auth.picker);
-  const refresh = useRefreshToken();
+  const filterItems = () => {
+    const groceriesFilter = items.filter(
+      (item) => item.category === "Groceries",
+    );
+    setGroceries(groceriesFilter);
+  };
 
   const handleAdd = (e) => {
     e.preventDefault();
@@ -324,6 +330,10 @@ const Transactions = () => {
     console.log(inputRef.current.value);
   }, []);
 
+  useEffect(() => {
+    filterItems();
+  }, []);
+
   return (
     <div className="trans-cont" onClick={falseIsRotated}>
       <h2 id="tans-title">Transactions</h2>
@@ -347,8 +357,8 @@ const Transactions = () => {
             </article>
 
             <datalist id="edulevel">
-              {items &&
-                items.map((user) => {
+              {groceries &&
+                groceries.map((user) => {
                   return (
                     <option
                       key={user._id}

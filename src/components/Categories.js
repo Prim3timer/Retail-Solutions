@@ -16,9 +16,10 @@ const Categories = () => {
     useContext(AuthContext);
 
   const [filterate, setFilterate] = useState([]);
+  const noGroceries = items.filter((item) => item.category !== "Groceries");
   const getDistinctCategories =
-    items &&
-    items.map((item) => {
+    noGroceries &&
+    noGroceries.map((item) => {
       return item.category;
     });
 
