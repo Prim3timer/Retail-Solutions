@@ -396,6 +396,7 @@ const SingleItem = () => {
                   state.elItem.unitMeasure === "Plate (Plt)" ||
                   state.elItem.unitMeasure === "Dozen (dz)" ||
                   state.elItem.unitMeasure === "Bottle (Btl)" ||
+                  state.elItem.unitMeasure === "Set (St)" ||
                   state.elItem.unitMeasure === "Pair (pr)" ? (
                     <div className="single-plus-input">
                       <p onClick={decrease}>

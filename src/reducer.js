@@ -1,6 +1,3 @@
-import { ca } from "date-fns/locale";
-import { act } from "react";
-
 const reducer = (state, action) => {
   switch (action.type) {
     case "items":

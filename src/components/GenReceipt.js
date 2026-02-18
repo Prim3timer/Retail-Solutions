@@ -170,9 +170,10 @@ const GenShopping = () => {
                   <p>{item._id}</p>
                   {item.goods &&
                     item.goods.map((good) => {
+                      console.log(good);
                       return (
                         <div className="goods-container">
-                          <h4>{good.name}</h4>
+                          <h4 className="goods-name">{good.name}</h4>
                           <p>
                             Qty: {parseFloat(good.qty).toFixed(2)}
                             {good.unitMeasure.split(" ")[1].slice(1, -1)}
@@ -180,7 +181,7 @@ const GenShopping = () => {
                           <p>
                             Unit Price: {currency}
                             {numberWithCommas(
-                              parseFloat(good.price).toFixed(2),
+                              parseFloat(good.availablePrices).toFixed(2),
                             )}
                           </p>
                           {good.size && <p>size: {good.size}</p>}
@@ -192,7 +193,7 @@ const GenShopping = () => {
                             </p>
                           )}
                           <p>
-                            Sub Total:{" "}
+                            Sub Total: {currency}
                             {numberWithCommas(
                               parseFloat(good.total).toFixed(2),
                             )}

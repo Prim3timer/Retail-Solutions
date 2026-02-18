@@ -123,7 +123,7 @@ const OneReceipt = ({ setOneReceipt }) => {
                   textDecoration: "none",
                 }}
               >
-                <h4>{good.name}</h4>
+                <h4 className="goods-name">{good.name}</h4>
                 <p>
                   Qty: {parseFloat(good.qty).toFixed(2)}
                   {good.unitMeasure.split(" ")[1].slice(1, -1)}
