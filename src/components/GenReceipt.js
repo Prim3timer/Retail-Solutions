@@ -181,7 +181,7 @@ const GenShopping = () => {
                           <p>
                             Unit Price: {currency}
                             {numberWithCommas(
-                              parseFloat(good.availablePrices).toFixed(2),
+                              parseFloat(good.price).toFixed(2),
                             )}
                           </p>
                           {good.size && <p>size: {good.size}</p>}
