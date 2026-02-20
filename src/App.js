@@ -147,6 +147,7 @@ const App = () => {
                 <Route path="cart" element={<Cart />} />
                 <Route path="order" element={<Orders />} />
                 <Route path="delete-account" element={<DeleteAccount />} />
+                <Route path="gen-sales" element={<GenSales />} />
               </Route>
 
               <Route element={<RequireAuth allowedRoles={[1984]} />}>
@@ -154,7 +155,6 @@ const App = () => {
 
                 <Route path="all-sales" element={<AllSales />} />
                 <Route path="sales" element={<Sales />} />
-                <Route path="gen-sales" element={<GenSales />} />
                 <Route
                   path="receipts"
                   element={
