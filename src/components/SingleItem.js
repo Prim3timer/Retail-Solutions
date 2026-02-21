@@ -331,7 +331,7 @@ const SingleItem = () => {
   return isLoading ? (
     <h2 className="single-item">Loading...</h2>
   ) : (
-    <div>
+    <div className="single">
       {state.elItem && (
         <article className="single-item" onClick={falseIsRotated}>
           <article className="inner-single-item">
