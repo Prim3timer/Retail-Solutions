@@ -46,6 +46,7 @@ import GenShopping from "./components/GenReceipt";
 import Orders from "./components/Order";
 import DeleteAccount from "./components/DeleteAccount";
 import Categories from "./components/Categories";
+import Image from "./components/Image";
 
 // import SearchItem from "./SearchItem";
 
@@ -132,9 +133,9 @@ const App = () => {
 
             {/* protected routes */}
             <Route element={<PersistLogin />}>
-              <Route path="single-item" element={<SingleItem />} />
               <Route element={<RequireAuth allowedRoles={[2001]} />}>
-                <Route path="item-list" element={<ItemList />} />
+                <Route path="single-item" element={<SingleItem />} />
+                <Route path="image" element={<Image />} />
                 <Route path="inventory" element={<Inventory />} />
                 <Route path="transactions" element={<Transactions />} />
                 {/* <Route path="/home" element={<Home home={home}/> } /> */}

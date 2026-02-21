@@ -277,6 +277,8 @@ const SingleItem = () => {
   }
 
   const handleIndex = (i) => {
+    console.log(i);
+    localStorage.setItem("largeIndex", i);
     setIndex(i);
   };
 
@@ -337,20 +339,22 @@ const SingleItem = () => {
           <article className="inner-single-item">
             {/* <h2>Single Item</h2> */}
             <p>{state.elItem.name}</p>
-            <section className="single-image-container">
-              {justPics &&
-                justPics.map((image, i) => {
-                  // console.log(image);
-                  return (
-                    <img
-                      className={"single-item-image"}
-                      src={`${picUrl}/images/${state.elItem.name}/${image.name}`}
-                      onClick={() => handleIndex(i)}
-                      alt={image.name}
-                    />
-                  );
-                })}
-            </section>
+            <Link to={"/image"}>
+              <section className="single-image-container">
+                {justPics &&
+                  justPics.map((image, i) => {
+                    // console.log(image);
+                    return (
+                      <img
+                        className={"single-item-image"}
+                        src={`${picUrl}/images/${state.elItem.name}/${image.name}`}
+                        onClick={() => handleIndex(i)}
+                        alt={image.name}
+                      />
+                    );
+                  })}
+              </section>
+            </Link>
             {/* <article className="shop-big-img">
               <p onClick={lower}>
                 <FaChevronLeft />

@@ -1426,8 +1426,18 @@ input[type=radio] {
 
 }
 
-.single {
+.inner-single-item>*:nth-child(1) {
+width: 90vw;
   /* background-color: red; */
+}
+
+.single-image {
+  width: 100vw;
+  height: 100vw;
+}
+
+.image {
+  width: 90vw;
 }
 
 
