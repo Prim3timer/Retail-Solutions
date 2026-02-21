@@ -1437,6 +1437,7 @@ width: 90vw;
 }
 
 .image {
+  display: flex;
   width: 90vw;
 }
 
