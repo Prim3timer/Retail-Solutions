@@ -1432,13 +1432,14 @@ width: 90vw;
 }
 
 .single-image {
-  width: 100vw;
+  width: 95vw;
   height: 100vw;
 }
 
 .image {
   display: flex;
-  width: 90vw;
+  justify-content: center;
+  width: 100vw;
 }
 
 
