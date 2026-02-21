@@ -1432,7 +1432,7 @@ input[type=radio] {
 
 
 .single-image-container {
-  background-color: red;
+  /* background-color: red; */
   justify-content: flex-start;
   margin-left: 1rem;
   width: 100vw;
