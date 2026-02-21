@@ -94,7 +94,7 @@ const Items = () => {
                     <h4>
                       {console.log(item)}
                       {currency}
-                      {numberWithCommas(item.availablePrices[0])}
+                      {numberWithCommas(Number(item.availablePrices[0]))}
                     </h4>
                     <h5>
                       {" "}

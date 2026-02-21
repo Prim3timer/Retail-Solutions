@@ -1364,7 +1364,9 @@ input[type=radio] {
 .single-item-image {
   width: 350px;
   height: 350px;
+
   object-fit: contain;
+  /* background-color: red; */
 
 }
 
@@ -1426,8 +1428,14 @@ input[type=radio] {
 
 
 .single-image-container {
-  text-align: center;
+  /* background-color: red; */
+  justify-content: flex-start;
+  width: 100vw;
+  /* height: 300px; */
+  overflow-y: auto;
   /* grid-row: 1 /1; */
+  column-gap: .5rem;
+  display: flex;
 }
 
 .single-item-texts {
