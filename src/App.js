@@ -134,6 +134,7 @@ const App = () => {
             {/* protected routes */}
             <Route element={<PersistLogin />}>
               <Route element={<RequireAuth allowedRoles={[2001]} />}>
+                <Route path="item-list" element={<ItemList />} />
                 <Route path="single-item" element={<SingleItem />} />
                 <Route path="image" element={<Image />} />
                 <Route path="inventory" element={<Inventory />} />
