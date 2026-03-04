@@ -8,6 +8,32 @@
   box-sizing: border-box;
 }
 
+.App {
+  /* padding: .5rem 0; */
+  font-family: "Roboto", sans-serif;
+  background-color: #475569;
+  background-image: radial-gradient(whitesmoke, paleturquoise);
+  min-height: 100vh;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  color: navy;
+  /* overflow-y: auto; */
+
+}
+
+.App>* {
+  overflow-y: auto;
+}
+
+.main {
+  flex-grow: 1;
+
+
+}
+
+
 .footer,
 .main {
   display: grid;
@@ -23,6 +49,43 @@
   display: flex;
   align-items: center;
   column-gap: 5px;
+}
+
+.header,
+.footer {
+  position: sticky;
+  background-color: #1e293b;
+  ;
+  padding: .5rem 0;
+  color: whitesmoke;
+  z-index: 5;
+
+}
+
+.header {
+  display: grid;
+  /* grid-template-columns: repeat(15, 1fr); */
+  column-gap: .5rem;
+  align-items: end;
+  /* justify-content: start; */
+  padding: 0 1rem;
+  top: 0;
+  /* margin-bottom: 2rem; */
+  overflow-x: auto;
+  height: 6rem;
+}
+
+.header>*:nth-child(1) {
+  padding: .3rem .5rem;
+  grid-column: 1 / 1;
+
+  /* background-color: red; */
+  /* background-color: red; */
+}
+
+.footer {
+  font-size: 1rem;
+  bottom: 0;
 }
 
 .size-options {
@@ -386,6 +449,10 @@
   /* background-color:red; */
   /* left: 20%; */
   /* padding: 2px; */
+}
+
+.add-pic-edit {
+  position: absolute;
 }
 
 .edit-icon-inner {
@@ -1630,18 +1697,8 @@ width: 90vw;
 .colours-cont option {
   font-size: 1.5rem;
 }
-.user-action {
 
 
-  width: 68px;
-  height: 68px;
-  color: var(--COLOR);
-  font-size: 2rem;
-  display: grid;
-  place-content: center;
-  background-color: white;
-  border-color: transparent;
-}
 
 .user-action>* {
   border-radius: 5px;
@@ -2147,16 +2204,7 @@ input {
   text-align: center;
 }
 
-.header,
-.footer {
-  position: sticky;
-  background-color: #1e293b;
-  ;
-  padding: .5rem 0;
-  color: whitesmoke;
-  z-index: 5;
 
-}
 
 
 .head-home {
@@ -2212,13 +2260,7 @@ input {
 
 
 
-.header>*:nth-child(1) {
-  padding: .3rem .5rem;
-  grid-column: 1 / 1;
 
-  /* background-color: red; */
-  /* background-color: red; */
-}
 
 .show-home-links {
   display: grid;
@@ -2302,10 +2344,7 @@ input {
 
 
 
-.footer {
-  font-size: 1rem;
-  bottom: 0;
-}
+
 
 .login-link {
   background-color: dodgerblue;
@@ -2315,30 +2354,6 @@ input {
   padding: .5rem 0;
 }
 
-.App {
-  /* padding: .5rem 0; */
-  font-family: "Roboto", sans-serif;
-  background-color: #475569;
-  background-image: radial-gradient(whitesmoke, paleturquoise);
-  min-height: 100vh;
-  font-size: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  /* align-items: center; */
-  color: navy;
-  /* overflow-y: auto; */
-
-}
-
-.App>* {
-  overflow-y: auto;
-}
-
-.main {
-  flex-grow: 1;
-
-
-}
 
 
 /* form {
@@ -2366,7 +2381,6 @@ input {
 }
 
 .trans-list-alert {
-
   position: fixed;
   text-align: center;
   color: red;

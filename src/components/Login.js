@@ -24,7 +24,6 @@ const Login = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location.pathname);
   const from = location.state?.from?.pathname || "/categories";
   const [isPassword, setisPassword] = useState("password");
   const [passwordCheck2, setPasswordCheck2] = useState(faEyeSlash);
@@ -59,7 +58,6 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(user, pwd);
 
     try {
       const response = await axios.post(
@@ -82,7 +80,6 @@ const Login = () => {
       setPwd("");
       // get the user to where they wanted to go before they were kicked out to
       // the login page
-
       navigate(from, { replace: true });
       // dispatch({type: 'success', payload: true})
     } catch (err) {

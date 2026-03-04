@@ -458,7 +458,7 @@ const SingleItem = () => {
                   <div className="single-size-container">
                     <label>size</label>
                     <select
-                      className="size-options"
+                      className="measure-options"
                       size={"1"}
                       value={state.shoeSize}
                       onChange={(e) => onShoeSizeChange(e)}

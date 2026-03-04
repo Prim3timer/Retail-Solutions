@@ -44,7 +44,7 @@ const Transactions = () => {
     const groceriesFilter = items.filter(
       (item) => item.category === "Groceries",
     );
-    setGroceries(groceriesFilter);
+    setGroceries(items);
   };
 
   const handleAdd = (e) => {
@@ -357,8 +357,8 @@ const Transactions = () => {
             </article>
 
             <datalist id="edulevel">
-              {groceries &&
-                groceries.map((user) => {
+              {items &&
+                items.map((user) => {
                   return (
                     <option
                       key={user._id}
