@@ -47,6 +47,11 @@ const multiLinks = [
   },
   {
     id: 10,
+    name: "about us",
+    path: "/about-us",
+  },
+  {
+    id: 11,
     name: "delete account",
     path: "/delete-account",
   },

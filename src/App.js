@@ -47,6 +47,7 @@ import Orders from "./components/Order";
 import DeleteAccount from "./components/DeleteAccount";
 import Categories from "./components/Categories";
 import Image from "./components/Image";
+import AboutUs from "./components/AboutUs";
 
 // import SearchItem from "./SearchItem";
 
@@ -113,6 +114,7 @@ const App = () => {
             <Route path="/login" element={<Login />} />
 
             <Route path="/cart/thanks" element={<Thanks />} />
+            <Route path="/about-us" element={<AboutUs />} />
             <Route
               path="/transactions/local-thanks"
               element={<LocalThanks />}

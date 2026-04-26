@@ -38,10 +38,6 @@ html {
 }
 
 
-
-
-
-
 .App {
 
     max-height: 100vh;
@@ -56,27 +52,7 @@ html {
 /* padding-top: 4rem; */
     border: 1px solid black;
     box-shadow: 0px 0px 15px gray;
-    /* background-color: black; */
-  
-  
 }
-
-h4 {
-  text-decoration: none;
-}
-
-.App > * {
-  overflow-y: auto; 
-
-  /* width: 100vw;   */
-}
-
-
-/* .home-cont {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-} */
 
 .home {
   display: flex;
@@ -93,6 +69,9 @@ h4 {
 
 
 }
+
+
+
 
 .public {
   padding: 2rem;
@@ -185,6 +164,8 @@ font-size: 1.5rem;
 border-radius: 0.5rem;
 width: 70%;
 } 
+
+
 
 .edit-item {
   position: absolute;
