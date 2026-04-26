@@ -1714,11 +1714,22 @@ width: 90vw;
   font-size: 1.5rem;
 }
 
+.user-action {
+  width: 4.5rem;
+  height: 4.5rem;
+  display: grid;
+  place-content: center;
+  background-color: white;
+  border-color: white;
+
+}
+
 
 
 .user-action>* {
   border-radius: 5px;
   font-size: 3rem;
+  color: darkslateblue;
   padding: 1rem;
   /* background-color: red; */
 }
