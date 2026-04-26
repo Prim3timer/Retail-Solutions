@@ -12,9 +12,9 @@ import Shop from "./Shop";
 import Category from "./Category";
 
 const Categories = () => {
-  const { falseIsRotated, currency, items, oneItem, picUrl } =
+  const { falseIsRotated, currency, items, oneItem, picUrl, auth } =
     useContext(AuthContext);
-
+  console.log(auth);
   const [filterate, setFilterate] = useState([]);
   const noGroceries = items.filter((item) => item.category !== "Groceries");
   const getDistinctCategories =
@@ -26,7 +26,6 @@ const Categories = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const uniqueArray = [...new Set(getDistinctCategories)];
-  console.log(uniqueArray);
   const filterCat = () => {
     console.log(state.search);
     const newArray = uniqueArray.filter((item) =>

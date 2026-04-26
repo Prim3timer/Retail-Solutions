@@ -65,11 +65,10 @@ const NavBar = () => {
         ""
       )}
       {auth.accessToken && <div className="head-home"></div>}
-
       {/* <div className={width > 739 ? "show-home-links" : "hide-home-links"}> */}
-      <div className="show-home-links">
-        {auth.accessToken &&
-          multiLinks.map((link) => {
+      {auth.accessToken && location.pathname !== "/login" ? (
+        <div className="show-home-links">
+          {multiLinks.map((link) => {
             const { id, name, path } = link;
             return (
               // <div className="link-names">
@@ -87,12 +86,13 @@ const NavBar = () => {
               // </div>
             );
           })}
-        {auth.accessToken && (
           <Link to="/login" className="home-links" onClick={logout}>
             logout
           </Link>
-        )}
-      </div>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

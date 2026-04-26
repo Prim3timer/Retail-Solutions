@@ -1,30 +1,32 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React from "react";
+import ReactDOM from "react-dom/client";
 // import './index.css';
-import './alt.css'
-import App from './App';
+import "./alt.css";
+import App from "./App";
 // Dave store
 // import { store } from "./app/store"
-import { HashRouter as BrowserRouter, Routes, Route, createBrowserRouter, HashRouter } from 'react-router-dom'
+import {
+  HashRouter as BrowserRouter,
+  Routes,
+  Route,
+  createBrowserRouter,
+  HashRouter,
+} from "react-router-dom";
 
 // Nickel Store
-import store from './store'
+import store from "./store";
 // import { Provider } from "react-redux"
-import { AuthProvider } from './context/authProvider';
+import { AuthProvider } from "./context/authProvider";
 
-
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>
   <HashRouter>
     <AuthProvider>
       <Routes>
-        <Route path='/*' element={<App />} />
+        <Route path="/*" element={<App />} />
       </Routes>
     </AuthProvider>
-  </HashRouter>
+  </HashRouter>,
   // </React.StrictMode>
 );
-
-

@@ -65,7 +65,6 @@ const App = () => {
   const { auth } = useAuth();
   const [oneReceipt, setOneReceipt] = useState(false);
   const location = useLocation();
-  console.log(location.pathname);
   const { isRotated, setIsRotated, workbar } = useContext(AuthContext);
 
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -82,8 +81,6 @@ const App = () => {
 
   return (
     <main className="App">
-      {console.log(location.pathname)}
-
       <NavBar isRotated={isRotated} setIsRotated={setIsRotated} />
 
       <h5

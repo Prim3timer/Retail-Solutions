@@ -400,8 +400,7 @@ const UserSettings = () => {
               name="roles"
               size="3"
               multiple={true}
-              //  ref={selectRef}
-
+              // ref={selectRef}
               value={roles}
               onChange={(e) => onRolesChanged(e)}
               className="roles-select"

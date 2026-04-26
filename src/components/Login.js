@@ -69,12 +69,12 @@ const Login = () => {
         },
       );
       console.log(JSON.stringify(response?.data));
-      // console.log(JSON.stringify(response));
       const accessToken = response?.data?.accessToken;
       const roles = response?.data?.roles;
       const picker = response?.data?.id;
 
       setAuth({ user, roles, accessToken, picker });
+      console.log(auth);
 
       setUser("");
       setPwd("");

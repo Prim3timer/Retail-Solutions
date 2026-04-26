@@ -257,7 +257,6 @@ const Transactions = () => {
     const transes = await axios.get(`/transactions`);
     console.log(transes.data);
     const reverseTranses = transes.data.reverse();
-    console.log(reverseTranses[0]);
     localStorage.setItem("memTransaction", reverseTranses[0]._id);
     dispatch({ type: "transArray", payload: [] });
     // const queryParams = new URLSearchParams(window.location.search)

@@ -18,16 +18,16 @@ const SideBar = () => {
     setIsRotated(false);
   };
 
-  useEffect(() => {
-    const linksHeight = linksRef.current.getBoundingClientRect().height;
-    if (isRotated) {
-      sideRef.current.style.height = `${linksHeight}px`;
-    } else {
-      setTimeout(() => {
-        sideRef.current.style.height = `0px`;
-      }, 5);
-    }
-  }, [isRotated]);
+  // useEffect(() => {
+  //   const linksHeight = linksRef.current.getBoundingClientRect().height;
+  //   if (isRotated) {
+  //     sideRef.current.style.height = `${linksHeight}px`;
+  //   } else {
+  //     setTimeout(() => {
+  //       sideRef.current.style.height = `0px`;
+  //     }, 5);
+  //   }
+  // }, [isRotated]);
   return (
     <div>
       <section

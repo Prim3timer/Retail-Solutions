@@ -75,15 +75,15 @@ const GenSales = () => {
             return innerArray;
           });
         });
-        const filterate =
-          innerArray &&
-          innerArray.filter((inner) =>
-            inner.name.toLowerCase().includes(search.toLowerCase()),
+          const filterate =
+            innerArray &&
+            innerArray.filter((inner) =>
+              inner.name.toLowerCase().includes(search.toLowerCase()),
+            );
+          console.log(filterate);
+          const filterate2 = filterate.filter((inner) =>
+            inner.date.substring(0, 10).includes(search2),
           );
-        console.log(filterate);
-        const filterate2 = filterate.filter((inner) =>
-          inner.date.substring(0, 10).includes(search2),
-        );
         // setLast(filterate)
 
         console.log(innerArray);
