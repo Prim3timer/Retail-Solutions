@@ -40,7 +40,7 @@ let CreateItem = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const theBigPics = files.filter((pic) => pic.size > 2000000);
+    const theBigPics = files && files.filter((pic) => pic.size > 2000000);
     console.log(theBigPics);
     if (theBigPics.length) {
       dispatch({ type: "success", payload: true });
