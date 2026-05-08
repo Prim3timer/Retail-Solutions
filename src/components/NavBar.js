@@ -8,6 +8,7 @@ import SideBar from "./SideBar";
 import AuthContext from "../context/authProvider";
 import multiLinks from "./multiLinks";
 import useWindowSize from "../hooks/useWindowSize";
+import NavCat from "./NavCat";
 const NavBar = () => {
   //  const [isRotated, setIsRotated] = useState(false)
   const { isRotated, setIsRotated, barRef } = useContext(AuthContext);
@@ -68,7 +69,7 @@ const NavBar = () => {
       {/* <div className={width > 739 ? "show-home-links" : "hide-home-links"}> */}
       {auth.accessToken && location.pathname !== "/login" ? (
         <div className="show-home-links">
-          {multiLinks.map((link) => {
+          {/* {multiLinks.map((link) => {
             const { id, name, path } = link;
             return (
               // <div className="link-names">
@@ -85,7 +86,8 @@ const NavBar = () => {
 
               // </div>
             );
-          })}
+          })} */}
+          <NavCat />
           <Link to="/login" className="home-links" onClick={logout}>
             logout
           </Link>

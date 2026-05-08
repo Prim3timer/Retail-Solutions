@@ -897,6 +897,15 @@ input {
   background-color: snow;
 }
 
+.navcat {
+  display: flex;
+  column-gap: 1rem;
+}
+
+.navcat-link {
+  color: white;
+}
+
   .searcher {
     display: flex;
     top: 10px;

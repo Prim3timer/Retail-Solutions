@@ -92,7 +92,7 @@ const Items = () => {
                   )}
                   <div className="shop-item-texts">
                     <h4>
-                      {console.log(item)}
+                      {/* {console.log(item)} */}
                       {currency}
                       {numberWithCommas(Number(item.availablePrices[0]))}
                     </h4>
