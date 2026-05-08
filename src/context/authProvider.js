@@ -31,6 +31,7 @@ export const AuthProvider = ({ children }) => {
   const itemRef = useRef();
   const barRef = useRef(null);
   const [showOne, setShowOne] = useState(false);
+  const [cat, setCat] = useState("");
 
   // const currency = '₦'
   // const picUrl = 'https://mawuhi-back.onrender.com/images'
@@ -361,6 +362,8 @@ export const AuthProvider = ({ children }) => {
         footSize,
         colours,
         storage,
+        cat,
+        setCat,
       }}
     >
       {children}

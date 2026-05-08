@@ -1,9 +1,9 @@
 const multiLinks = [
-  {
-    id: 1,
-    name: "transactions",
-    path: "/transactions",
-  },
+  // {
+  //   id: 1,
+  //   name: "transactions",
+  //   path: "/transactions",
+  // },
   {
     id: 2,
     name: "add item",
@@ -19,41 +19,41 @@ const multiLinks = [
     name: "inventory",
     path: "/inventory",
   },
-  {
-    id: 5,
-    name: "purchase history",
-    path: "/gen-sales",
-  },
+  // {
+  //   id: 5,
+  //   name: "purchase history",
+  //   path: "/gen-sales",
+  // },
   {
     id: 6,
     name: "receipts",
     path: "/gen-shopping",
   },
-  {
-    id: 7,
-    name: "admin",
-    path: "/admin",
-  },
+  // {
+  //   id: 7,
+  //   name: "admin",
+  //   path: "/admin",
+  // },
   {
     id: 8,
     name: "categories",
     path: "/categories",
   },
 
-  {
-    id: 9,
-    name: "cart",
-    path: "/cart",
-  },
-  {
-    id: 10,
-    name: "about us",
-    path: "/about-us",
-  },
+  // {
+  //   id: 9,
+  //   name: "cart",
+  //   path: "/cart",
+  // },
+  // {
+  //   id: 10,
+  //   name: "about us",
+  //   path: "/about-us",
+  // },
   {
     id: 11,
-    name: "delete account",
-    path: "/delete-account",
+    name: "orders",
+    path: "/order",
   },
 ];
 

@@ -24,7 +24,7 @@ const Login = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/categories";
+  const from = location.state?.from?.pathname || "/merch";
   const [isPassword, setisPassword] = useState("password");
   const [passwordCheck2, setPasswordCheck2] = useState(faEyeSlash);
   const [isPassword2, setisPassword2] = useState("password");

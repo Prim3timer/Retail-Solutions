@@ -13,7 +13,7 @@ import useAuth from "../hooks/useAuth";
 import { Link } from "react-router-dom";
 const { v4: uuid } = require("uuid");
 
-const Items = () => {
+const Merch = () => {
   // window.history.pushState(null, null, '/home');
   const [state, dispatch] = useReducer(reducer, initialState);
   const { falseIsRotated, currency, oneItem, picUrl, items } =
@@ -61,9 +61,7 @@ const Items = () => {
     <h2 className="shop">Loading...</h2>
   ) : (
     <div className="shop" onClick={falseIsRotated}>
-      <div className="home-shop">
-        <h2>Items ({shopItems.length})</h2>
-      </div>
+      <div className="home-shop"></div>
       <form className="searcher">
         <input
           placeholder="search items"
@@ -78,7 +76,7 @@ const Items = () => {
         {shopItems &&
           shopItems.map((item, i) => {
             return (
-              <Link to={"/edit-item"} className="linker" key={item._id}>
+              <Link to={"/single-item"} className="linker" key={item._id}>
                 <article
                   className="shopping-items"
                   onClick={() => oneItem(item._id)}
@@ -141,4 +139,4 @@ const Items = () => {
   );
 };
 
-export default Items;
+export default Merch;

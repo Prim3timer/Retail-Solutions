@@ -249,11 +249,11 @@ const Inventory = ({ mark, setMark }) => {
                     <td className="sales-items">
                       {new Date(inv.date).toString().substring(4, 25)}
                     </td>
-                    <td ref={invRef} className="sales-items">
+                    {/* <td ref={invRef} className="sales-items">
                       <a onClick={(e) => showEdit(inv._id, e)}>
                         <FontAwesomeIcon icon={faPenToSquare} />
                       </a>
-                    </td>
+                    </td> */}
                   </tr>
                 );
               })}

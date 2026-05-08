@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import AuthContext from "../context/authProvider";
 import { Link } from "react-router-dom";
-const NavCat = () => {
-  const { items } = useContext(AuthContext);
+const NavCat = ({ itemCat }) => {
+  const { items, cat, setCat } = useContext(AuthContext);
   const [filterate, setFilterate] = useState([]);
   const noGroceries = items.filter((item) => item.category !== "Groceries");
   const getDistinctCategories =
@@ -11,28 +11,24 @@ const NavCat = () => {
       return item.category;
     });
 
-  //   const showItemCat = () => {
-  //     localStorage.setItem("category", itemCat);
-  //   };
+  const showItemCat = () => {
+    localStorage.setItem("category", itemCat);
+  };
 
   const uniqueArray = [...new Set(getDistinctCategories)];
-  console.log(items);
+  // console.log(items);
   return (
-    <div className="navcat">
-      {uniqueArray.map((item) => {
-        return (
-          <Link className="navcat-link" to={"/shop"} onClick={showItemCat}>
-            <article>
-              <p>
-                {item.includes("Foot Wears")
-                  ? item.substring(0, 10)
-                  : item}{" "}
-              </p>
-            </article>
-          </Link>
-        );
-      })}
-    </div>
+    <Link className="navcat-link" to={"/shop"} onClick={showItemCat}>
+      <div className="navcat">
+        <article>
+          <p className="navcat-items">
+            {itemCat.includes("Foot Wears")
+              ? itemCat.substring(0, 10)
+              : itemCat}{" "}
+          </p>
+        </article>
+      </div>
+    </Link>
   );
 };
 
