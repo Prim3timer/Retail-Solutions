@@ -11,7 +11,7 @@ import useWindowSize from "../hooks/useWindowSize";
 import NavCat from "./NavCat";
 const NavBar = () => {
   //  const [isRotated, setIsRotated] = useState(false)
-  const { isRotated, setIsRotated, barRef } = useContext(AuthContext);
+  const { isRotated, setIsRotated, barRef, items } = useContext(AuthContext);
   const [currentWidth, setCurrentWidth] = useState();
   const navigate = useNavigate();
   const location = useLocation();
@@ -31,6 +31,16 @@ const NavBar = () => {
       setIsRotated(false);
     }
   };
+
+  const noGroceries =
+    items && items.filter((item) => item.category !== "Groceries");
+  const getDistinctCategories =
+    noGroceries &&
+    noGroceries.map((item) => {
+      return item.category;
+    });
+
+  const uniqueArray = [...new Set(getDistinctCategories)];
 
   const logout = useLogout();
 
@@ -87,7 +97,10 @@ const NavBar = () => {
               // </div>
             );
           })} */}
-          <NavCat />
+
+          {uniqueArray.map((item) => {
+            return <NavCat itemCat={item} />;
+          })}
           <Link to="/login" className="home-links" onClick={logout}>
             logout
           </Link>

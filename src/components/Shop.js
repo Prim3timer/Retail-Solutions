@@ -16,15 +16,16 @@ const { v4: uuid } = require("uuid");
 const Shop = () => {
   // window.history.pushState(null, null, '/home');
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { falseIsRotated, currency, items, oneItem, picUrl } =
+  const { falseIsRotated, currency, items, oneItem, picUrl, cat, setCat } =
     useContext(AuthContext);
   const [shopItems, setShopItems] = useState([]);
   const [search2, setSearch2] = useState("");
   const axiosPrivate = useAxiosPrivate();
   const [readMore, setReadMore] = useState(true);
-  const cat = localStorage.getItem("category");
+  setCat(localStorage.getItem("category"));
+  console.log(cat);
   const getItems = async () => {
-    console.log(items);
+    console.log(cat);
     dispatch({ type: "clear" });
     try {
       // dispatch({type: 'errMsg', payload: 'loading...'})
@@ -54,7 +55,7 @@ const Shop = () => {
 
   useEffect(() => {
     getItems();
-  }, [state.search, search2]);
+  }, [state.search, search2, cat]);
 
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -85,7 +86,7 @@ const Shop = () => {
       <section className="shop-inner-container">
         {shopItems &&
           shopItems.map((item, i) => {
-            console.log(item);
+            // console.log(item);
             return (
               <Link to={"/single-item"} className="linker" key={item._id}>
                 <article

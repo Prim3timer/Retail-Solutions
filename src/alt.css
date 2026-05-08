@@ -904,6 +904,11 @@ input {
 
 .navcat-link {
   color: white;
+  text-decoration: none;
+}
+
+.navcat-items {
+  white-space: nowrap;
 }
 
   .searcher {
@@ -2261,7 +2266,7 @@ input {
   top: 0;
   /* margin-bottom: 2rem; */
   overflow-x: auto;
-  height: 6rem;
+  height: 8rem;
 }
 
 .plain-header {
