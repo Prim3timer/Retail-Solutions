@@ -59,6 +59,27 @@ const NavBar = () => {
       }
       ref={navRef}
     >
+      {location.pathname === "/admin" && (
+        <article className="top-admin-links">
+          {multiLinks.map((link) => {
+            const { id, name, path } = link;
+            return (
+              // <div className="link-names">
+              <Link
+                onClick={() => localStorage.setItem("memUser", auth.picker)}
+                to={path}
+                className={
+                  location.pathname === path ? "current-path" : "home-links"
+                }
+                key={id}
+              >
+                {name}
+              </Link>
+              // </div>
+            );
+          })}
+        </article>
+      )}
       {location.pathname === "/" ||
       location.pathname === "/login" ||
       location.pathname === "/register" ? (
@@ -79,28 +100,26 @@ const NavBar = () => {
       {/* <div className={width > 739 ? "show-home-links" : "hide-home-links"}> */}
       {auth.accessToken && location.pathname !== "/login" ? (
         <div className="show-home-links">
-          {/* {multiLinks.map((link) => {
-            const { id, name, path } = link;
-            return (
-              // <div className="link-names">
-              <Link
-                onClick={() => localStorage.setItem("memUser", auth.picker)}
-                to={path}
-                className={
-                  location.pathname === path ? "current-path" : "home-links"
-                }
-                key={id}
-              >
-                {name}
-              </Link>
-
-              // </div>
-            );
-          })} */}
-
           {uniqueArray.map((item) => {
-            return <NavCat itemCat={item} />;
+            return (
+              <article>
+                <NavCat itemCat={item} />
+              </article>
+            );
           })}
+          |
+          <Link to="/gen-sales" className="home-links">
+            purchase history
+          </Link>
+          <Link to="/delete-account" className="home-links">
+            delete account
+          </Link>
+          <Link to="/admin" className="home-links">
+            admin
+          </Link>
+          <Link to="/about-us" className="home-links">
+            about us
+          </Link>
           <Link to="/login" className="home-links" onClick={logout}>
             logout
           </Link>

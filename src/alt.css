@@ -88,7 +88,7 @@
   top: 0;
   /* margin-bottom: 2rem; */
   overflow-x: auto;
-  height: 6rem;
+  /* height: 6rem; */
 }
 
 .header>*:nth-child(1) {
@@ -114,6 +114,8 @@
   color: whitesmoke;
   font-size: 1rem;
   white-space: nowrap;
+  /* position: fixed; */
+  top: 10px;
   /* transform: scale(1.5);
   font-size: bold; */
 }
@@ -150,6 +152,9 @@
 .current-path {
   white-space: nowrap;
   font-size: 1rem;
+  position: fixed;
+  top: 10px;
+  left: 10px
   /* text-decoration: none;
   color: tomato; */
   /* transform: scale(1.5);
@@ -897,9 +902,17 @@ input {
   background-color: snow;
 }
 
+.navbar-show-home-links-cont {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
 .navcat {
   display: flex;
-  column-gap: 1rem;
+  align-items: flex-end;
+  column-gap: .5rem;
+  /* background-color: red; */
 }
 
 .navcat-link {
@@ -909,6 +922,7 @@ input {
 
 .navcat-items {
   white-space: nowrap;
+  font-size: 1rem;
 }
 
   .searcher {
@@ -933,10 +947,10 @@ input {
   /* text-align: center; */
   /* width: 100vw; */
   padding-top: .5rem;
+  /* background-color: red; */
 }
 
 .the-navbar {
-  background-color: red;
   display: flex;
   height: 4rem;
   align-items: flex-end;
@@ -954,12 +968,12 @@ input {
 }
 
 .shop-inner-container {
-  /* padding: 0 .5rem; */
   display: grid;
 
   /* width: 100%; */
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem 2rem;
+  /* background-color: red; */
 
 }
 
@@ -2303,7 +2317,7 @@ input {
 .show-home-links {
   display: grid;
   grid-auto-flow: column;
-  column-gap: 1rem;
+  column-gap: .5rem;
   width: 100vw;
   justify-content: start;
   overflow-y: auto;
@@ -2346,6 +2360,15 @@ input {
   grid-column: 14/ 15 ;
   color: whitesmoke;
 } */
+
+.top-admin-links {
+  display: flex;
+  column-gap: 1rem;
+  position: absolute;
+  top: 10px;
+  width: 95vw;
+  overflow: auto;
+}
 
 
 .admin-links {
