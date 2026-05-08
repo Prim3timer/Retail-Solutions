@@ -1,6 +1,11 @@
 import { useState, useRef, useEffect, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faLeftLong, faBars } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCheck,
+  faLeftLong,
+  faBars,
+  faShoppingCart,
+} from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import useLogout from "../hooks/useLogout";
@@ -80,6 +85,7 @@ const NavBar = () => {
           })}
         </article>
       )}
+
       {location.pathname === "/" ||
       location.pathname === "/login" ||
       location.pathname === "/register" ? (
@@ -96,10 +102,14 @@ const NavBar = () => {
       ) : (
         ""
       )}
-      {auth.accessToken && <div className="head-home"></div>}
+
+      {/* {auth.accessToken && <div className="head-home"></div>} */}
       {/* <div className={width > 739 ? "show-home-links" : "hide-home-links"}> */}
       {auth.accessToken && location.pathname !== "/login" ? (
         <div className="show-home-links">
+          <Link to={"/cart"}>
+            <FontAwesomeIcon icon={faShoppingCart} role="button" />
+          </Link>
           {uniqueArray.map((item) => {
             return (
               <article>
