@@ -40,11 +40,11 @@ const multiLinks = [
     path: "/categories",
   },
 
-  // {
-  //   id: 9,
-  //   name: "cart",
-  //   path: "/cart",
-  // },
+  {
+    id: 9,
+    name: "cart",
+    path: "/cart",
+  },
   // {
   //   id: 10,
   //   name: "about us",

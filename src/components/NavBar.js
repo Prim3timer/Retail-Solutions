@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useContext } from "react";
+import { useState, useRef, useEffect, useContext, useReducer } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCheck,
@@ -14,17 +14,31 @@ import AuthContext from "../context/authProvider";
 import multiLinks from "./multiLinks";
 import useWindowSize from "../hooks/useWindowSize";
 import NavCat from "./NavCat";
+import reducer from "../reducer";
+import initialState from "../store";
+import { use } from "react";
+import axios from "../app/api/axios";
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
 const NavBar = () => {
   //  const [isRotated, setIsRotated] = useState(false)
   const { isRotated, setIsRotated, barRef, items } = useContext(AuthContext);
   const [currentWidth, setCurrentWidth] = useState();
+  const [currentUser, setCurrentUser] = useState();
   const navigate = useNavigate();
   const location = useLocation();
   const { auth } = useAuth();
   const navRef = useRef();
   const { width } = useWindowSize();
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-  // console.log(width)
+  const memUser = localStorage.getItem("memUser");
+  const axiosPrivate = useAxiosPrivate();
+  const getCartLength = async () => {
+    const response = await axiosPrivate.get("/users");
+    const user = response.data.users.find((user) => user._id === memUser);
+    console.log(response.data);
+    response && setCurrentUser(user);
+  };
 
   const workBar = () => {
     const navWidth = navRef.current.getBoundingClientRect().width;
@@ -50,6 +64,10 @@ const NavBar = () => {
   const logout = useLogout();
 
   const pix = 1200;
+
+  useEffect(() => {
+    getCartLength();
+  }, []);
 
   return (
     // making the class name dynamic because of the 'retail tracker' text conflicing with the first element, 'transaction' in
@@ -107,9 +125,6 @@ const NavBar = () => {
       {/* <div className={width > 739 ? "show-home-links" : "hide-home-links"}> */}
       {auth.accessToken && location.pathname !== "/login" ? (
         <div className="show-home-links">
-          <Link to={"/cart"}>
-            <FontAwesomeIcon icon={faShoppingCart} role="button" />
-          </Link>
           {uniqueArray.map((item) => {
             return (
               <article>
@@ -118,20 +133,28 @@ const NavBar = () => {
             );
           })}
           |
-          <Link to="/gen-sales" className="home-links">
-            purchase history
-          </Link>
-          <Link to="/delete-account" className="home-links">
-            delete account
-          </Link>
-          <Link to="/admin" className="home-links">
-            admin
-          </Link>
-          <Link to="/about-us" className="home-links">
-            about us
-          </Link>
-          <Link to="/login" className="home-links" onClick={logout}>
-            logout
+          <article className="second-navbar-links">
+            <Link to="/gen-sales" className="home-links">
+              purchase history
+            </Link>
+            <Link to="/delete-account" className="home-links">
+              delete account
+            </Link>
+            <Link to="/admin" className="home-links">
+              admin
+            </Link>
+            <Link to="/about-us" className="home-links">
+              about us
+            </Link>
+            <Link to="/login" className="home-links" onClick={logout}>
+              logout
+            </Link>
+          </article>
+          <Link to={"/cart"} className="nav-cart-link">
+            <p className="cart-length">
+              {currentUser && currentUser.cart?.length}
+            </p>
+            <FontAwesomeIcon icon={faShoppingCart} role="button" />
           </Link>
         </div>
       ) : (
