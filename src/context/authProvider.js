@@ -32,6 +32,8 @@ export const AuthProvider = ({ children }) => {
   const barRef = useRef(null);
   const [showOne, setShowOne] = useState(false);
   const [cat, setCat] = useState("");
+  const [cartLength, setCartLength] = useState(0);
+  const [newCartLength, setNewCartLength] = useState(cartLength);
 
   // const currency = '₦'
   // const picUrl = 'https://mawuhi-back.onrender.com/images'
@@ -139,6 +141,21 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem("memId", id);
     localStorage.setItem("memUser", auth.picker);
   };
+  const memUser = localStorage.getItem("memUser");
+
+  const getCartLength = async () => {
+    const response = await axiosPrivate.get("/users");
+    const user = response.data.users.find((user) => user._id === memUser);
+    console.log(user);
+    console.log(user.cart.length);
+    response && setCurrentUser(user);
+    setCartLength(user.cart.length);
+  };
+
+  useEffect(() => {
+    getCartLength();
+    console.log(cartLength);
+  }, []);
 
   const userPage = (id) => {
     localStorage.setItem("memUser", id);
@@ -364,6 +381,11 @@ export const AuthProvider = ({ children }) => {
         storage,
         cat,
         setCat,
+        cartLength,
+        setCartLength,
+        getCartLength,
+        newCartLength,
+        setNewCartLength,
       }}
     >
       {children}

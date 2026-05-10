@@ -21,7 +21,17 @@ import axios from "../app/api/axios";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 const NavBar = () => {
   //  const [isRotated, setIsRotated] = useState(false)
-  const { isRotated, setIsRotated, barRef, items } = useContext(AuthContext);
+  const {
+    isRotated,
+    setIsRotated,
+    barRef,
+    items,
+    cartLength,
+    setCartLength,
+    getCartLength,
+    newCartLength,
+    setNewCartLength,
+  } = useContext(AuthContext);
   const [currentWidth, setCurrentWidth] = useState();
   const [currentUser, setCurrentUser] = useState();
   const navigate = useNavigate();
@@ -33,12 +43,6 @@ const NavBar = () => {
 
   const memUser = localStorage.getItem("memUser");
   const axiosPrivate = useAxiosPrivate();
-  const getCartLength = async () => {
-    const response = await axiosPrivate.get("/users");
-    const user = response.data.users.find((user) => user._id === memUser);
-    console.log(response.data);
-    response && setCurrentUser(user);
-  };
 
   const workBar = () => {
     const navWidth = navRef.current.getBoundingClientRect().width;
@@ -50,6 +54,15 @@ const NavBar = () => {
       setIsRotated(false);
     }
   };
+
+  console.log(cartLength);
+
+  const getNewCartLength = () => {};
+
+  useEffect(() => {
+    setNewCartLength(cartLength);
+    // getNewCartLength();
+  }, [cartLength]);
 
   const noGroceries =
     items && items.filter((item) => item.category !== "Groceries");
@@ -64,10 +77,6 @@ const NavBar = () => {
   const logout = useLogout();
 
   const pix = 1200;
-
-  useEffect(() => {
-    getCartLength();
-  }, []);
 
   return (
     // making the class name dynamic because of the 'retail tracker' text conflicing with the first element, 'transaction' in
@@ -151,9 +160,7 @@ const NavBar = () => {
             </Link>
           </article>
           <Link to={"/cart"} className="nav-cart-link">
-            <p className="cart-length">
-              {currentUser && currentUser.cart?.length}
-            </p>
+            <p className="cart-length">{newCartLength}</p>
             <FontAwesomeIcon icon={faShoppingCart} role="button" />
           </Link>
         </div>

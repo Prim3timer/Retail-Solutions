@@ -23,7 +23,7 @@ const Merch = () => {
   const axiosPrivate = useAxiosPrivate();
 
   const getItems = async () => {
-    console.log(items);
+    // console.log(items);
     dispatch({ type: "clear" });
     try {
       // dispatch({type: 'errMsg', payload: 'loading...'})

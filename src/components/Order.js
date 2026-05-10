@@ -100,10 +100,10 @@ const Order = () => {
             : ""}{" "}
         Orders ({allTransactions && forAddress + forPhone})
       </h2>
-      <form className="search-form">
+      <form className="searcher">
         {/* <h5> orders </h5> */}
         <label>
-          Filter By Status
+          {/* Filter By Status */}
           <input
             // id="invent-search"
             type="text"
@@ -114,7 +114,7 @@ const Order = () => {
           />
         </label>
         <label>
-          Filter By Date
+          {/* Filter By Date */}
           <input
             // id="invent-search"
             type="text"

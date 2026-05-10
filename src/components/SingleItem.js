@@ -29,8 +29,19 @@ const SingleItem = () => {
   // console.log(state.transArray);
   const { auth, setAuth, users } = useAuth();
   const axiosPrivate = useAxiosPrivate();
-  const { falseIsRotated, currency, items, picUrl, footSize } =
-    useContext(AuthContext);
+  const {
+    falseIsRotated,
+    currency,
+    items,
+    picUrl,
+    footSize,
+    cartLength,
+    newCartLength,
+    setNewCartLength,
+  } = useContext(AuthContext);
+
+  console.log(cartLength);
+  // const [newCartLength, setNewCartLength] = useState(cartLength);
 
   const [userId, setUserId] = useState("");
   const [index, setIndex] = useState(0);
@@ -148,6 +159,8 @@ const SingleItem = () => {
           `/users/sessions/${auth.picker}`,
           actualItem,
         );
+        // update the number of items in the cart
+        setNewCartLength(cartLength + 1);
 
         dispatch({ type: "ALERTMSG", payload: response.data.message });
         setTimeout(() => {

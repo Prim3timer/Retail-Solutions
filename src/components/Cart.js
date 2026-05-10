@@ -18,8 +18,17 @@ const Payment = () => {
   const [itemImage, setItemImage] = useState("");
   const cartQtyRef = useRef(null);
   const { auth, setAuth } = useAuth();
-  const { falseIsRotated, currency, items, picUrl, footSize } =
-    useContext(AuthContext);
+  const {
+    falseIsRotated,
+    currency,
+    items,
+    picUrl,
+    footSize,
+    cartLength,
+    setCartLength,
+  } = useContext(AuthContext);
+  console.log(cartLength);
+  setCartLength(state.cartArray.length);
   const axiosPrivate = useAxiosPrivate();
 
   const memUser = localStorage.getItem("memUser");
@@ -224,7 +233,7 @@ const Payment = () => {
         {state.cartArray &&
           state.cartArray.map((item) => {
             // console.log(item.img[0].name)
-            console.log(item);
+            // console.log(item);
             return (
               <article className="cart-items-container">
                 <p>{item.name}</p>
