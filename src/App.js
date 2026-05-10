@@ -70,7 +70,6 @@ const App = () => {
   const { isRotated, setIsRotated, workbar } = useContext(AuthContext);
 
   const [state, dispatch] = useReducer(reducer, initialState);
-
   //   const trueHome = ()=> {
   // setHome(true)
 

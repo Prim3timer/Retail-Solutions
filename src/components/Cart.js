@@ -28,7 +28,7 @@ const Payment = () => {
     setCartLength,
   } = useContext(AuthContext);
   console.log(cartLength);
-  setCartLength(state.cartArray.length);
+  setCartLength(state.cartAmount);
   const axiosPrivate = useAxiosPrivate();
 
   const memUser = localStorage.getItem("memUser");
@@ -221,8 +221,8 @@ const Payment = () => {
 
         {state.cartArray.length ? (
           <h4>
-            {parseFloat(state.cartAmount).toFixed(2)} item{plural2},{" "}
-            {state.cartArray.length} product{plural}
+            {parseFloat(state.cartAmount).toFixed(2)} item{plural2} (
+            {state.cartArray.length} product{plural})
           </h4>
         ) : (
           "Empty"

@@ -2,7 +2,7 @@ import Shop from "./Shop";
 import reducer from "../reducer";
 import initialState from "../store";
 // import SearchItem from "./SearchItem";
-import { useEffect, useReducer, useContext, useState } from "react";
+import { useEffect, useReducer, useContext, useState, useId } from "react";
 import AuthContext from "../context/authProvider";
 import { useNavigate, useLocation } from "react-router-dom";
 // import useAxiosPrivate from "../hooks/useAxiosPrivate";
@@ -16,9 +16,23 @@ const { v4: uuid } = require("uuid");
 const Merch = () => {
   // window.history.pushState(null, null, '/home');
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { falseIsRotated, currency, oneItem, picUrl, items } =
-    useContext(AuthContext);
-  console.log(items);
+  const {
+    falseIsRotated,
+    currency,
+    oneItem,
+    picUrl,
+    items,
+    cartLength,
+    setNewCartLength,
+    auth,
+  } = useContext(AuthContext);
+  const user = auth && auth?.users?.find((user) => user._id === auth.picker);
+  const userCart = user?.cart;
+  const cartTotal = userCart?.reduce((a, b) => {
+    return a + b.transQty;
+  }, 0);
+  console.log(user);
+  setNewCartLength(cartTotal);
   const [shopItems, setShopItems] = useState([]);
   const axiosPrivate = useAxiosPrivate();
 

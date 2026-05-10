@@ -146,10 +146,15 @@ export const AuthProvider = ({ children }) => {
   const getCartLength = async () => {
     const response = await axiosPrivate.get("/users");
     const user = response.data.users.find((user) => user._id === memUser);
-    console.log(user);
-    console.log(user.cart.length);
+    console.log(user?.cart);
+    console.log(user?.cart?.length);
+
+    const lengthy = user?.cart?.reduce((a, b) => {
+      return a + b.transQty;
+    }, 0);
+    console.log(lengthy);
     response && setCurrentUser(user);
-    setCartLength(user.cart.length);
+    setCartLength(lengthy);
   };
 
   useEffect(() => {

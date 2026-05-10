@@ -16,14 +16,24 @@ const { v4: uuid } = require("uuid");
 const Shop = () => {
   // window.history.pushState(null, null, '/home');
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { falseIsRotated, currency, items, oneItem, picUrl, cat, setCat } =
-    useContext(AuthContext);
+  const {
+    falseIsRotated,
+    currency,
+    items,
+    oneItem,
+    picUrl,
+    cat,
+    setCat,
+    cartLength,
+    setNewCartLength,
+    auth,
+  } = useContext(AuthContext);
   const [shopItems, setShopItems] = useState([]);
   const [search2, setSearch2] = useState("");
   const axiosPrivate = useAxiosPrivate();
   const [readMore, setReadMore] = useState(true);
   setCat(localStorage.getItem("category"));
-  console.log(cat);
+  setNewCartLength(cartLength);
   const getItems = async () => {
     console.log(cat);
     dispatch({ type: "clear" });

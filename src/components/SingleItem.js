@@ -160,8 +160,16 @@ const SingleItem = () => {
           actualItem,
         );
         // update the number of items in the cart
-        setNewCartLength(cartLength + 1);
-
+        const user =
+          auth && auth?.users?.find((user) => user._id === auth.picker);
+        const userCart = user?.cart;
+        const cartTotal = userCart?.reduce((a, b) => {
+          return a + b.transQty;
+        }, 0);
+        console.log(user);
+        setNewCartLength(cartTotal + state.elItem.transQty);
+        // setNewCartLength(cartLength + state.elItem.transQty);
+        console.log(state.cartAmount);
         dispatch({ type: "ALERTMSG", payload: response.data.message });
         setTimeout(() => {
           dispatch({ type: "success", payload: false });
