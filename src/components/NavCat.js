@@ -11,7 +11,8 @@ const NavCat = ({ itemCat }) => {
       return item.category;
     });
 
-  const showItemCat = () => {
+  const showItemCat = (e) => {
+    // e.preventDefault();
     localStorage.setItem("category", itemCat);
   };
 
