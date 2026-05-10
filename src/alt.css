@@ -3083,12 +3083,17 @@ color: crimson;
 
 
   .searcher {
-  width: 90vw;
+
+  /* background-color: red; */
   
 }
-  .sales-total>*:nth-child(1) {
 
-    grid-column: 2/5;
+.searcher input {
+  width: 90vw;
+}
+.sales-total>*:nth-child(1) {
+  
+  grid-column: 2/5;
   }
 
   .sales-total>*:nth-child(2) {
@@ -3215,6 +3220,10 @@ color: crimson;
 }
 
 @media screen and (max-width: 585px) {
+
+  .searcher {
+      min-width: 80vw;
+  }
 
   .edit-item-colage {
     display: grid;

@@ -80,14 +80,14 @@ const Shop = () => {
       </div>
       <form className="searcher">
         <input
-          placeholder="search items"
+          placeholder="filter items"
           value={state.search}
           onChange={(e) =>
             dispatch({ type: "search", payload: e.target.value })
           }
         />
         <input
-          placeholder="'ladies' or 'gentlemen'"
+          placeholder=" Gender. (ladies or gentlemen)"
           value={search2}
           onChange={(e) => setSearch2(e.target.value)}
         />
