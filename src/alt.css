@@ -2388,7 +2388,7 @@ input {
   column-gap: 1rem;
   position: fixed;
   top: 10px;
-  width: 100vw;
+  width: 85vw;
   /* background-color: red; */
   overflow-y: auto;
 }
