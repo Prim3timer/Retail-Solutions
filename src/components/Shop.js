@@ -33,7 +33,13 @@ const Shop = () => {
   const axiosPrivate = useAxiosPrivate();
   const [readMore, setReadMore] = useState(true);
   setCat(localStorage.getItem("category"));
-  setNewCartLength(cartLength);
+  const user = auth && auth?.users?.find((user) => user._id === auth.picker);
+  const userCart = user?.cart;
+  const cartTotal = userCart?.reduce((a, b) => {
+    return a + b.transQty;
+  }, 0);
+  console.log(user);
+  setNewCartLength(cartTotal);
   const getItems = async () => {
     console.log(cat);
     dispatch({ type: "clear" });

@@ -1729,10 +1729,10 @@ width: 90vw;
 .edit-user form>*:nth-child(3) {
   align-self: center;
   margin-top: 1rem;
-  /* background-color: red; */
 }
 
 .admin-home-link {
+  /* background-color: red; */
   color: whitesmoke;
   text-decoration: none;
 }
@@ -2386,9 +2386,9 @@ input {
 .top-admin-links {
   display: flex;
   column-gap: 1rem;
-  position: absolute;
+  position: fixed;
   top: 10px;
-  /* width: 95vw; */
+  width: 100vw;
   /* background-color: red; */
   overflow-y: auto;
 }

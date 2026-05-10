@@ -25,10 +25,10 @@ const Payment = () => {
     picUrl,
     footSize,
     cartLength,
-    setCartLength,
+    setNewCartLength,
   } = useContext(AuthContext);
   console.log(cartLength);
-  setCartLength(state.cartAmount);
+  setNewCartLength(state.cartAmount);
   const axiosPrivate = useAxiosPrivate();
 
   const memUser = localStorage.getItem("memUser");
