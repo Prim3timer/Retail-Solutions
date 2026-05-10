@@ -30,6 +30,8 @@ const Users = () => {
   const [brand, setBrand] = useState();
   const [state, dispatch] = useReducer(reducer, initialState);
   const [currentPerson, setCurrentPerson] = useState();
+  const [username, setUsername] = useState("");
+  const [search, setSearch] = useState("");
 
   //   const [users, setUsers] = useState([])
   const axiosPrivate = useAxiosPrivate();
@@ -50,8 +52,11 @@ const Users = () => {
         const response = await axiosPrivate.get("/users", {
           signal: controller.signal,
         });
-
-        isMounted && setCurrentUsers(response.data.users);
+        console.log(response.data);
+        const filterate = response.data.users.filter((user) =>
+          user.username.toLowerCase().includes(state.search.toLowerCase()),
+        );
+        isMounted && setCurrentUsers(filterate);
         setUsers(response.data.users);
 
         setAuth((prev) => {
@@ -71,7 +76,7 @@ const Users = () => {
 
       controller.abort();
     };
-  }, []);
+  }, [state.search]);
   // getUsers()
   // Rhinohorn1#
 
@@ -81,6 +86,15 @@ const Users = () => {
 
   return (
     <article className="users-cont">
+      <form>
+        <input
+          placeholder="search for user"
+          value={state.search}
+          onChange={(e) =>
+            dispatch({ type: "search", payload: e.target.value })
+          }
+        />
+      </form>
       {/* <h4>{auth.user}</h4> */}
       {currentUsers?.length ? (
         <table

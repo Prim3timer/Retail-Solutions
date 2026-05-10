@@ -2,10 +2,12 @@ import Users from "./Users";
 import { Link, useLocation } from "react-router-dom";
 import UserSelect from "./UserSelect";
 import useAuth from "../hooks/useAuth";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useReducer } from "react";
 import axios from "../app/api/axios";
 import AuthContext from "../context/authProvider";
 import multiLinks from "./multiLinks";
+import reducer from "../reducer";
+import initialState from "../store";
 
 const Admin = () => {
   const { users, setAtHome, atHome, setIsRotated } = useContext(AuthContext);
@@ -13,6 +15,7 @@ const Admin = () => {
   const location = useLocation();
   const [currentPerson, setCurrentPerson] = useState();
   const [showSettings, setShowSettings] = useState(false);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const falseIsRotated = () => {
     setIsRotated(false);
@@ -26,7 +29,7 @@ const Admin = () => {
   }, []);
   return (
     <div className="admin" onClick={falseIsRotated}>
-      <h1 className="admin-header">Admin</h1>
+      <h3 className="admin-header">Admin</h3>
 
       {/* <Link to={"/order"}>Orders</Link> */}
 
