@@ -343,7 +343,7 @@ const Payment = () => {
       {/* <hr></hr> */}
       <div className="cart-action">
         <button onClick={doneSales}>Checkout</button>
-        <Link to={"/categories"} className="cart-shop-linker">
+        <Link to={"/merch"} className="cart-shop-linker">
           {" "}
           <button className="cart-action-button2"> Shop</button>
         </Link>
