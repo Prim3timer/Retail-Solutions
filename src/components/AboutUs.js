@@ -5,12 +5,13 @@ const AboutUs = () => {
     <div className="about-us">
       <h3>About Us</h3>
       <p>
-        This application assists in day to day retail activities for
-        supermarkets and other kinds of stores.
+        We offer web deveopment services for a diverse category of tech
+        solutions.
       </p>
       <p>
-        It is quite extensive as it is applicable to both physical and online
-        transactions.
+        This application in an e commerce web application. It features automatic
+        (or manual) inventory update, sales analytics, quick filteration of
+        inventory based on item quantity and much more.
       </p>
       <p>
         <span style={{ fontWeight: "bold" }}>To contact us:</span>
