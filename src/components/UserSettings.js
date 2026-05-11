@@ -257,7 +257,7 @@ const UserSettings = () => {
     <h2 className="edit-user">Loading...</h2>
   ) : (
     <div className="edit-user">
-      <h2 id="user-edit-header">Edit User Settings</h2>
+      <h3 id="user-edit-header">Edit User Settings</h3>
 
       <form
         className="usersetting-first-form"
