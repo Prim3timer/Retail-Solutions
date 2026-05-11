@@ -81,7 +81,7 @@ export const AuthProvider = ({ children }) => {
     "Groceries",
     "Incubator",
     "Power Accessories",
-    "E-Bike",
+    "E-Bikes",
   ];
 
   const gender = ["gentlemen", "ladies"];
@@ -114,6 +114,7 @@ export const AuthProvider = ({ children }) => {
     "wheat",
     "purple",
     "gray ",
+    "orange",
   ];
 
   const storage = [64, 128, 256, 500, 512, 1000, 2000];

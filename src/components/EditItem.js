@@ -16,7 +16,7 @@ import { type } from "@testing-library/user-event/dist/type";
 
 const EditItem = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { items, picUrl, measurements } = useContext(AuthContext);
+  const { items, picUrl, measurements, catArray } = useContext(AuthContext);
   const [item, setItem] = useState({});
   const [picArray, setPicArray] = useState([]);
   const [firstName, setFirstName] = useState("");
@@ -99,6 +99,10 @@ const EditItem = () => {
 
   const options = measurements.map((measurement) => {
     return <option className="update-form-unit-measure">{measurement}</option>;
+  });
+
+  const catOptions = catArray.map((cat) => {
+    return <option>{cat}</option>;
   });
 
   const hanldeImageId = (ide) => {
@@ -456,6 +460,12 @@ const EditItem = () => {
             value={fourthPrice}
             onChange={(e) => setFourthPrice(e.target.value)}
           />
+        </label>
+        <label>
+          Category
+          <select className="update-form-category">
+            <options>{catOptions}</options>
+          </select>
         </label>
         <label>description:</label>
         <textarea
