@@ -1,7 +1,8 @@
 import { useReducer, useEffect, useContext, useState } from "react";
 import reducer from "../reducer";
 import initialState from "../store";
-import axios, { axiosPrivate } from "../app/api/axios";
+import axios from "../app/api/axios";
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import AuthContext from "../context/authProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -37,6 +38,7 @@ const EditItem = () => {
   const now = new Date();
 
   const navigate = useNavigate();
+  const axiosPrivate = useAxiosPrivate();
 
   let fiveArray = [];
 
@@ -235,7 +237,7 @@ const EditItem = () => {
       console.log(fiveArray);
       console.log(newItem);
 
-      const response2 = await axios.patch(
+      const response2 = await axiosPrivate.patch(
         `/items/texts/${JSON.stringify(newItem)}?id=${item._id}&firstName=${firstName}&index=${id}`,
       );
       dispatch({ type: "success", payload: true });

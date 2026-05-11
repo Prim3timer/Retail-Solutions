@@ -3221,8 +3221,8 @@ color: crimson;
 
 @media screen and (max-width: 585px) {
 
-  .searcher {
-      min-width: 80vw;
+  .searcher input {
+      width: 40vw
   }
 
   .edit-item-colage {
