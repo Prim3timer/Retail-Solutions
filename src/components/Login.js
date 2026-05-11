@@ -115,7 +115,7 @@ const Login = () => {
       >
         {state.errMsg}
       </p>
-      <h1 className="login-header">Sign In</h1>
+      <h3 className="login-header">Sign In</h3>
       <form onSubmit={handleSubmit} className="login-form">
         <label htmlFor="username">Username:</label>
         <input

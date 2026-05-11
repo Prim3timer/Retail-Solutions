@@ -58,6 +58,7 @@ const Payment = () => {
       setCartItems(currentUser.cart);
       console.log(currentUser);
       const newUseritems = currentUser.cart.map((item) => {
+        console.log(item.transQty);
         return { ...item, amount: item.quantity };
       });
       console.log(newUseritems);

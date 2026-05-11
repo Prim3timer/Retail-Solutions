@@ -79,7 +79,9 @@ const App = () => {
   //     trueHome()
   //     console.log(home)
   //   }, [])
-
+  {
+    console.log(location.pathname);
+  }
   return (
     <main className="App">
       <NavBar isRotated={isRotated} setIsRotated={setIsRotated} />
@@ -88,7 +90,8 @@ const App = () => {
         className={
           auth.accessToken &&
           location.pathname !== "/one-receipt" &&
-          location.pathname !== "/login"
+          location.pathname !== "/login" &&
+          location.pathname !== "/"
             ? `greeting`
             : "no-greeting"
         }

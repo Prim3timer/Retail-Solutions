@@ -215,7 +215,9 @@ const EditItem = () => {
           setPicArray(currentBackItem.img);
         }
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   const handleEdit = async (ide) => {
@@ -237,12 +239,16 @@ const EditItem = () => {
       console.log(fiveArray);
       console.log(newItem);
 
-      const response2 = await axiosPrivate.patch(
+      const response2 = await axios.patch(
         `/items/texts/${JSON.stringify(newItem)}?id=${item._id}&firstName=${firstName}&index=${id}`,
       );
-      dispatch({ type: "success", payload: true });
-      dispatch({ type: "errMsg", payload: response2.data.message });
+      console.log(response2.data);
+      if (response2) {
+        dispatch({ type: "success", payload: true });
+        dispatch({ type: "errMsg", payload: response2.data.message });
+      }
     } catch (error) {
+      console.log(error.message);
       dispatch({ type: "errMsg", payload: error.message });
     } finally {
       setTimeout(() => {
