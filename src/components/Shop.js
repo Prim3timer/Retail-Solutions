@@ -76,7 +76,11 @@ const Shop = () => {
     <div className="shop" onClick={falseIsRotated}>
       {/* <button onClick={handleGender}>gendered</button> */}
       <div className="home-shop">
-        <h4> {cat.includes("Foot Wears") ? cat.substring(0, 10) : cat}</h4>
+        <h4>
+          {" "}
+          {cat.includes("Foot Wears") ? cat.substring(0, 10) : cat}
+          {state.search && " |"} {state.search}
+        </h4>
       </div>
       <form className="searcher">
         <input

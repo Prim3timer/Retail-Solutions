@@ -30,7 +30,7 @@ const EditItem = () => {
   const [success, setSuccess] = useState(false);
   const [initialPic, setInitialPic] = useState();
   const [msgBackup, setMsgBackup] = useState(false);
-  const { afa, unitMeasure, ole } = state;
+  const { afa, unitMeasure, ole, category } = state;
   const [firstPrice, setFirstPrice] = useState("");
   const [secondPrice, setSecondPrice] = useState("");
   const [thirdPrice, setThirdPrice] = useState("");
@@ -76,10 +76,11 @@ const EditItem = () => {
   const getItem = () => {
     const currentItem =
       items && items.find((item) => item._id === localStorage.getItem("memId"));
-    console.log(currentItem.availablePrices);
+    console.log(currentItem.category);
     if (currentItem) {
       setFirstName(currentItem.name);
       dispatch({ type: "unitMeasure", payload: currentItem.unitMeasure });
+      dispatch({ type: "CATEGORY", payload: currentItem.category });
       //   setPrice(currentItem.price);
       setFirstPrice(currentItem.availablePrices[0]);
       currentItem.availablePrices.length > 1 &&
@@ -120,6 +121,10 @@ const EditItem = () => {
     console.log(e.target.value);
     dispatch({ type: "unitMeasure", payload: e.target.value });
     // setUnitMeasure(e.target.value)
+  };
+
+  const onCategoryChange = (e) => {
+    dispatch({ type: "CATEGORY", payload: e.target.value });
   };
 
   const handleFile = (e, ide) => {
@@ -237,7 +242,7 @@ const EditItem = () => {
         quantity,
         unitMeasure,
         description,
-        // image: files,
+        category,
         now,
       };
       console.log(fiveArray);
@@ -434,7 +439,7 @@ const EditItem = () => {
           </select>
         </label>
 
-        <label htmlFor="qty">
+        <label htmlFor="price">
           price
           <input
             type="text"
@@ -463,7 +468,12 @@ const EditItem = () => {
         </label>
         <label>
           Category
-          <select className="update-form-category">
+          <select
+            className="update-form-category"
+            size={1}
+            value={category}
+            onChange={(e) => onCategoryChange(e)}
+          >
             <options>{catOptions}</options>
           </select>
         </label>
