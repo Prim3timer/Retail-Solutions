@@ -92,14 +92,14 @@ const Order = () => {
   }, [search, search2]);
   return (
     <div className="orders" onClick={remainDelete}>
-      <h2 className="order-header">
+      <h3 className="order-header">
         {search.toLowerCase().includes("pen")
-          ? "Pending"
+          ? "Unshipped"
           : search.toLowerCase().includes("s")
             ? "Shipped"
             : ""}{" "}
         Orders ({allTransactions && forAddress + forPhone})
-      </h2>
+      </h3>
       <form className="searcher">
         {/* <h5> orders </h5> */}
         <label>
@@ -200,7 +200,9 @@ const Order = () => {
                         tran.status === "pending" ? "status" : "done-status"
                       }
                     >
-                      {tran.status === "shipped" ? "shipped" : "pending"}
+                      {tran.status === "shipped"
+                        ? "shipped"
+                        : "not yet shipped"}
                       {tran.status === "shipped" ? (
                         <div>
                           <FaCheck />

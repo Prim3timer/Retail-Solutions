@@ -34,7 +34,7 @@ const Shop = () => {
   const [readMore, setReadMore] = useState(true);
   setCat(localStorage.getItem("category"));
   const getItems = async () => {
-    console.log(cat);
+    console.log(items);
     dispatch({ type: "clear" });
     try {
       // dispatch({type: 'errMsg', payload: 'loading...'})
@@ -78,8 +78,11 @@ const Shop = () => {
       <div className="home-shop">
         <h4>
           {" "}
+          {/* {items.every((item) => item.category === items[0].category)
+            ? cat
+            : ""} */}
           {cat.includes("Foot Wears") ? cat.substring(0, 10) : cat}
-          {state.search && " |"} {state.search}
+          {state.search && ` | ${state.search}`}
         </h4>
       </div>
       <form className="searcher">
