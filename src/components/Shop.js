@@ -25,8 +25,10 @@ const Shop = () => {
     cat,
     setCat,
     cartLength,
-    setNewCartLength,
     auth,
+    getCartLength,
+    currentUser,
+    setNewCartLength,
   } = useContext(AuthContext);
   const [shopItems, setShopItems] = useState([]);
   const [search2, setSearch2] = useState("");
@@ -69,6 +71,21 @@ const Shop = () => {
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
+
+  useEffect(() => {
+    getCartLength();
+  }, []);
+
+  useEffect(() => {
+    // console.log(auth.users.find((user) => user._id === auth.picker));
+    currentUser &&
+      setNewCartLength(
+        currentUser &&
+          currentUser?.cart?.reduce((a, b) => {
+            return a + b.transQty;
+          }, 0),
+      );
+  }, []);
 
   return !items ? (
     <h2 className="shop">Loading...</h2>

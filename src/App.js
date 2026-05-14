@@ -49,6 +49,7 @@ import Categories from "./components/Categories";
 import Image from "./components/Image";
 import AboutUs from "./components/AboutUs";
 import Merch from "./components/Merch";
+import EmailSender from "./components/EmailSender";
 
 // import SearchItem from "./SearchItem";
 
@@ -130,7 +131,7 @@ const App = () => {
             <Route path="linkpage" element={<LinkPage />} />
             <Route path="unauthorized" element={<Unauthorized />} />
             <Route path="user-select" element={<UserSelect />} />
-
+            <Route path="email-sender" element={<EmailSender />} />
             <Route path="user-settings" element={<UserSettings />} />
 
             {/* protected routes */}

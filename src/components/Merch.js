@@ -24,15 +24,12 @@ const Merch = () => {
     items,
     cartLength,
     setNewCartLength,
+    getCartLength,
+    currentUser,
     auth,
   } = useContext(AuthContext);
-  const user = auth && auth?.users?.find((user) => user._id === auth.picker);
-  const userCart = user?.cart;
-  const cartTotal = userCart?.reduce((a, b) => {
-    return a + b.transQty;
-  }, 0);
-  console.log(user);
-  setNewCartLength(cartTotal);
+  console.log(currentUser);
+
   const [shopItems, setShopItems] = useState([]);
   const axiosPrivate = useAxiosPrivate();
 
@@ -64,6 +61,20 @@ const Merch = () => {
   useEffect(() => {
     getItems();
   }, [state.search]);
+
+  useEffect(() => {
+    getCartLength();
+  }, []);
+
+  useEffect(() => {
+    // console.log(auth.users.find((user) => user._id === auth.picker));
+    currentUser &&
+      setNewCartLength(
+        currentUser?.cart?.reduce((a, b) => {
+          return a + b.transQty;
+        }, 0),
+      );
+  }, []);
 
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

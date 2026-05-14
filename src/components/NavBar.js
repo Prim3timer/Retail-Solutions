@@ -61,7 +61,6 @@ const NavBar = () => {
 
   useEffect(() => {
     setNewCartLength(cartLength);
-    // getNewCartLength();
   }, [cartLength]);
 
   const noGroceries =
@@ -132,7 +131,7 @@ const NavBar = () => {
 
       {/* {auth.accessToken && <div className="head-home"></div>} */}
       {/* <div className={width > 739 ? "show-home-links" : "hide-home-links"}> */}
-      {location.pathname !== "/" ? (
+      {location.pathname !== "/login" ? (
         <div className="show-home-links">
           {uniqueArray.map((item) => {
             return (
@@ -155,14 +154,19 @@ const NavBar = () => {
             <Link to="/about-us" className="home-links">
               about us
             </Link>
+            <Link to="/email-sender" className="home-links">
+              send email
+            </Link>
             <Link to="/login" className="home-links" onClick={logout}>
               logout
             </Link>
           </article>
-          <Link to={"/cart"} className="nav-cart-link">
-            <p className="cart-length">{newCartLength}</p>
-            <FontAwesomeIcon icon={faShoppingCart} role="button" />
-          </Link>
+          {location.pathname !== "/cart" && (
+            <Link to={"/cart"} className="nav-cart-link">
+              <p className="cart-length">{newCartLength}</p>
+              <FontAwesomeIcon icon={faShoppingCart} role="button" />
+            </Link>
+          )}
         </div>
       ) : (
         ""

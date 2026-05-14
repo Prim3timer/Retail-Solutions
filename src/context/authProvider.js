@@ -146,6 +146,7 @@ export const AuthProvider = ({ children }) => {
   const memUser = localStorage.getItem("memUser");
 
   const getCartLength = async () => {
+    console.log("on cart length");
     const response = await axiosPrivate.get("/users");
     const user = response.data.users.find((user) => user._id === memUser);
     console.log(user?.cart);
@@ -353,6 +354,7 @@ export const AuthProvider = ({ children }) => {
         search2,
         sales,
         user,
+        // setUser,
         currentUser,
         setCurrentUser,
         setCurrentUser2,

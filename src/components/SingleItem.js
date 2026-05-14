@@ -38,11 +38,14 @@ const SingleItem = () => {
     cartLength,
     newCartLength,
     setNewCartLength,
+    currentUser,
+    getCartLength,
+    cart,
   } = useContext(AuthContext);
 
-  console.log(cartLength);
   // const [newCartLength, setNewCartLength] = useState(cartLength);
 
+  console.log(currentUser);
   const [userId, setUserId] = useState("");
   const [index, setIndex] = useState(0);
   const [justPics, setJustPics] = useState([]);
@@ -56,7 +59,7 @@ const SingleItem = () => {
   const getItem = async () => {
     const useId = localStorage.getItem("memId");
     const memUser = localStorage.getItem("memUser");
-    const goods = items.find((item) => item._id === useId);
+    const goods = items && items.find((item) => item._id === useId);
     if (!auth.accessToken) {
       navigate("/login");
     }
@@ -111,7 +114,8 @@ const SingleItem = () => {
     // console.log(state.elItem);
   };
 
-  const addToCart = async () => {
+  const addToCart = async (e) => {
+    e.preventDefault();
     console.log(state.shoeSize);
     dispatch({ type: "success", payload: true });
     try {
@@ -160,16 +164,19 @@ const SingleItem = () => {
           actualItem,
         );
         // update the number of items in the cart
-        const user =
-          auth && auth?.users?.find((user) => user._id === auth.picker);
-        const userCart = user?.cart;
-        const cartTotal = userCart?.reduce((a, b) => {
-          return a + b.transQty;
-        }, 0);
-        console.log(user);
-        setNewCartLength(cartTotal + state.elItem.transQty);
-        // setNewCartLength(cartLength + state.elItem.transQty);
-        console.log(state.cartAmount);
+        // const user =
+        //   auth && auth?.users?.find((user) => user._id === auth.picker);
+        // const userCart = user?.cart;
+        const cartTotal =
+          currentUser &&
+          currentUser.cart.reduce((a, b) => {
+            return a + b.transQty;
+          }, 0);
+        // setNewCartLength(cartTotal + state.elItem.transQty);
+        console.log(currentUser);
+        console.log(cartTotal);
+        console.log(state.elItem.transQty);
+        setNewCartLength(cartLength + state.elItem.transQty);
         dispatch({ type: "ALERTMSG", payload: response.data.message });
         setTimeout(() => {
           dispatch({ type: "success", payload: false });
@@ -350,6 +357,21 @@ const SingleItem = () => {
   useEffect(() => {
     dispatch({ type: "SINGLETOTAL" });
   }, [state.elItem.transQty]);
+
+  useEffect(() => {
+    getCartLength();
+  }, []);
+
+  useEffect(() => {
+    // console.log(auth.users.find((user) => user._id === auth.picker));
+    currentUser &&
+      setNewCartLength(
+        currentUser &&
+          currentUser?.cart?.reduce((a, b) => {
+            return a + b.transQty;
+          }, 0),
+      );
+  }, []);
 
   return isLoading ? (
     <h2 className="single-item">Loading...</h2>
@@ -567,7 +589,7 @@ const SingleItem = () => {
               <button onClick={addToCart}>Add to Cart</button>
               <Link to={"/cart"} className="cart-action-link">
                 {" "}
-                <button className="cart-action-button"> View Cart</button>
+                <button className="cart-action-button"> Your Cart</button>
               </Link>
             </section>
             <h3
