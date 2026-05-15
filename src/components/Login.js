@@ -55,7 +55,6 @@ const Login = () => {
   useEffect(() => {
     userRef.current.focus();
   }, []);
-  console.log(location.pathname);
   const handleSubmit = async (e) => {
     e.preventDefault();
 

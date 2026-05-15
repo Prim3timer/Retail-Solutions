@@ -131,7 +131,7 @@ const NavBar = () => {
 
       {/* {auth.accessToken && <div className="head-home"></div>} */}
       {/* <div className={width > 739 ? "show-home-links" : "hide-home-links"}> */}
-      {location.pathname !== "/login" ? (
+      {location.pathname !== "/" ? (
         <div className="show-home-links">
           {uniqueArray.map((item) => {
             return (
