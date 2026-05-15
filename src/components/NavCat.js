@@ -19,7 +19,8 @@ const NavCat = ({ itemCat }) => {
   const uniqueArray = [...new Set(getDistinctCategories)];
   // console.log(items);
   return (
-    location.pathname !== "/login" && (
+    location.pathname !== "/login" &&
+    location.pathname !== "/register" && (
       <Link className="navcat-link" to={"/shop"} onClick={showItemCat}>
         <div className="navcat">
           <article>

@@ -218,7 +218,7 @@ const Payment = () => {
   ) : (
     <div className="checkout" onClick={falseIsRotated}>
       <div className="cart-header-status">
-        <h5>Your Cart:</h5>
+        <h3>Your Cart:</h3>
 
         {state.cartArray.length ? (
           <h4>
