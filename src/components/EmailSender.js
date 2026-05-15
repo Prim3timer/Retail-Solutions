@@ -13,13 +13,7 @@ const EmailSender = () => {
       message,
     };
     try {
-      const response = await axios.get(`/emailing`, {
-        params: {
-          email,
-          subject,
-          message,
-        },
-      });
+      const response = await axios.post(`/emailing`, allThings);
       if (response) {
         console.log("success");
       }

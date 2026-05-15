@@ -150,14 +150,14 @@ const Register = () => {
           >
             {state.errMsg}
           </p>
-          <h1
+          <h3
             style={{
               textAlign: "center",
               margin: "1rem 0",
             }}
           >
             Register
-          </h1>
+          </h3>
           <form onSubmit={handleSubmit} id="username-form">
             <label htmlFor="username">
               Username:

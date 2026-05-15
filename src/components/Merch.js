@@ -79,7 +79,7 @@ const Merch = () => {
     // console.log(auth.users.find((user) => user._id === auth.picker));
     setTimeout(() => {
       setNewCartLength(firstCartTotal || cartTotal);
-    }, 300);
+    }, 500);
   }, []);
 
   function numberWithCommas(x) {
