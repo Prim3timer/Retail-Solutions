@@ -82,8 +82,8 @@ const NavBar = () => {
     // the header list of items
     <div
       className={
-        location.pathname === "/" ||
         location.pathname === "/login" ||
+        location.pathname === "/" ||
         location.pathname === "/register"
           ? "plain-header"
           : "header"
@@ -131,7 +131,7 @@ const NavBar = () => {
 
       {/* {auth.accessToken && <div className="head-home"></div>} */}
       {/* <div className={width > 739 ? "show-home-links" : "hide-home-links"}> */}
-      {location.pathname !== "/" ? (
+      {location.pathname !== "/" || location.pathname !== "/login" ? (
         <div className="show-home-links">
           {uniqueArray.map((item) => {
             return (
@@ -140,32 +140,36 @@ const NavBar = () => {
               </article>
             );
           })}
-          |
-          <article className="second-navbar-links">
-            <Link to="/gen-sales" className="home-links">
-              purchase history
-            </Link>
-            <Link to="/delete-account" className="home-links">
-              delete account
-            </Link>
-            <Link to="/admin" className="home-links">
-              admin
-            </Link>
-            <Link to="/about-us" className="home-links">
-              about us
-            </Link>
-            <Link to="/email-sender" className="home-links">
-              send email
-            </Link>
-            <Link to="/login" className="home-links" onClick={logout}>
-              logout
-            </Link>
-          </article>
-          {location.pathname !== "/cart" && (
+          {location.pathname !== "/login" && (
+            <article className="second-navbar-links">
+              |
+              <Link to="/gen-sales" className="home-links">
+                purchase history
+              </Link>
+              <Link to="/delete-account" className="home-links">
+                delete account
+              </Link>
+              <Link to="/admin" className="home-links">
+                admin
+              </Link>
+              <Link to="/about-us" className="home-links">
+                about us
+              </Link>
+              <Link to="/email-sender" className="home-links">
+                send email
+              </Link>
+              <Link to="/login" className="home-links" onClick={logout}>
+                logout
+              </Link>
+            </article>
+          )}
+          {location.pathname !== "/cart" && location.pathname !== "/login" ? (
             <Link to={"/cart"} className="nav-cart-link">
               <p className="cart-length">{newCartLength}</p>
               <FontAwesomeIcon icon={faShoppingCart} role="button" />
             </Link>
+          ) : (
+            ""
           )}
         </div>
       ) : (
