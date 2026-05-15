@@ -28,7 +28,16 @@ const Merch = () => {
     currentUser,
     auth,
   } = useContext(AuthContext);
-  console.log(currentUser);
+  const user = auth.users.find((user) => user._id === auth.picker);
+  const cartTotal = user.cart.reduce((a, b) => {
+    return a + b.transQty;
+  }, 0);
+
+  const firstCartTotal = currentUser?.cart?.reduce((a, b) => {
+    return a + b.transQty;
+  }, 0);
+  console.log(cartTotal);
+  console.log(firstCartTotal);
 
   const [shopItems, setShopItems] = useState([]);
   const axiosPrivate = useAxiosPrivate();
@@ -68,12 +77,9 @@ const Merch = () => {
 
   useEffect(() => {
     // console.log(auth.users.find((user) => user._id === auth.picker));
-    currentUser &&
-      setNewCartLength(
-        currentUser?.cart?.reduce((a, b) => {
-          return a + b.transQty;
-        }, 0),
-      );
+    setTimeout(() => {
+      setNewCartLength(firstCartTotal || cartTotal);
+    }, 300);
   }, []);
 
   function numberWithCommas(x) {
