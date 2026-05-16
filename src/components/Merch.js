@@ -36,8 +36,8 @@ const Merch = () => {
   const firstCartTotal = currentUser?.cart?.reduce((a, b) => {
     return a + b.transQty;
   }, 0);
-  console.log(cartTotal);
-  console.log(firstCartTotal);
+  console.log(auth.users);
+  console.log(currentUser);
 
   const [shopItems, setShopItems] = useState([]);
   const axiosPrivate = useAxiosPrivate();
@@ -75,11 +75,29 @@ const Merch = () => {
     getCartLength();
   }, []);
 
+  // const waitForUser = new Promise((resolve, reject) => {
+  //   try {
+  //     if (currentUser) {
+  //       resolve("user loaded");
+  //     } else reject("user not loaded");
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // });
+
+  // console.log(waitForUser);
+
+  // const checkForUser = async () => {
+  //   const response = await waitForUser();
+  //   console.log(response);
+  // };
+  console.log(cartTotal);
+
   useEffect(() => {
+    setNewCartLength(firstCartTotal || cartTotal);
     // console.log(auth.users.find((user) => user._id === auth.picker));
-    setTimeout(() => {
-      setNewCartLength(firstCartTotal || cartTotal);
-    }, 500);
+    // checkForUser();
+    // setTimeout(() => {}, 500);
   }, []);
 
   function numberWithCommas(x) {

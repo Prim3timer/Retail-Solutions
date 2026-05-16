@@ -143,6 +143,7 @@ const NavBar = () => {
             );
           })}
           {location.pathname !== "/login" &&
+            location.pathname !== "/" &&
             location.pathname !== "/register" && (
               <article className="second-navbar-links">
                 |
@@ -169,16 +170,19 @@ const NavBar = () => {
                 </Link>
               </article>
             )}
-          {location.pathname !== "/cart" &&
-          location.pathname !== "/login" &&
-          location.pathname !== "/register" ? (
-            <Link to={"/cart"} className="nav-cart-link">
-              <p className="cart-length">{newCartLength}</p>
-              <FontAwesomeIcon icon={faShoppingCart} role="button" />
-            </Link>
-          ) : (
-            ""
-          )}
+          {
+            // location.pathname !== "/login" &&
+            location.pathname !== "/" &&
+            location.pathname !== "/login" &&
+            location.pathname !== "/register" ? (
+              <Link to={"/cart"} className="nav-cart-link">
+                <p className="cart-length">{newCartLength}</p>
+                <FontAwesomeIcon icon={faShoppingCart} role="button" />
+              </Link>
+            ) : (
+              ""
+            )
+          }
         </div>
       ) : (
         ""

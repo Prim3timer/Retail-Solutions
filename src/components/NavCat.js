@@ -20,6 +20,7 @@ const NavCat = ({ itemCat }) => {
   // console.log(items);
   return (
     location.pathname !== "/login" &&
+    location.pathname !== "/" &&
     location.pathname !== "/register" && (
       <Link className="navcat-link" to={"/shop"} onClick={showItemCat}>
         <div className="navcat">
