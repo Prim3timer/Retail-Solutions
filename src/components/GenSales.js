@@ -75,15 +75,15 @@ const GenSales = () => {
             return innerArray;
           });
         });
-          const filterate =
-            innerArray &&
-            innerArray.filter((inner) =>
-              inner.name.toLowerCase().includes(search.toLowerCase()),
-            );
-          console.log(filterate);
-          const filterate2 = filterate.filter((inner) =>
-            inner.date.substring(0, 10).includes(search2),
+        const filterate =
+          innerArray &&
+          innerArray.filter((inner) =>
+            inner.name.toLowerCase().includes(search.toLowerCase()),
           );
+        console.log(filterate);
+        const filterate2 = filterate.filter((inner) =>
+          inner.date.substring(0, 10).includes(search2),
+        );
         // setLast(filterate)
 
         console.log(innerArray);
@@ -172,6 +172,40 @@ const GenSales = () => {
               );
             })}
         </tbody>
+        <tr>
+          <th>Total</th>
+          <th
+            style={{
+              textAlign: "left",
+              overflowY: "auto",
+            }}
+          >
+            {state.sales &&
+              numberWithCommas(
+                state.sales
+                  .reduce((a, b) => {
+                    return a + parseFloat(b.qty);
+                  }, 0)
+                  .toFixed(2),
+              )}
+          </th>
+          <th
+            style={{
+              textAlign: "left",
+            }}
+            colSpan={2}
+          >
+            {currency}
+            {state.sales &&
+              numberWithCommas(
+                state.sales
+                  .reduce((a, b) => {
+                    return a + parseFloat(b.total);
+                  }, 0)
+                  .toFixed(2),
+              )}
+          </th>
+        </tr>
       </table>
 
       {/* <div className="sales-total">

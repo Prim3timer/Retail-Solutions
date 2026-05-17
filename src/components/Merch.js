@@ -44,6 +44,7 @@ const Merch = () => {
 
   const getItems = async () => {
     // console.log(items);
+    localStorage.setItem("memUser", auth.picker);
     dispatch({ type: "clear" });
     try {
       // dispatch({type: 'errMsg', payload: 'loading...'})
@@ -94,7 +95,9 @@ const Merch = () => {
   console.log(cartTotal);
 
   useEffect(() => {
-    setNewCartLength(firstCartTotal || cartTotal);
+    setTimeout(() => {
+      setNewCartLength(firstCartTotal || cartTotal);
+    }, 1000);
     // console.log(auth.users.find((user) => user._id === auth.picker));
     // checkForUser();
     // setTimeout(() => {}, 500);
