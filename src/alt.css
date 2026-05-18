@@ -961,12 +961,14 @@ border-radius: 10px;
     font-size: 1rem;
     z-index: 100;
     column-gap: 1rem;
-    /* width: 60vw; */
+    width: 80%;
+    /* background-color: red; */
     
   }
   
   .searcher input {
-    width: 40vw;
+    position: relative;
+    width: 50%;
 
   }
 
