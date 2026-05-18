@@ -1979,10 +1979,8 @@ input {
 }
 
 .goods-name {
-  /* white-space: wrap; */
+  white-space: wrap;
   /* text-wrap: wrap; */
-  /* background-color: red; */
-
 }
 
 
@@ -2758,6 +2756,10 @@ button:active {
 
 .injunction {
   background-color: red;
+}
+
+#receipts {
+  width: 90vw;
 }
 
 

@@ -398,30 +398,6 @@ const SingleItem = () => {
                   })}
               </section>
             </Link>
-            {/* <article className="shop-big-img">
-              <p onClick={lower}>
-                <FaChevronLeft />
-              </p>
-              <p onClick={higher}>
-                {" "}
-                <FaChevronRight />
-              </p>
-            </article>
-            <div className="single-item-array">
-              {justPics &&
-                justPics.map((image, i) => {
-                  // console.log(image);
-                  return (
-                    <img
-                      className={i === index ? "onview" : "no-onview"}
-                      src={`${picUrl}/images/${state.elItem.name}/${image.name}`}
-                      onClick={() => handleIndex(i)}
-                      alt={image.name}
-                    />
-                  );
-                })}
-            </div> */}
-
             <p
               className={state.elItem.qty == 0 ? "invent-alarm" : "invent-info"}
             >
@@ -578,7 +554,6 @@ const SingleItem = () => {
                 ""
               )} */}
             </div>
-
             <h3>
               {currency}
               {/* {console.log(state.elItem)} */}
