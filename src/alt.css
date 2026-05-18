@@ -991,8 +991,9 @@ border-radius: 10px;
   width: 80vw;
 }
 
-.shop form input {
 
+/* the searcher classname form with on input  */
+.shop form input, .receipts form input {
   width: 100%
 }
 
