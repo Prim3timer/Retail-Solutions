@@ -5,11 +5,11 @@ const SendMail = ({ currentTransaction }) => {
   const templateId = "template_62lkg69";
   const publicKey = "6I6Qx4fjEW_mAYlFD";
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     console.log(currentTransaction);
     const { email, grandTotal, goods, _id } = currentTransaction;
     console.log(_id, goods[0].name);
+    const taxes = grandTotal * 0.07;
 
     let templateParams = {
       name: goods[0].name,
@@ -18,7 +18,7 @@ const SendMail = ({ currentTransaction }) => {
       price: goods[0].price,
       cost: {
         shipping: 0,
-        taxes: grandTotal * 0.07,
+        taxes,
         total: grandTotal,
       },
     };
@@ -36,13 +36,14 @@ const SendMail = ({ currentTransaction }) => {
     }
     // const trans = response.data.transaction
   };
-  //   useEffect(() => {
-  //     handleSubmit();
-  //   }, []);
+  useEffect(() => {
+    handleSubmit();
+  }, []);
 
   return (
     <div className="emailing">
-      <button onClick={handleSubmit}>Send</button>
+      <p>Thank you for your order</p>
+      <p>We will send you tracking details as soon as your order ships</p>
     </div>
   );
 };
