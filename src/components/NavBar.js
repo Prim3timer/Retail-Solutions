@@ -162,9 +162,9 @@ const NavBar = () => {
                 <Link to="/about-us" className="home-links">
                   about us
                 </Link>
-                {/* <Link to="/email-sender" className="home-links">
+                <Link to="/email-sender" className="home-links">
                   send email
-                </Link> */}
+                </Link>
                 <Link to="/login" className="home-links" onClick={logout}>
                   logout
                 </Link>

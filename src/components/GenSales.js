@@ -9,7 +9,6 @@ const { v4: uuid } = require("uuid");
 
 const GenSales = () => {
   const { atHome, setAtHome, setIsRotated, currency } = useContext(AuthContext);
-  console.log({ atHome });
   const [state, dispatch] = useReducer(reducer, initialState);
   const [search, setSearch] = useState("");
   const [specArray, setSpecArray] = useState([]);
@@ -18,49 +17,22 @@ const GenSales = () => {
   const [username, setUsername] = useState("");
   const { auth } = useAuth();
 
-  // const auth.picker3 = atHome === true ? auth.picker : auth.picker3
-
-  //     const getAUser = ()=>{
-  //     try {
-
-  //         const user = auth.users.find((user) => user._id === auth.picker3)
-  //         if (user){
-
-  //             // setCurrentUser2(user)
-  //             setUsername(user.username)
-  //             console.log({username})
-  //         }
-  //     } catch (error) {
-  //         console.error(error.message)
-  //     }
-  // }
-
   const falseIsRotated = () => {
     setIsRotated(false);
   };
 
   const getTrans = async () => {
     const innerArray = [];
-    console.log(auth.picker);
-    console.log({ authUsers: auth.users });
-    //   setAtHome(false)
     try {
       const response = await axios.get("/transactions");
-      // const response2 = await axiosPrivate.get('/users')
-      // console.log(response2)
-      console.log(response);
       const newArray = response.data.filter(
         (item) => item.cashierID == auth.picker,
       );
-      console.log(newArray);
 
       const person =
         auth.user && auth.users.find((person) => person._id == auth.picker);
       setCurrenUser(person);
-      console.log(person);
-
       if (newArray) {
-        console.log(currentUser);
         newArray.map((gr) => {
           return gr.goods.map((good) => {
             const elements = {
@@ -80,22 +52,15 @@ const GenSales = () => {
           innerArray.filter((inner) =>
             inner.name.toLowerCase().includes(search.toLowerCase()),
           );
-        console.log(filterate);
         const filterate2 = filterate.filter((inner) =>
           inner.date.substring(0, 10).includes(search2),
         );
-        // setLast(filterate)
-
-        console.log(innerArray);
         dispatch({ type: "sales", payload: filterate2 });
         setSpecArray(filterate2);
       }
     } catch (error) {
       dispatch({ type: "errMsg", payload: error.message });
     }
-    console.log(auth.picker);
-    console.log(auth.picker3);
-    console.log(state.sales);
   };
 
   function numberWithCommas(x) {
@@ -104,18 +69,12 @@ const GenSales = () => {
 
   useEffect(() => {
     getTrans();
-    console.log("current user is : ", currentUser);
   }, [search, search2]);
-
-  //           useEffect(()=> {
-  //     getAUser()
-  //   }, [])
 
   return !specArray ? (
     <div>Loading...</div>
   ) : (
     <div className="main-sale" onClick={falseIsRotated}>
-      {/* <h2 className="heading"> Sales ({specArray.length}) rows</h2> */}
       <h3 className="heading">Purchase History</h3>
       <form className="searcher" onSubmit={(e) => e.preventDefault()}>
         <input
@@ -153,7 +112,6 @@ const GenSales = () => {
               const theDay = new Date(sale.date)
                 .toDateString()
                 .substring(4, 15);
-              console.log(theDay);
               return (
                 <tr
                   className="sales-items-cont"

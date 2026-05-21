@@ -9,7 +9,7 @@ import emailjs from "@emailjs/browser";
 import SendMail from "./SendMail";
 
 const Thanks = () => {
-  const [currentTtransaction, setCurrentTransaction] = useState();
+  const [currentTransaction, setCurrentTransaction] = useState();
   const { currentUsers } = useContext(AuthContext);
   const [transId, setTransId] = useState();
   const location = useLocation();
@@ -87,7 +87,6 @@ const Thanks = () => {
   //     if (cost) sendEmail()
   // }, [])
   useEffect(() => {
-    console.log(currentTtransaction && currentTtransaction);
     console.log(transId && transId);
     // if (sessionId){
     getRecipt();
@@ -100,9 +99,9 @@ const Thanks = () => {
       {/* <h3>{alert}</h3> */}
       <h2>Thank you for your order</h2>
       <p>We will send you tracking details as soon as your order ships</p>
-      {/* {currentTtransaction && (
-        <SendMail currentTtransaction={currentTtransaction} />
-      )} */}
+      {currentTransaction && (
+        <SendMail currentTransaction={currentTransaction} />
+      )}
       <article>
         <Link to={"/shop"}>
           <button>Shopping</button>

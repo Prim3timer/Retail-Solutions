@@ -49,17 +49,6 @@ import Categories from "./components/Categories";
 import Image from "./components/Image";
 import AboutUs from "./components/AboutUs";
 import Merch from "./components/Merch";
-import EmailSender from "./components/EmailSender";
-
-// import SearchItem from "./SearchItem";
-
-// service_3birv1u
-
-// const ROLES = {
-//   'User': 2001,
-//   'Editor': 1984,
-//   'Admin': 5150
-// }
 
 const App = () => {
   const [afa, setAfa] = useState("");
@@ -131,7 +120,6 @@ const App = () => {
             <Route path="linkpage" element={<LinkPage />} />
             <Route path="unauthorized" element={<Unauthorized />} />
             <Route path="user-select" element={<UserSelect />} />
-            <Route path="email-sender" element={<EmailSender />} />
             <Route path="user-settings" element={<UserSettings />} />
 
             {/* protected routes */}

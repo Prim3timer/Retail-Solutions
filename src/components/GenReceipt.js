@@ -6,7 +6,6 @@ import AuthContext from "../context/authProvider";
 import useAuth from "../hooks/useAuth";
 import useRefreshToken from "../hooks/useRefreshToken";
 import { format } from "date-fns";
-// import { retry } from "@reduxjs/toolkit/query"
 import { FaTrashAlt } from "react-icons/fa";
 
 import Unauthorized from "./Unauthorized";
@@ -14,8 +13,8 @@ import { Link } from "react-router-dom";
 
 const GenShopping = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  // const [showOne, setShowOne] = useState(false)
   const [oneId, setOneId] = useState("");
+  const [search2, setSearch2] = useState("");
   const { auth } = useAuth();
   const [currentUser, setCurrentUser] = useState("");
   const {
@@ -30,23 +29,15 @@ const GenShopping = () => {
     bizName,
   } = useContext(AuthContext);
 
-  // const theDay = new Date(inv.date).getDate()
-  //     const aDate = format(inv.date.substring(0, 10), `${theDay} MMM, yyyy`)
   const refresh = useRefreshToken();
   const getItems = async () => {
     const userId = localStorage.getItem("memUser");
-    console.log(userId);
-    try {
-      console.log("hello users");
-      // const users = await axios.get('/users')
-      console.log(users);
-      const response = await axiosPrivate.get("/transactions");
 
+    try {
+      const response = await axiosPrivate.get("/transactions");
       const cashierTrans = response.data.filter(
         (item) => item.cashierID === userId,
       );
-      console.log(currentUser);
-      // dispatch({type: 'getNames', payload: response.data})
       cashierTrans.reverse();
       dispatch({ type: "getNames", payload: cashierTrans });
 
@@ -54,7 +45,10 @@ const GenShopping = () => {
         inner.date.substring(0, 10).includes(state.search),
       );
 
-      dispatch({ type: "getNames", payload: filterate });
+      const filterate2 = filterate.filter((trans) =>
+        trans._id.includes(search2),
+      );
+      dispatch({ type: "getNames", payload: filterate2 });
     } catch (error) {
       console.log(error);
     }
@@ -75,10 +69,6 @@ const GenShopping = () => {
   const handleRemove = async () => {
     dispatch({ type: "cancel", payload: false });
     const response = await axios.delete(`/transactions/${state.id}`);
-    // const newGraw = state.items && state.items.filter((item)=> item._id !== state.id)
-    // e.preventDefault()
-    // removeInventory(id)
-    // await axios.delete(`/transactions/${id}`)
 
     const newGraw = state.getNames.filter((item) => item._id !== state.id);
 
@@ -90,11 +80,6 @@ const GenShopping = () => {
     if (state.cancel) {
       dispatch({ type: "cancel", payload: false });
     }
-
-    // if (state.isEdit){
-
-    //     dispatch({type: 'isEdit', payload: false})
-    // }
   };
   const generalRemain = () => {
     if (state.isMatched) dispatch({ type: "isMatched", payload: false });
@@ -102,31 +87,15 @@ const GenShopping = () => {
   };
 
   useEffect(() => {
-    console.log("current user is : ", currentUser);
     getItems();
-  }, [state.search]);
-
-  // useEffect(()=> {
-
-  // // if (sessionId){
-  //     refresh()
-
-  // // }
-  // }, [ ])
+  }, [state.search, search2]);
 
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
   return (
-    <div
-      className="receipts"
-      onClick={generalRemain}
-
-      // onClick={remainDelete}
-    >
+    <div className="receipts" onClick={generalRemain}>
       <h2>Reciepts ({state.getNames.length})</h2>
-      {/* <Link to="one-receipt"> */}
-      {/* <article id="form-cont"> */}
       <form
         className="searcher"
         // className="receipt-search-form"
@@ -144,6 +113,16 @@ const GenShopping = () => {
 
           // https://www.npmjs.com/package/@react-google-maps/api
         />
+        <input
+          // id="receipt-search"
+          type="text"
+          role="searchbox"
+          placeholder="order# / id"
+          value={search2}
+          onChange={(e) => setSearch2(e.target.value)}
+
+          // https://www.npmjs.com/package/@react-google-maps/api
+        />
       </form>
 
       {/* <SearchItem/> */}
@@ -152,8 +131,6 @@ const GenShopping = () => {
       {state.getNames &&
         state.getNames.map((item) => {
           const theDay = new Date(item.date).toString().substring(4, 25);
-          // const theDay = new Date(item.date).toString(0, 10)
-
           return (
             <section key={item._id}>
               <Link
@@ -170,7 +147,6 @@ const GenShopping = () => {
                   <p>{item._id}</p>
                   {item.goods &&
                     item.goods.map((good) => {
-                      console.log(good);
                       return (
                         <div className="goods-container">
                           <h4 className="goods-name">{good.name}</h4>
@@ -256,7 +232,6 @@ const GenShopping = () => {
           id="verify-header"
           style={{
             margin: ".5rem auto",
-            //   display: 'flex',
           }}
         >
           Unauthorized!

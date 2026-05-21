@@ -20,6 +20,7 @@ const Order = () => {
   const [allOrders, setAllOrders] = useState(false);
   const [search, setSearch] = useState("pending");
   const [search2, setSearch2] = useState("");
+  const [search3, setSearch3] = useState("");
   const [status, setStatus] = useState();
   const [cat, setCat] = useState("all");
 
@@ -30,6 +31,11 @@ const Order = () => {
     );
     const filterate2 = filterate.filter((item) => item.date.includes(search2));
     setAllTransactions(filterate2);
+  };
+
+  const filterByOrderId = () => {
+    const filterate = genTrans.filter((item) => item._id.includes(search3));
+    setAllTransactions(filterate);
   };
   const remainDelete = () => {
     // this condition statement is to enable the removal of the confirm window once any part of the
@@ -90,6 +96,9 @@ const Order = () => {
   useEffect(() => {
     setTransArray();
   }, [search, search2]);
+  useEffect(() => {
+    filterByOrderId();
+  }, [search3]);
   return (
     <div className="orders" onClick={remainDelete}>
       <h3 className="order-header">
@@ -101,29 +110,30 @@ const Order = () => {
         Orders ({allTransactions && forAddress + forPhone})
       </h3>
       <form className="searcher">
-        {/* <h5> orders </h5> */}
-        <label>
-          {/* Filter By Status */}
-          <input
-            // id="invent-search"
-            type="text"
-            role="searchbox"
-            placeholder="pending / shipped"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-        </label>
-        <label>
-          {/* Filter By Date */}
-          <input
-            // id="invent-search"
-            type="text"
-            role="searchbox"
-            placeholder="yyyy-MM-dd"
-            value={search2}
-            onChange={(e) => setSearch2(e.target.value)}
-          />
-        </label>
+        <input
+          // id="invent-search"
+          type="text"
+          role="searchbox"
+          placeholder="pending / shipped"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <input
+          // id="invent-search"
+          type="text"
+          role="searchbox"
+          placeholder="yyyy-MM-dd"
+          value={search2}
+          onChange={(e) => setSearch2(e.target.value)}
+        />
+        <input
+          // id="invent-search"
+          type="text"
+          role="searchbox"
+          placeholder="order#"
+          value={search3}
+          onChange={(e) => setSearch3(e.target.value)}
+        />
       </form>
       {allTransactions &&
         allTransactions.map((tran, i) => {

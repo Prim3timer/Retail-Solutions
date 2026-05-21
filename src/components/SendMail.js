@@ -1,58 +1,50 @@
-import { useState, useRef, useEffect } from 'react'
-import emailjs from '@emailjs/browser'
+import { useState, useRef, useEffect } from "react";
+import emailjs from "@emailjs/browser";
 const SendMail = ({ currentTransaction }) => {
-    const [cost, setCost] = useState()
-    const form = useRef({})
-    const mailSender = () => {
+  const serviceId = "service_d1lfnf9";
+  const templateId = "template_62lkg69";
+  const publicKey = "6I6Qx4fjEW_mAYlFD";
 
-        // console.log(response.data.transaction)
-        if (currentTransaction) {
-            console.log(currentTransaction)
-            const { email, grandTotal, goods, _id } = currentTransaction
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(currentTransaction);
+    const { email, grandTotal, goods, _id } = currentTransaction;
+    console.log(_id, goods[0].name);
 
-            let params = {
-                name: goods.map((item => item.name)),
-                email,
-                order_id: _id,
-                price: goods.map(item => item.total),
-                total: grandTotal
-            }
+    let templateParams = {
+      name: goods[0].name,
+      email,
+      order_id: _id,
+      price: goods[0].price,
+      cost: {
+        shipping: 0,
+        taxes: grandTotal * 0.07,
+        total: grandTotal,
+      },
+    };
 
-            setCost(params)
+    emailjs
+      .send(serviceId, templateId, templateParams, publicKey)
+      .then((response) => {
+        console.log("Email sent successfully");
+      })
+      .catch((error) => {
+        console.error("Error sending mail: ", error);
+      });
 
-        }
-        // const trans = response.data.transaction
+    if (currentTransaction) {
     }
-    useEffect(() => {
-        mailSender()
-    }, [])
+    // const trans = response.data.transaction
+  };
+  //   useEffect(() => {
+  //     handleSubmit();
+  //   }, []);
 
-    return (
-        <div>
-            {<form ref={form}>
-                <label>Name</label>
-                <input type="text" name="name"
-                // value={cost.name}
-                />
-                <label>Email</label>
-                <input type="email" name="email"
-                // value={cost.email}
-                />
-                <label>Order Id</label>
-                <input type="order_id" name="order_id"
-                // value={cost.order_id}
-                />
-                <label>Price</label>
-                <input type="price" name="price"
-                // value={cost.price}
-                />
-                <label>Cost Total</label>
-                <input type="order_total" name="order_total"
-                // value={cost.grandTotal}
-                />
-            </form>}
-        </div>
-    )
-}
+  return (
+    <div className="emailing">
+      <button onClick={handleSubmit}>Send</button>
+    </div>
+  );
+};
 
-export default SendMail
+export default SendMail;
