@@ -1,19 +1,21 @@
 import { useState, useRef, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 const SendMail = ({ currentTransaction }) => {
-  const serviceId = "service_d1lfnf9";
-  const templateId = "template_62lkg69";
-  const publicKey = "6I6Qx4fjEW_mAYlFD";
+  const serviceId = process.env.SERVICE_ID;
+  const templateId = process.env.TEMPLATE_ID;
+  const publicKey = process.env.PUBLIC_KEY;
+  const privateKey = process.env.PRIVATE_KEY;
 
   const handleSubmit = () => {
     console.log(currentTransaction);
     const { email, grandTotal, goods, _id } = currentTransaction;
     console.log(_id, goods[0].name);
     const taxes = grandTotal * 0.07;
+    const total = grandTotal + taxes;
 
     let templateParams = {
       name: goods[0].name,
-      email,
+      email: "amaluekwelie@gmal.com",
       order_id: _id,
       price: goods[0].price,
       cost: {
