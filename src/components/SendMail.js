@@ -22,14 +22,16 @@ const SendMail = ({ currentTransaction }) => {
       orders: goods.map((good) => {
         return {
           name: good.name,
-          units: parseFloat(good.qty).toFixed(2),
+          units: good.qty,
           price: numberWithCommas(parseFloat(good.price * good.qty).toFixed(2)),
         };
       }),
       cost: {
         shipping: 0,
-        taxes: 0.7 * grandTotal,
-        total: numberWithCommas(parseFloat(grandTotal).toFixed(2)),
+        tax: parseFloat(0.07 * grandTotal).toFixed(2),
+        total: numberWithCommas(
+          parseFloat(grandTotal + grandTotal * 0.07).toFixed(2),
+        ),
       },
     };
 
