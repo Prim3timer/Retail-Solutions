@@ -1,27 +1,35 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
+import AuthContext from "../context/authProvider";
 import emailjs from "@emailjs/browser";
 const SendMail = ({ currentTransaction }) => {
-  const serviceId = process.env.SERVICE_ID;
-  const templateId = process.env.TEMPLATE_ID;
-  const publicKey = process.env.PUBLIC_KEY;
-  const privateKey = process.env.PRIVATE_KEY;
+  const serviceId = "service_w6jsnfc";
+  const templateId = "template_9u0s0r8";
+  const publicKey = "WomkoMTNuMoQKJO0K";
+  const privateKey = "f5fHgbJA_Fp-FHsdN";
+
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
 
   const handleSubmit = () => {
     console.log(currentTransaction);
     const { email, grandTotal, goods, _id } = currentTransaction;
-    console.log(_id, goods[0].name);
-    const taxes = grandTotal * 0.07;
-    const total = grandTotal + taxes;
 
     let templateParams = {
-      name: goods[0].name,
-      email: "amaluekwelie@gmal.com",
+      email,
       order_id: _id,
-      price: goods[0].price,
+
+      orders: goods.map((good) => {
+        return {
+          name: good.name,
+          units: parseFloat(good.qty).toFixed(2),
+          price: numberWithCommas(parseFloat(good.price).toFixed(2)),
+        };
+      }),
       cost: {
         shipping: 0,
-        taxes,
-        total: grandTotal,
+        taxes: 0.7 * grandTotal,
+        total: numberWithCommas(parseFloat(grandTotal).toFixed(2)),
       },
     };
 
