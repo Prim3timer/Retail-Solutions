@@ -16,14 +16,14 @@ const SendMail = ({ currentTransaction }) => {
     const { email, grandTotal, goods, _id } = currentTransaction;
 
     let templateParams = {
-      email,
+      email: "dikeekwelie@gmail.com",
       order_id: _id,
 
       orders: goods.map((good) => {
         return {
           name: good.name,
           units: parseFloat(good.qty).toFixed(2),
-          price: numberWithCommas(parseFloat(good.price).toFixed(2)),
+          price: numberWithCommas(parseFloat(good.price * good.qty).toFixed(2)),
         };
       }),
       cost: {
