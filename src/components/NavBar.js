@@ -147,24 +147,27 @@ const NavBar = () => {
             location.pathname !== "/register" && (
               <article className="second-navbar-links">
                 |
-                <Link to="/gen-sales" className="home-links">
+                {/* <Link to="/gen-sales" className="home-links">
                   purchases
-                </Link>
-                <Link to="/gen-shopping" className="home-links">
+                </Link> */}
+                {/* <Link to="/gen-shopping" className="home-links">
                   receipts
-                </Link>
+                </Link> */}
                 <Link to="/delete-account" className="home-links">
                   delete account
                 </Link>
                 <Link to="/admin" className="home-links">
                   admin
                 </Link>
-                <Link to="/about-us" className="home-links">
+                {/* <Link to="/about-us" className="home-links">
                   about us
+                </Link> */}
+                <Link to="/contact-us" className="home-links">
+                  contact us
                 </Link>
-                <Link to="/email-sender" className="home-links">
+                {/* <Link to="/email-sender" className="home-links">
                   send email
-                </Link>
+                </Link> */}
                 <Link to="/login" className="home-links" onClick={logout}>
                   logout
                 </Link>

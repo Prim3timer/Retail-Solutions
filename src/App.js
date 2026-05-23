@@ -49,6 +49,7 @@ import Categories from "./components/Categories";
 import Image from "./components/Image";
 import AboutUs from "./components/AboutUs";
 import Merch from "./components/Merch";
+import ContactUs from "./components/ContactUs";
 
 const App = () => {
   const [afa, setAfa] = useState("");
@@ -105,7 +106,7 @@ const App = () => {
           <Route path="/" element={<Layout />}>
             <Route path="/" index element={<Login />} />
             <Route path="/login" element={<Login />} />
-
+            <Route path="/contact-us" element={<ContactUs />} />
             <Route path="/cart/thanks" element={<Thanks />} />
             <Route path="/about-us" element={<AboutUs />} />
             <Route
@@ -125,8 +126,8 @@ const App = () => {
             {/* protected routes */}
             <Route element={<PersistLogin />}>
               <Route element={<RequireAuth allowedRoles={[2001]} />}>
-                <Route path="item-list" element={<ItemList />} />
                 <Route path="merch" element={<Merch />} />
+                <Route path="item-list" element={<ItemList />} />
                 <Route path="single-item" element={<SingleItem />} />
                 <Route path="image" element={<Image />} />
                 <Route path="inventory" element={<Inventory />} />

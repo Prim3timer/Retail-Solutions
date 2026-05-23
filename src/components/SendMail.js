@@ -55,7 +55,7 @@ const SendMail = ({ currentTransaction }) => {
   return (
     <div className="emailing">
       <p>Thank you for your order</p>
-      <p>We will send you tracking details as soon as your order ships</p>
+      <p>Am email with your order details has been sent to you.</p>
     </div>
   );
 };

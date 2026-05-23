@@ -28,10 +28,12 @@ const Merch = () => {
     currentUser,
     auth,
   } = useContext(AuthContext);
-  const user = auth.users.find((user) => user._id === auth.picker);
-  const cartTotal = user.cart.reduce((a, b) => {
+  const user =
+    auth.users && auth.users.find((user) => user._id === auth.picker);
+  const cartTotal = user?.cart.reduce((a, b) => {
     return a + b.transQty;
   }, 0);
+  console.log(currentUser);
 
   const firstCartTotal = currentUser?.cart?.reduce((a, b) => {
     return a + b.transQty;
@@ -93,6 +95,7 @@ const Merch = () => {
   //   console.log(response);
   // };
   console.log(cartTotal);
+  console.log(firstCartTotal);
 
   useEffect(() => {
     setTimeout(() => {
