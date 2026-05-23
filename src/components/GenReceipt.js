@@ -164,7 +164,7 @@ const GenShopping = () => {
                           {good.colour && <p>color: {good.colour}</p>}
                           {good.storage && (
                             <p>
-                              storage: {good.storage}{" "}
+                              storage: {good.storage == 1000 ? 1 : good.storage}
                               {good.storage == 1000 ? "TB" : "GB"}
                             </p>
                           )}
