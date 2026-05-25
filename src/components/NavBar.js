@@ -159,12 +159,15 @@ const NavBar = () => {
                 <Link to="/admin" className="home-links">
                   admin
                 </Link>
-                {/* <Link to="/about-us" className="home-links">
+                <Link to="/about-us" className="home-links">
                   about us
-                </Link> */}
-                <Link to="/contact-us" className="home-links">
-                  contact us
                 </Link>
+                <Link to="/forgot-password" className="home-links">
+                  forgot password
+                </Link>
+                {/* <Link to="/contact-us" className="home-links">
+                  contact us
+                </Link> */}
                 {/* <Link to="/email-sender" className="home-links">
                   send email
                 </Link> */}

@@ -50,6 +50,7 @@ import Image from "./components/Image";
 import AboutUs from "./components/AboutUs";
 import Merch from "./components/Merch";
 import ContactUs from "./components/ContactUs";
+import ForgotPassword from "./components/ForgoPassword.js";
 
 const App = () => {
   const [afa, setAfa] = useState("");
@@ -109,6 +110,7 @@ const App = () => {
             <Route path="/contact-us" element={<ContactUs />} />
             <Route path="/cart/thanks" element={<Thanks />} />
             <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route
               path="/transactions/local-thanks"
               element={<LocalThanks />}
