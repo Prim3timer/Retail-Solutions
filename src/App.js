@@ -51,6 +51,7 @@ import AboutUs from "./components/AboutUs";
 import Merch from "./components/Merch";
 import ContactUs from "./components/ContactUs";
 import ForgotPassword from "./components/ForgoPassword.js";
+import ResetPassword from "./components/ResetPassword.js";
 
 const App = () => {
   const [afa, setAfa] = useState("");
@@ -124,6 +125,7 @@ const App = () => {
             <Route path="unauthorized" element={<Unauthorized />} />
             <Route path="user-select" element={<UserSelect />} />
             <Route path="user-settings" element={<UserSettings />} />
+            <Route path="reset-password" element={<ResetPassword />} />
 
             {/* protected routes */}
             <Route element={<PersistLogin />}>
