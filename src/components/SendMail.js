@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useContext } from "react";
 import AuthContext from "../context/authProvider";
 import emailjs from "@emailjs/browser";
-const { useLocation } = "react-router-dom";
+const { useLocation } = "react-router-dom ";
 const SendMail = ({ currentTransaction }) => {
   const serviceId = "service_w6jsnfc";
   const templateId = "template_9u0s0r8";

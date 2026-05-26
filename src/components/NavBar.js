@@ -134,7 +134,13 @@ const NavBar = () => {
       {location.pathname !== "/" ||
       location.pathname !== "/login" ||
       location.pathname !== "/register" ? (
-        <div className="show-home-links">
+        <div
+          className={
+            location.pathname === "/reset-password"
+              ? "hide-home-links"
+              : "show-home-links"
+          }
+        >
           {uniqueArray.map((item) => {
             return (
               <article>
@@ -168,6 +174,9 @@ const NavBar = () => {
                 {/* <Link to="/contact-us" className="home-links">
                   contact us
                 </Link> */}
+                <Link to="/reset-password" className="home-links">
+                  reset password
+                </Link>
                 {/* <Link to="/email-sender" className="home-links">
                   send email
                 </Link> */}
