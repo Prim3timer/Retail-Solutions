@@ -7,12 +7,12 @@ const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [isEmailSent, setIsEmailSent] = useState(false);
   const [link, setLink] = useState("");
-  const { auth, picUrl } = useContext(AuthContext);
+  const { auth } = useContext(AuthContext);
   const location = useLocation();
   const publicKey = "WomkoMTNuMoQKJO0K";
   const serviceId = "service_w6jsnfc";
   const templateId = "template_zexwf7h";
-  console.log(picUrl);
+  console.log(window);
   console.log(`${window.location.host} /${window.location.hash}`);
   console.log(auth.users);
   const verifyEmail = async () => {
@@ -23,7 +23,7 @@ const ForgotPassword = () => {
 
       let templateParams = {
         email,
-        link: `${picUrl}/#reset-password`,
+        link: `https://${window.location.host}/#reset-password`,
       };
       if (userEmail) {
         setIsEmailSent(true);
