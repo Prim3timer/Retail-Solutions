@@ -119,9 +119,9 @@ const Sales = () => {
           `${currentUser.username}${currentUser.username ? "'s" : ""}`}{" "}
         Sales ({specArray.length}) rows
       </h2>
-      <form className="sales-search-form" onSubmit={(e) => e.preventDefault()}>
+      <form className="searcher" onSubmit={(e) => e.preventDefault()}>
         <input
-          id="invent-search"
+          // id="invent-search"
           type="text"
           role="searchbox"
           placeholder="Search by name"
@@ -132,7 +132,7 @@ const Sales = () => {
         />
         {/* <p className='injunction'>AND / OR</p > */}
         <input
-          id="invent-search"
+          // id="invent-search"
           type="text"
           role="searchbox"
           placeholder="Search by date"

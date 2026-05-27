@@ -63,7 +63,7 @@ const AllSales = () => {
       <h2 className="heading">All Sales ({state.sales.length} rows)</h2>
       <form className="searcher" onSubmit={(e) => e.preventDefault()}>
         <input
-          id="invent-search"
+          // id="invent-search"
           type="text"
           role="searchbox"
           placeholder="Search by name"
@@ -74,7 +74,7 @@ const AllSales = () => {
         />
         {/* <h3>AND / OR</h3> */}
         <input
-          id="invent-search"
+          // id="invent-search"
           type="text"
           role="searchbox"
           placeholder="Search by date"
