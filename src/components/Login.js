@@ -154,6 +154,8 @@ const Login = () => {
         </button>
       </form>
       <article className="sign-up-cont">
+        <Link to={"/forgot-password"}>forgot password?</Link>
+        <br />
         <p>Need an Account?</p>
         <Link className="sign-in-link" to="/register">
           Sign Up

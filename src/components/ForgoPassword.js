@@ -23,7 +23,7 @@ const ForgotPassword = () => {
 
       let templateParams = {
         email,
-        link: `https://${window.location.host}/#reset-password`,
+        link: `https://${window.location.host}/#reset-password?email=${email}`,
       };
       if (userEmail) {
         setIsEmailSent(true);

@@ -168,15 +168,15 @@ const NavBar = () => {
                 <Link to="/about-us" className="home-links">
                   about us
                 </Link>
-                <Link to="/forgot-password" className="home-links">
+                {/* <Link to="/forgot-password" className="home-links">
                   forgot password
-                </Link>
+                </Link> */}
                 {/* <Link to="/contact-us" className="home-links">
                   contact us
                 </Link> */}
-                <Link to="/reset-password" className="home-links">
+                {/* <Link to="/reset-password" className="home-links">
                   reset password
-                </Link>
+                </Link> */}
                 {/* <Link to="/email-sender" className="home-links">
                   send email
                 </Link> */}
