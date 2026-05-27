@@ -112,7 +112,7 @@ const OneReceipt = ({ setOneReceipt }) => {
           }}
         >
           {/* <h5>cashierID: {item.cashierID}</h5> */}
-          <h2 className="receipt-title">{bizName}</h2>
+          <h3 className="receipt-title">{bizName}</h3>
           {/* <p>{new Date(currentTrans.date).toDateString().substring(4, 15)}</p> */}
           <p>{theDay}</p>
           <p>{currentTrans._id}</p>

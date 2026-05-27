@@ -173,8 +173,6 @@ const AllTransactions = () => {
                               parseFloat(good.total).toFixed(2),
                             )}
                           </p>
-
-                          <br />
                         </div>
                       );
                     })}
