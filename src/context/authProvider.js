@@ -34,6 +34,7 @@ export const AuthProvider = ({ children }) => {
   const [cat, setCat] = useState("");
   const [cartLength, setCartLength] = useState(0);
   const [newCartLength, setNewCartLength] = useState(cartLength);
+  const [specialUsers, setSpecialUsers] = useState([]);
 
   // const currency = '₦'
   // const picUrl = 'https://mawuhi-back.onrender.com/images'
@@ -331,10 +332,6 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     getItems();
   }, []);
-
-  // useEffect(() => {
-  //     getUsers()
-  // }, [])
   return (
     <AuthContext.Provider
       value={{

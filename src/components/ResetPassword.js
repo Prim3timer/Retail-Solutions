@@ -1,5 +1,6 @@
 import { useState, useEffect, useReducer, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "../app/api/axios";
 import {
   faTrash,
   faSave,
@@ -27,17 +28,27 @@ const ResetPassword = () => {
   const [searchParams] = useSearchParams();
   const axiosPrivate = useAxiosPrivate();
   const [userId, setUserId] = useState("");
+  const [currentUser, setCurrentUser] = useState({});
 
-  const handleParams = () => {
-    const queryParams = searchParams.get("email");
-    console.log(queryParams);
-    setEmail(queryParams);
+  const handleParams = async () => {
+    try {
+      const response = await axios.get("/special-users");
+      console.log(response.data);
+      const queryParams = searchParams.get("email");
+
+      const user = response.data.find((user) => user.email === queryParams);
+      user && setCurrentUser(user);
+      console.log(user);
+      console.log(queryParams);
+      setEmail(queryParams);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const user = auth.users.find((user) => user.email === email);
       const newPassword = {
         password,
       };
@@ -52,12 +63,16 @@ const ResetPassword = () => {
           setShowErrMsg(false);
         }, 3000);
       } else {
-        setUserId(user._id);
-        const response = await axiosPrivate.patch(
-          `/users/reset-password/${userId}`,
+        setUserId(currentUser._id);
+        const response = await axios.patch(
+          `/reset-password/${userId}`,
           newPassword,
         );
-        dispatch({ type: "errMsg", payload: response.data });
+        setShowErrMsg(true);
+        dispatch({
+          type: "errMsg",
+          payload: `${response.data} proceed to home page`,
+        });
         console.log(response.data);
       }
     } catch (error) {
@@ -87,24 +102,7 @@ const ResetPassword = () => {
     <div>
       <h3>Reset Password</h3>
       <form className="reset-password-form" onSubmit={handleSubmit}>
-        <label>
-          email
-          {/* <FontAwesomeIcon
-            icon={faCheck}
-            className={state.validEmail ? "valid" : "hide"}
-          />
-          <FontAwesomeIcon
-            icon={faTimes}
-            className={state.validEmail || !email ? "hide" : "invalid"}
-          /> */}
-          <br />
-          <input
-            type="email"
-            placeholder="your email"
-            value={email}
-            // onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
+        {<p>{currentUser.username}</p>}
         <label>
           password
           <FontAwesomeIcon

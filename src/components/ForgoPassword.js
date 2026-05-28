@@ -1,7 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import AuthContext from "../context/authProvider";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import axios from "../app/api/axios";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -12,13 +14,20 @@ const ForgotPassword = () => {
   const publicKey = "WomkoMTNuMoQKJO0K";
   const serviceId = "service_w6jsnfc";
   const templateId = "template_zexwf7h";
+  const axiosPrivate = useAxiosPrivate();
   console.log(window);
   console.log(`${window.location.host} /${window.location.hash}`);
   console.log(auth.users);
+
+  const getUsers = async () => {
+    // console.log(response.data);
+  };
   const verifyEmail = async () => {
+    const response = await axios.get("/special-users");
+    console.log(response.data);
     try {
-      const userEmail = auth.users.find(
-        (user) => user.email === email && user._id === auth.picker,
+      const userEmail = response.data.find(
+        (user) => user.email === email && user.email === email,
       );
 
       let templateParams = {
@@ -35,21 +44,28 @@ const ForgotPassword = () => {
         );
         console.log(response);
       } else return;
-    } catch (error) {}
-    // console.log(userEmail);
+    } catch (error) {
+      console.log(error);
+    }
     setLink(`${window.location.host}/use-settings`);
   };
 
+  useEffect(() => {
+    getUsers();
+  }, []);
+
   return (
-    <div>
+    <div className="forgot-password">
       {isEmailSent ? (
-        <article>
-          <p>we have an email to '' head over there to reset your password</p>
-        </article>
+        // <article>
+        <p>
+          We have sent an email to "{email}" head over there to reset your
+          password.
+        </p>
       ) : (
-        <form>
+        // </article>
+        <form className="forgot-password-form">
           <label>What is your email address?</label>
-          <br />
           <input
             placeholder="your email address"
             value={email}

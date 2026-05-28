@@ -136,7 +136,8 @@ const NavBar = () => {
       location.pathname !== "/register" ? (
         <div
           className={
-            location.pathname === "/reset-password"
+            location.pathname === "/reset-password" ||
+            location.pathname === "/forgot-password"
               ? "hide-home-links"
               : "show-home-links"
           }
