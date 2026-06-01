@@ -78,13 +78,6 @@ const Register = () => {
   }, [state.user]);
 
   useEffect(() => {
-    dispatch({
-      type: ACTION.VALIDEMAIL,
-      payload: EMAIL_REGEX.test(state.email),
-    });
-  }, [state.email]);
-
-  useEffect(() => {
     dispatch({ type: ACTION.VALIDPWD, payload: PWD_REGEX.test(state.pwd) });
     dispatch({
       type: ACTION.VALIDMATCH,
@@ -103,8 +96,7 @@ const Register = () => {
     // if button enabled with JS hack
     const v1 = USER_REGEX.test(state.user);
     const v2 = PWD_REGEX.test(state.pwd);
-    const v3 = EMAIL_REGEX.test(state.email);
-    if (!v1 || !v2 || !v3) {
+    if (!v1 || !v2) {
       dispatch({ type: ACTION.ERRMSG, payload: "Invalid Entry" });
       return;
     }
@@ -231,19 +223,7 @@ const Register = () => {
               numbers, underscores, hyphens are allowed.
             </p>
 
-            <label htmlFor="email">
-              email:
-              <FontAwesomeIcon
-                icon={faCheck}
-                className={state.validEmail ? "valid" : "hide"}
-              />
-              <FontAwesomeIcon
-                icon={faTimes}
-                className={
-                  state.validEmail || !state.email ? "hide" : "invalid"
-                }
-              />
-            </label>
+            <label htmlFor="email">email:</label>
             <input
               type="text"
               id="email"
