@@ -125,7 +125,7 @@ const Register = () => {
       // dispatch({ type: ACTION.SUCCESS, payload: true });
       let templateParams = {
         email: state.email,
-        link: `http://${window.location.host}/#login?email=${state.email}`,
+        link: `https://${window.location.host}/#login?email=${state.email}`,
       };
       const mailSent = await emailjs.send(
         serviceId,
