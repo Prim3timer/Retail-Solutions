@@ -12,6 +12,7 @@ import axios from "../app/api/axios";
 import initialState from "../store";
 import reducer from "../reducer";
 import { Link } from "react-router-dom";
+import emailjs from "@emailjs/browser";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{2,23}$/;
 const EMAIL_REGEX = /^(?=.*[a-z])(?=.*[!@#$%]).{3,50}$/;
@@ -42,6 +43,12 @@ const Register = () => {
   const [isPassword2, setisPassword2] = useState("password");
   const [passwordCheck, setPasswordCheck] = useState(faEyeSlash);
   const [passwordCheck2, setPasswordCheck2] = useState(faEyeSlash);
+  const [verified, setVerified] = useState(false);
+
+  const templateId = "template_gqbd9hq";
+  const serviceId = "service_d1lfnf9";
+  const publicKey = "f5fHgbJA_Fp-FHsdN";
+
   const showPassword = () => {
     if (isPassword === "password") {
       setisPassword("text");
@@ -115,7 +122,18 @@ const Register = () => {
       console.log(response?.accessToken);
       console.log(JSON.stringify(response));
       // setSuccess(true);
-      dispatch({ type: ACTION.SUCCESS, payload: true });
+      // dispatch({ type: ACTION.SUCCESS, payload: true });
+      let templateParams = {
+        email: state.email,
+        link: `http://${window.location.host}/#login?email=${state.email}`,
+      };
+      const mailSent = await emailjs.send(
+        serviceId,
+        templateId,
+        templateParams,
+        publicKey,
+      );
+      setVerified(true);
       //clear state and controlled inputs
       //need value attrib on inputs for this
       dispatch({ type: ACTION.USER, payload: "" });
@@ -130,19 +148,26 @@ const Register = () => {
         dispatch({ type: ACTION.ERRMSG, payload: "Registration Failed" });
       }
       errRef.current.focus();
+      console.log(err);
     }
   };
   // Rhinohorn1#
   return (
     <div className="register">
-      {state.success ? (
-        <section className="success">
-          <h1>Success!</h1>
+      {verified ? (
+        <article className="success">
           <p>
-            <Link to="/#login">Sign In</Link>
+            A link has been sent to your email address. Head over there to
+            verify your email.
           </p>
-        </section>
+        </article>
       ) : (
+        // <section className="success">
+        //   <h1>Success!</h1>
+        //   <p>
+        //     <Link to="/#login">Sign In</Link>
+        //   </p>
+        // </section>
         <section className="reg-cont">
           <p
             ref={errRef}

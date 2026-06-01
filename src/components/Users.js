@@ -57,6 +57,7 @@ const Users = () => {
           user.username.toLowerCase().includes(state.search.toLowerCase()),
         );
         isMounted && setCurrentUsers(filterate);
+        console.log(response.data.users.map((user) => user.email));
         setUsers(response.data.users);
 
         setAuth((prev) => {

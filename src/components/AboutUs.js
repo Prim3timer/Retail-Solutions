@@ -11,7 +11,7 @@ const AboutUs = () => {
       <p>
         This application in an e commerce web application. It features automatic
         (or manual) inventory update, sales analytics, quick filteration of
-        inventory based on item quantity and much more.
+        inventory depending on items quantity and much more.
       </p>
       <p>
         <span style={{ fontWeight: "bold" }}>To contact us:</span>

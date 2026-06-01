@@ -3,6 +3,7 @@ import AuthContext from "../context/authProvider";
 import { Link, useLocation } from "react-router-dom";
 const NavCat = ({ itemCat }) => {
   const { items, cat, setCat } = useContext(AuthContext);
+  const [storedCat, setStoredCat] = useState("");
   const [filterate, setFilterate] = useState([]);
   const noGroceries = items.filter((item) => item.category !== "Groceries");
   const getDistinctCategories =
@@ -14,10 +15,12 @@ const NavCat = ({ itemCat }) => {
   const showItemCat = (e) => {
     // e.preventDefault();
     localStorage.setItem("category", itemCat);
+    const respponse = localStorage.getItem("category");
+    setStoredCat(respponse);
   };
 
   const uniqueArray = [...new Set(getDistinctCategories)];
-  // console.log(items);
+  console.log(storedCat);
   return (
     location.pathname !== "/login" &&
     location.pathname !== "/" &&

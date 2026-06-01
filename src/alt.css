@@ -951,6 +951,14 @@ border-radius: 10px;
   font-size: 1rem;
   /* background-color: red; */
   /* margin-left: -.5rem; */
+  /* text-decoration: underline; */
+}
+.navcat-items-underline {
+  white-space: nowrap;
+  font-size: 1rem;
+  text-decoration: underline;
+  /* background-color: red; */
+  /* margin-left: -.5rem; */
 }
 
   .searcher {

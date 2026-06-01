@@ -32,7 +32,7 @@ const ForgotPassword = () => {
 
       let templateParams = {
         email,
-        link: `https://${window.location.host}/#reset-password?email=${email}`,
+        link: `http://${window.location.host}/#reset-password?email=${email}`,
       };
       if (userEmail) {
         setIsEmailSent(true);
@@ -71,9 +71,10 @@ const ForgotPassword = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
+          <br />
+          <button onClick={verifyEmail}>Submit</button>
         </form>
       )}
-      <button onClick={verifyEmail}>Submit</button>
     </div>
   );
 };

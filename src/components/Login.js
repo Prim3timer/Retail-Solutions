@@ -1,7 +1,12 @@
 import { useRef, useState, useEffect, useReducer, useContext } from "react";
 import AuthContext from "../context/authProvider";
 import useAuth from "../hooks/useAuth";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+  useLocation,
+  useSearchParams,
+} from "react-router-dom";
 import useRefreshToken from "../hooks/useRefreshToken";
 import {
   faCheck,
@@ -28,6 +33,29 @@ const Login = () => {
   const [isPassword, setisPassword] = useState("password");
   const [passwordCheck2, setPasswordCheck2] = useState(faEyeSlash);
   const [isPassword2, setisPassword2] = useState("password");
+  const [searchParams] = useSearchParams();
+
+  const queryParams = searchParams.get("email");
+  const handleParams = async () => {
+    console.log("President`");
+    try {
+      const response = await axios.get("/special-users");
+      console.log(response.data);
+      console.log(queryParams);
+      const updateUser = await axios.patch(`/verify-email/${queryParams}`);
+      if (updateUser && queryParams) {
+        dispatch({ type: "errMsg", payload: updateUser.data });
+      }
+      const newUser = response.data.find((user) => user.email === queryParams);
+      console.log(newUser);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    handleParams();
+  }, []);
 
   const userRef = useRef();
   const errRef = useRef();
@@ -112,9 +140,14 @@ const Login = () => {
         ref={errRef}
         className={state.errMsg ? "errmsg" : "offscreen"}
         aria-live="assertive"
+        style={{
+          color: queryParams !== null ? "white" : "red",
+          width: "240px",
+        }}
       >
         {state.errMsg}
       </p>
+      {/* {state.alertMsg && <p style={{ color: "limegreen" }}>{state.alertMsg}</p>} */}
       <h3 className="login-header">Sign In</h3>
       <form onSubmit={handleSubmit} className="login-form">
         <label htmlFor="username">Username:</label>
