@@ -782,7 +782,8 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* width: 90%; */
+  width: 80vw;
+  max-width: 600px;
   flex-grow: 1;
   padding: 0.5rem 1rem;
   margin: 1rem 0;
@@ -862,9 +863,10 @@ input {
 }
 
 .password-check {
-  width: 100%;
+  width: 90%;
   text-align: left;
   margin: .5rem 0;
+  /* background-color: red; */
 }
 
 .shop {
