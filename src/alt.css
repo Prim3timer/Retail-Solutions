@@ -814,22 +814,6 @@ input {
   width: 80vw;
 }
 
-#username-form>*:nth-child(2) {
-  align-self: flex-start;
-  /* background-color: red; */
-}
-
-#username-form>*:nth-child(5) {
-  align-self: flex-start;
-  /* background-color: red; */
-}
-
-#username-form>*:nth-child(3) {
-  align-self: flex-start;
-  /* background-color: red; */
-}
-
-
 
 #username-form {
   /* min-width: 100%; */

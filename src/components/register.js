@@ -246,26 +246,20 @@ const Register = () => {
                 className={state.validPwd || !state.pwd ? "hide" : "invalid"}
               />
             </label>
-            <div className="field-eye">
-              <input
-                type={isPassword}
-                className="password"
-                onChange={(e) =>
-                  dispatch({ type: ACTION.PWD, payload: e.target.value })
-                }
-                value={state.pwd}
-                required
-                aria-invalid={state.validPwd ? "false" : "true"}
-                aria-describedby="pwdnote"
-                onFocus={() =>
-                  dispatch({ type: ACTION.PWDFOCUS, payload: true })
-                }
-                onBlur={() =>
-                  dispatch({ type: ACTION.PWDFOCUS, payload: false })
-                }
-              />
-              {/* <span onClick={showPassord} className='show-password'>show</span> */}
-            </div>
+            <input
+              type={isPassword}
+              className="password"
+              onChange={(e) =>
+                dispatch({ type: ACTION.PWD, payload: e.target.value })
+              }
+              value={state.pwd}
+              required
+              aria-invalid={state.validPwd ? "false" : "true"}
+              aria-describedby="pwdnote"
+              onFocus={() => dispatch({ type: ACTION.PWDFOCUS, payload: true })}
+              onBlur={() => dispatch({ type: ACTION.PWDFOCUS, payload: false })}
+            />
+            {/* <span onClick={showPassord} className='show-password'>show</span> */}
             <p
               id="pwdnote"
               className={
@@ -301,25 +295,23 @@ const Register = () => {
                 }
               />
             </label>
-            <div className="field-eye">
-              <input
-                type={isPassword2}
-                id="confirm_pwd"
-                onChange={(e) =>
-                  dispatch({ type: ACTION.MATCHPWD, payload: e.target.value })
-                }
-                value={state.matchPwd}
-                required
-                aria-invalid={state.validMatch ? "false" : "true"}
-                aria-describedby="confirmnote"
-                onFocus={() =>
-                  dispatch({ type: ACTION.MATCHFOCUS, payload: true })
-                }
-                onBlur={() =>
-                  dispatch({ type: ACTION.MATCHFOCUS, payload: false })
-                }
-              />
-            </div>
+            <input
+              type={isPassword2}
+              id="confirm_pwd"
+              onChange={(e) =>
+                dispatch({ type: ACTION.MATCHPWD, payload: e.target.value })
+              }
+              value={state.matchPwd}
+              required
+              aria-invalid={state.validMatch ? "false" : "true"}
+              aria-describedby="confirmnote"
+              onFocus={() =>
+                dispatch({ type: ACTION.MATCHFOCUS, payload: true })
+              }
+              onBlur={() =>
+                dispatch({ type: ACTION.MATCHFOCUS, payload: false })
+              }
+            />
             <article className="password-check">
               <FontAwesomeIcon
                 icon={passwordCheck}
