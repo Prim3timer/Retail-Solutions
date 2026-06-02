@@ -50,22 +50,14 @@ const Register = () => {
   const publicKey = "f5fHgbJA_Fp-FHsdN";
 
   const showPassword = () => {
-    if (isPassword === "password") {
+    if (isPassword === "password" || isPassword2 === "password") {
       setisPassword("text");
       setPasswordCheck(faEye);
+      setisPassword2("text");
     } else {
       setisPassword("password");
-      setPasswordCheck(faEyeSlash);
-    }
-  };
-
-  const showPassord2 = () => {
-    if (isPassword2 === "password") {
-      setisPassword2("text");
-      setPasswordCheck2(faEye);
-    } else {
       setisPassword2("password");
-      setPasswordCheck2(faEyeSlash);
+      setPasswordCheck(faEyeSlash);
     }
   };
 
@@ -274,11 +266,6 @@ const Register = () => {
                 }
               />
               {/* <span onClick={showPassord} className='show-password'>show</span> */}
-              <FontAwesomeIcon
-                icon={passwordCheck}
-                onClick={showPassword}
-                className="show-password"
-              />
             </div>
             <p
               id="pwdnote"
@@ -333,12 +320,14 @@ const Register = () => {
                   dispatch({ type: ACTION.MATCHFOCUS, payload: false })
                 }
               />
+            </div>
+            <article className="password-check">
               <FontAwesomeIcon
-                icon={passwordCheck2}
-                onClick={showPassord2}
+                icon={passwordCheck}
+                onClick={showPassword}
                 className="show-password"
               />
-            </div>
+            </article>
             <p
               id="confirmnote"
               className={
@@ -363,7 +352,7 @@ const Register = () => {
               Sign Up
             </button>
           </form>
-          <p>Already registered? </p>
+          <p className="registered-verify">Already registered? </p>
 
           {/*put router link here*/}
           <Link
