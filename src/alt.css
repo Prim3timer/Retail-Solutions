@@ -824,6 +824,11 @@ input {
   align-items: center;
 }
 
+#username-form input {
+  width: 60vw;
+  max-width: 500px;
+}
+
 .registered-verify {  
   margin: .5rem 0;
 }
