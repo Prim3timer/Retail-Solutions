@@ -1,9 +1,11 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useReducer } from "react";
 import emailjs from "@emailjs/browser";
 import AuthContext from "../context/authProvider";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import axios from "../app/api/axios";
+import reducer from "../reducer";
+import initialState from "../store";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -15,6 +17,7 @@ const ForgotPassword = () => {
   const serviceId = "service_w6jsnfc";
   const templateId = "template_zexwf7h";
   const axiosPrivate = useAxiosPrivate();
+  const [state, dispatch] = useReducer(reducer, initialState);
   console.log(window);
   console.log(`${window.location.host} /${window.location.hash}`);
   console.log(auth.users);
@@ -22,7 +25,8 @@ const ForgotPassword = () => {
   const getUsers = async () => {
     // console.log(response.data);
   };
-  const verifyEmail = async () => {
+  const verifyEmail = async (e) => {
+    e.preventDefault();
     const response = await axios.get("/special-users");
     console.log(response.data);
     try {
@@ -43,7 +47,17 @@ const ForgotPassword = () => {
           publicKey,
         );
         console.log(response);
-      } else return;
+      } else {
+        dispatch({ type: "cancel", payload: true });
+        dispatch({
+          type: "errMsg",
+          payload: "email entered does not match any in our database",
+        });
+        setTimeout(() => {
+          dispatch({ type: "cancel", payload: false });
+          dispatch({ type: "errMsg", payload: "" });
+        }, 3000);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -58,7 +72,7 @@ const ForgotPassword = () => {
     <div className="forgot-password">
       {isEmailSent ? (
         // <article>
-        <p>
+        <p className="delete">
           We have sent an email to "{email}" head over there to reset your
           password.
         </p>
@@ -75,6 +89,7 @@ const ForgotPassword = () => {
           <button onClick={verifyEmail}>Submit</button>
         </form>
       )}
+      {state.cancel && <p className="delete">{state.errMsg}</p>}
     </div>
   );
 };
