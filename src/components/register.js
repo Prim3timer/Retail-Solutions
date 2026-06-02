@@ -42,7 +42,6 @@ const Register = () => {
   const [isPassword, setisPassword] = useState("password");
   const [isPassword2, setisPassword2] = useState("password");
   const [passwordCheck, setPasswordCheck] = useState(faEyeSlash);
-  const [passwordCheck2, setPasswordCheck2] = useState(faEyeSlash);
   const [verified, setVerified] = useState(false);
 
   const templateId = "template_gqbd9hq";
