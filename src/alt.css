@@ -939,8 +939,10 @@ border-radius: 10px;
 .navcat-items {
   white-space: nowrap;
   font-size: 1rem;
-  /* background-color: red; */
+  background-color: palevioletred;
   /* margin-left: -.5rem; */
+  border-radius: 5px;
+  padding: .2rem;
   /* text-decoration: underline; */
 }
 .navcat-items-underline {

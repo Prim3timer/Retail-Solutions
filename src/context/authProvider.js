@@ -83,6 +83,7 @@ export const AuthProvider = ({ children }) => {
     "Incubator",
     "Power Accessories",
     "E-Bikes",
+    "Car Accessories",
   ];
 
   const gender = ["gentlemen", "ladies"];
