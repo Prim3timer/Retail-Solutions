@@ -939,7 +939,8 @@ border-radius: 10px;
 .navcat-items {
   white-space: nowrap;
   font-size: 1rem;
-  background-color: palevioletred;
+  color: black;
+  background-color: lavender;
   /* margin-left: -.5rem; */
   border-radius: 5px;
   padding: .2rem;
