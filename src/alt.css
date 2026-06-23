@@ -883,7 +883,7 @@ input {
   align-items: center;
   width: 100vw;
   min-height: 80vh;
-  padding-bottom: 1rem;
+  padding: 0 0 1rem 1rem;
   background-color: snow;
 }
 

@@ -169,6 +169,9 @@ const NavBar = () => {
                 <Link to="/about-us" className="home-links">
                   about us
                 </Link>
+                {/* <Link to="/transactions" className="home-links">
+                  transations
+                </Link> */}
                 {/* <Link to="/forgot-password" className="home-links">
                   forgot password
                 </Link> */}
