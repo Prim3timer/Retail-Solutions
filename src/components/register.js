@@ -93,9 +93,10 @@ const Register = () => {
     }
     try {
       const { user, pwd, email } = state;
+      const trimedEmail = email.trim();
       const response = await axios.post(
         REGISTER_URL,
-        JSON.stringify({ user, pwd, email }),
+        JSON.stringify({ user, pwd, email: trimedEmail.toLowerCase() }),
         {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
@@ -105,7 +106,7 @@ const Register = () => {
       console.log(response?.accessToken);
       console.log(JSON.stringify(response));
       // setSuccess(true);
-      // dispatch({ type: ACTION.SUCCESS, payload: true });
+      dispatch({ type: ACTION.SUCCESS, payload: true });
       let templateParams = {
         email: state.email,
         link: `https://${window.location.host}/#login?email=${state.email}`,

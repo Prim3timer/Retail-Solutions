@@ -233,8 +233,17 @@ const Payment = () => {
       <div className="cart-main-container">
         {state.cartArray &&
           state.cartArray.map((item) => {
-            // console.log(item.img[0].name)
-            // console.log(item);
+            const { size, colour, storage } = item;
+            // const detsObj = { size, colour, storage };
+            // const valuesArray = Object.values(detsObj).filter(
+            //   (value) => value !== undefined,
+            // );
+            // const keysArray = Object.keys(detsObj).filter(
+            //   (value) => value !== undefined,
+            // );
+            // console.log(valuesArray);
+            // console.log(keysArray);
+
             return (
               <article className="cart-items-container">
                 <p>{item.name}</p>
