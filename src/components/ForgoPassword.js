@@ -21,7 +21,7 @@ const ForgotPassword = () => {
   console.log(window);
   console.log(`${window.location.host} /${window.location.hash}`);
   console.log(auth.users);
-
+  const now = Date.now();
   const getUsers = async () => {
     // console.log(response.data);
   };
@@ -36,7 +36,7 @@ const ForgotPassword = () => {
 
       let templateParams = {
         email,
-        link: `https://${window.location.host}/#reset-password?email=${email}`,
+        link: `https://${window.location.host}/#reset-password?email=${email}&elapse=${now}`,
       };
       if (userEmail) {
         setIsEmailSent(true);
@@ -83,7 +83,7 @@ const ForgotPassword = () => {
           <input
             placeholder="your email address"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value.trim().toLowerCase())}
           />
           <br />
           <button onClick={verifyEmail}>Submit</button>

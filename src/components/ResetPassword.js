@@ -29,12 +29,14 @@ const ResetPassword = () => {
   const axiosPrivate = useAxiosPrivate();
   const [userId, setUserId] = useState("");
   const [currentUser, setCurrentUser] = useState({});
-
+  const now = Date.now();
+  const queryParams = searchParams.get("email");
+  const elapse = searchParams.get("elapse");
+  const elapsed = Number(elapse) + 3600000;
   const handleParams = async () => {
     try {
       const response = await axios.get("/special-users");
       console.log(response.data);
-      const queryParams = searchParams.get("email");
 
       const user = response.data.find((user) => user.email === queryParams);
       user && setCurrentUser(user);
@@ -62,6 +64,9 @@ const ResetPassword = () => {
         setTimeout(() => {
           setShowErrMsg(false);
         }, 3000);
+      } else if (now > elapsed) {
+        setShowErrMsg(true);
+        dispatch({ type: "errMsg", payload: "link has expired" });
       } else {
         setUserId(currentUser._id);
         const response = await axios.patch(

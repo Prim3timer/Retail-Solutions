@@ -44,6 +44,19 @@ const Register = () => {
   const [passwordCheck, setPasswordCheck] = useState(faEyeSlash);
   const [verified, setVerified] = useState(false);
 
+  const testTime = Date.now() + 10000;
+
+  const checkTime = () => {
+    const testTime2 = Date.now();
+    console.log(testTime);
+    console.log(testTime2);
+    if (testTime2 > testTime) {
+      console.log("elapsed");
+    } else {
+      console.log("still going");
+    }
+  };
+
   const templateId = "template_gqbd9hq";
   const serviceId = "service_d1lfnf9";
   const publicKey = "f5fHgbJA_Fp-FHsdN";
@@ -82,6 +95,9 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const now = Date.now();
+    console.log(now);
+
     console.log(state.email);
     console.log("email");
     // if button enabled with JS hack
@@ -102,14 +118,16 @@ const Register = () => {
           withCredentials: true,
         },
       );
-      console.log(response?.data);
-      console.log(response?.accessToken);
-      console.log(JSON.stringify(response));
+      // console.log("hiiiii");
+      // console.log(response?.data);
+      // console.log(response?.accessToken);
+      // console.log(JSON.stringify(response));
       // setSuccess(true);
-      dispatch({ type: ACTION.SUCCESS, payload: true });
+      // dispatch({ type: ACTION.SUCCESS, payload: true });
+
       let templateParams = {
         email: state.email,
-        link: `https://${window.location.host}/#login?email=${state.email}`,
+        link: `https://${window.location.host}/#login?email=${trimedEmail.toLowerCase()}&elapse=${now}`,
       };
       const mailSent = await emailjs.send(
         serviceId,
@@ -127,7 +145,7 @@ const Register = () => {
       if (!err?.response) {
         dispatch({ type: ACTION.ERRMSG, payload: "No Server Response" });
       } else if (err.response?.status === 409) {
-        dispatch({ type: ACTION.ERRMSG, payload: "Username Taken" });
+        dispatch({ type: ACTION.ERRMSG, payload: "email already taken" });
       } else {
         dispatch({ type: ACTION.ERRMSG, payload: "Registration Failed" });
       }
@@ -357,6 +375,7 @@ const Register = () => {
           </Link>
         </section>
       )}
+      <button onClick={checkTime}>check time</button>
     </div>
   );
 };

@@ -36,18 +36,29 @@ const Login = () => {
   const [searchParams] = useSearchParams();
 
   const queryParams = searchParams.get("email");
+  const elapse = searchParams.get("elapse");
+  const elapsed = Number(elapse) + 3600000;
+  console.log(elapse);
+  const now = Date.now();
   const handleParams = async () => {
-    console.log("President`");
     try {
       const response = await axios.get("/special-users");
       console.log(response.data);
-      console.log(queryParams);
-      const updateUser = await axios.patch(`/verify-email/${queryParams}`);
-      if (updateUser && queryParams) {
-        dispatch({ type: "errMsg", payload: updateUser.data });
+      console.log(now);
+      console.log(elapsed);
+      console.log(now > elapsed);
+      if (now > elapsed) {
+        dispatch({ type: "errMsg", payload: "Link has expired" });
+      } else {
+        const updateUser = await axios.patch(`/verify-email/${queryParams}`);
+        if (updateUser && queryParams) {
+          dispatch({ type: "errMsg", payload: updateUser.data });
+        }
+        const newUser = response.data.find(
+          (user) => user.email === queryParams,
+        );
+        console.log(newUser);
       }
-      const newUser = response.data.find((user) => user.email === queryParams);
-      console.log(newUser);
     } catch (error) {
       console.log(error);
     }
@@ -145,7 +156,10 @@ const Login = () => {
           width: "240px",
         }}
       >
-        {state.errMsg}
+        {elapse && state.errMsg}{" "}
+        {now > elapsed && elapse
+          ? `click on "forgot password" to retry verification`
+          : ""}
       </p>
       {/* {state.alertMsg && <p style={{ color: "limegreen" }}>{state.alertMsg}</p>} */}
       <h3 className="login-header">Sign In</h3>
