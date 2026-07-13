@@ -169,10 +169,35 @@ const Sales = () => {
                 </tr>
               );
             })}
+          <tr className="sales-total">
+            <th>Total:</th>
+            <th>
+              {" "}
+              {state.sales &&
+                numberWithCommas(
+                  state.sales
+                    .reduce((a, b) => {
+                      return a + parseFloat(b.qty);
+                    }, 0)
+                    .toFixed(2),
+                )}
+            </th>
+            <th>
+              $
+              {state.sales &&
+                numberWithCommas(
+                  state.sales
+                    .reduce((a, b) => {
+                      return a + parseFloat(b.total);
+                    }, 0)
+                    .toFixed(2),
+                )}
+            </th>
+          </tr>
         </tbody>
       </table>
 
-      <div className="sales-total">
+      {/* <div className="sales-total">
         <h3>Total:</h3>
         <h3>
           {state.sales &&
@@ -195,7 +220,7 @@ const Sales = () => {
                 .toFixed(2),
             )}
         </h3>
-      </div>
+      </div> */}
     </div>
   );
 };

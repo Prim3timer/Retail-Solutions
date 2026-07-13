@@ -2798,7 +2798,7 @@ button:active {
 }
 
 .sales-total>*:nth-child(1) {
-    text-align: right;
+    text-align: center;
 }
 
 .sales-total>*:nth-child(2) {
