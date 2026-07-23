@@ -44,20 +44,7 @@ const Register = () => {
   const [passwordCheck, setPasswordCheck] = useState(faEyeSlash);
   const [verified, setVerified] = useState(false);
 
-  const testTime = Date.now() + 10000;
-
-  const checkTime = () => {
-    const testTime2 = Date.now();
-    console.log(testTime);
-    console.log(testTime2);
-    if (testTime2 > testTime) {
-      console.log("elapsed");
-    } else {
-      console.log("still going");
-    }
-  };
-
-  const templateId = "template_gqbd9hq";
+  const templateId = "template_2ho80e4";
   const serviceId = "service_d1lfnf9";
   const publicKey = "f5fHgbJA_Fp-FHsdN";
 
@@ -128,6 +115,7 @@ const Register = () => {
       let templateParams = {
         email: state.email,
         link: `https://${window.location.host}/#login?email=${trimedEmail.toLowerCase()}&elapse=${now}`,
+        biz: "Retail Solutions",
       };
       const mailSent = await emailjs.send(
         serviceId,
@@ -375,7 +363,6 @@ const Register = () => {
           </Link>
         </section>
       )}
-      <button onClick={checkTime}>check time</button>
     </div>
   );
 };
