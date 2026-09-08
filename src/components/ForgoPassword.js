@@ -33,6 +33,10 @@ const ForgotPassword = () => {
         (user) => user.email === email && user.email === email,
       );
 
+        //  8 to 24 characters.
+        //       <br />
+        //       Must include uppercase and lowercase letters, a number and a
+        //       special character.
       let templateParams = {
         email,
         link: `https://${window.location.host}/#reset-password?email=${email}&elapse=${now}`,

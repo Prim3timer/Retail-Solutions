@@ -2369,6 +2369,11 @@ input {
   /* z-index: 5; */
 }
 
+.pwd-reset-instruction {
+  /* background-color: red; */
+  width: 50vw;
+}
+
 
 .home-links {
   /* color: whitesmoke; */
