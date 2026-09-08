@@ -127,6 +127,7 @@ const ResetPassword = () => {
       <form className="reset-password-form" onSubmit={handleSubmit}>
         {/* {<p>{currentUser.username}</p>} */}
         <p className="pwd-reset-instruction">    Password must be 8 to 24 characters.
+          <br/>
               Must include uppercase and lowercase letters, a number and a
               special character.</p>
               <br />
