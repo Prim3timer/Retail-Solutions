@@ -1093,6 +1093,9 @@ padding: .2rem .5rem;
   align-items: center;
   width: 100vw;
 }
+.reset-password {
+  /* background-color: red; */
+}
 
 .reset-password h3 {
   text-align: center;
