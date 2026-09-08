@@ -18,17 +18,16 @@ const ForgotPassword = () => {
   const templateId = "template_zexwf7h";
   const axiosPrivate = useAxiosPrivate();
   const [state, dispatch] = useReducer(reducer, initialState);
-  console.log(window);
-  console.log(`${window.location.host} /${window.location.hash}`);
-  console.log(auth.users);
+
   const now = Date.now();
   const getUsers = async () => {
     // console.log(response.data);
   };
   const verifyEmail = async (e) => {
     e.preventDefault();
+    console.log(email)
     const response = await axios.get("/special-users");
-    console.log(response.data);
+
     try {
       const userEmail = response.data.find(
         (user) => user.email === email && user.email === email,
@@ -37,16 +36,20 @@ const ForgotPassword = () => {
       let templateParams = {
         email,
         link: `https://${window.location.host}/#reset-password?email=${email}&elapse=${now}`,
+        biz: "Retail Solutions"
       };
       if (userEmail) {
-        setIsEmailSent(true);
-        const response = await emailjs.send(
+        const response2 = await emailjs.send(
           serviceId,
           templateId,
           templateParams,
           publicKey,
-        );
-        console.log(response);
+        );  
+        console.log(response)
+        if (response2){
+          setIsEmailSent(true);
+
+        }
       } else {
         dispatch({ type: "cancel", payload: true });
         dispatch({
@@ -64,9 +67,9 @@ const ForgotPassword = () => {
     setLink(`${window.location.host}/use-settings`);
   };
 
-  useEffect(() => {
-    getUsers();
-  }, []);
+  // useEffect(() => {
+  //   getUsers();
+  // }, []);
 
   return (
     <div className="forgot-password">

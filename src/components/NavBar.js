@@ -55,7 +55,7 @@ const NavBar = () => {
     }
   };
 
-  console.log(cartLength);
+  // console.log(cartLength);
 
   const getNewCartLength = () => {};
 

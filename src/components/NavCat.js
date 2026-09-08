@@ -20,7 +20,7 @@ const NavCat = ({ itemCat }) => {
   };
 
   const uniqueArray = [...new Set(getDistinctCategories)];
-  console.log(storedCat);
+  // console.log(storedCat);
   return (
     location.pathname !== "/login" &&
     location.pathname !== "/" &&
