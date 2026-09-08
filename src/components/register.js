@@ -82,7 +82,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch({ type: ACTION.ERRMSG, payload: "processing" });
+    dispatch({ type: ACTION.ERRMSG, payload: "processing..." });
     const now = Date.now();
     console.log(now);
 
@@ -163,6 +163,7 @@ const Register = () => {
           <p
             ref={errRef}
             className={state.errMsg ? "errmsg" : "offscreen"}
+            style={{color: state.errMsg == "processing..." ? "white" : "red"}}
             aria-live="assertive"
           >
             {state.errMsg}
