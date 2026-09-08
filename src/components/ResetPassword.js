@@ -33,6 +33,11 @@ const ResetPassword = () => {
   const queryParams = searchParams.get("email");
   const elapse = searchParams.get("elapse");
   const elapsed = Number(elapse) + 3600000;
+
+   const [isPassword, setisPassword] = useState("password");
+  const [isPassword2, setisPassword2] = useState("password");
+  const [passwordCheck, setPasswordCheck] = useState(faEyeSlash);
+
   const handleParams = async () => {
     try {
       const response = await axios.get("/special-users");
@@ -45,6 +50,18 @@ const ResetPassword = () => {
       setEmail(queryParams);
     } catch (error) {
       console.log(error);
+    }
+  };
+
+    const showPassword = () => {
+    if (isPassword === "password" || isPassword2 === "password") {
+      setisPassword("text");
+      setPasswordCheck(faEye);
+      setisPassword2("text");
+    } else {
+      setisPassword("password");
+      setisPassword2("password");
+      setPasswordCheck(faEyeSlash);
     }
   };
 
@@ -69,6 +86,7 @@ const ResetPassword = () => {
         dispatch({ type: "errMsg", payload: "link has expired" });
       } else {
         setUserId(currentUser._id);
+        console.log(currentUser._id)
         const response = await axios.patch(
           `/reset-password/${userId}`,
           newPassword,
@@ -120,7 +138,7 @@ const ResetPassword = () => {
           />
           <br />
           <input
-            type="password"
+            type={isPassword}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -139,10 +157,17 @@ const ResetPassword = () => {
           />
           <br />
           <input
-            type="password"
+            type={isPassword2}
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
+           <article className="password-check">
+              <FontAwesomeIcon
+                icon={passwordCheck}
+                onClick={showPassword}
+                className="show-password"
+              />
+            </article>
         </label>
         <button type="submit">Submit</button>
       </form>

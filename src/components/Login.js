@@ -48,7 +48,7 @@ const Login = () => {
       console.log(elapsed);
       console.log(now > elapsed);
       if (now > elapsed) {
-        dispatch({ type: "errMsg", payload: "Link has expired" });
+        console.log("your link has expired")
       } else {
         const updateUser = await axios.patch(`/verify-email/${queryParams}`);
         if (updateUser && queryParams) {
@@ -120,7 +120,7 @@ const Login = () => {
       // get the user to where they wanted to go before they were kicked out to
       // the login page
       navigate(from, { replace: true });
-      // dispatch({type: 'success', payload: true})
+      dispatch({type: 'success', payload: true})
     } catch (err) {
       if (!err?.response) {
         dispatch({ type: "errMsg", payload: "No server Response" });
@@ -156,7 +156,7 @@ const Login = () => {
           width: "240px",
         }}
       >
-        {elapse && state.errMsg}{" "}
+        {state.errMsg}{" "}
         {now > elapsed && elapse
           ? `click on "forgot password" to retry verification`
           : ""}
