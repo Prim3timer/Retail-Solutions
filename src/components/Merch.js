@@ -177,10 +177,10 @@ const Merch = () => {
                               ? parseFloat(item.qty).toFixed(2)
                               : item.qty
                           }
-                          ${item.unitMeasure.split(" ")[1].slice(1, -1)} 
                           left`
-                        : "out of stock"}
+                          : "out of stock"}
                     </p>
+                          {/* ${item.unitMeasure.split(" ")[1].slice(1, -1)}  */}
 
                     {/* <p>{item.description}</p> */}
                   </div>
