@@ -82,8 +82,6 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch({ type: "ALERTMSG", payload: "processing..." });
-
     const now = Date.now();
     console.log(now);
 
@@ -126,7 +124,6 @@ const Register = () => {
         publicKey,
       );
       setVerified(true);
-      dispatch({type: "ALERTMSG", payload: ""})
       //clear state and controlled inputs
       //need value attrib on inputs for this
       dispatch({ type: ACTION.USER, payload: "" });
@@ -162,16 +159,13 @@ const Register = () => {
         //   </p>
         // </section>
         <section className="reg-cont">
-         {!state.alertMsg ?  <p style={{color: "darkslateblue"}}>{state.alertMsg}</p> :
-            <p
+          <p
             ref={errRef}
             className={state.errMsg ? "errmsg" : "offscreen"}
-         
             aria-live="assertive"
           >
-            {state.alertMsg && state.errMsg}
-          </p>}
-        
+            {state.errMsg}
+          </p>
           <h3
             style={{
               textAlign: "center",
