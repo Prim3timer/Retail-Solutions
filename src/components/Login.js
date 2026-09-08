@@ -94,9 +94,13 @@ const Login = () => {
   useEffect(() => {
     userRef.current.focus();
   }, []);
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch({ type: "errMsg", payload: "processing..." });
+    setTimeout(() => {
+      
+    }, 3000)
 
     try {
       const response = await axios.post(
@@ -152,7 +156,7 @@ const Login = () => {
         className={state.errMsg ? "errmsg" : "offscreen"}
         aria-live="assertive"
         style={{
-          color: queryParams !== null ? "white" : "red",
+          color: queryParams !== null || !auth.user ? "white" : "red",
           width: "240px",
         }}
       >
