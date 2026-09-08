@@ -63,7 +63,7 @@ const Register = () => {
   useEffect(() => {
     userRef.current.focus();
   }, []);
-
+  
   useEffect(() => {
     dispatch({ type: ACTION.VALIDNAME, payload: USER_REGEX.test(state.user) });
   }, [state.user]);
@@ -82,6 +82,7 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch({ type: ACTION.ERRMSG, payload: "processing" });
     const now = Date.now();
     console.log(now);
 
