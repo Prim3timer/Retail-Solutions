@@ -88,13 +88,13 @@ const ResetPassword = () => {
         setUserId(currentUser._id);
         console.log(currentUser._id)
         const response = await axios.patch(
-          `/reset-password/${userId}`,
+          `/reset-password/${currentUser._id}`,
           newPassword,
         );
         setShowErrMsg(true);
         dispatch({
           type: "errMsg",
-          payload: `${response.data} proceed to home page`,
+          payload: `${response.data} proceed to home page to login`,
         });
         console.log(response.data);
       }
@@ -176,7 +176,13 @@ const ResetPassword = () => {
         </label>
         <button type="submit">Submit</button>
       </form>
-      <p className={showErrMsg ? "delete" : "no-delete"}>{state.errMsg}</p>
+        <article className={showErrMsg ? "new-pwd-alert" : "no-new-pwd-alert"}>
+      <FontAwesomeIcon
+            icon={faCheck}
+            className="password-changed"
+          /> <p >{state.errMsg}</p>
+    </article>
+
     </div>
   );
 };
