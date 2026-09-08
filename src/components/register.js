@@ -163,7 +163,7 @@ const Register = () => {
           <p
             ref={errRef}
             className={state.errMsg ? "errmsg" : "offscreen"}
-            style={{color: state.errMsg == "processing..." ? "white" : "red"}}
+            style={{color: state.errMsg == "processing..." ? "darkslateblue" : "red"}}
             aria-live="assertive"
           >
             {state.errMsg}
