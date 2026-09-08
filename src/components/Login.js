@@ -107,6 +107,8 @@ const Login = () => {
           withCredentials: true,
         },
       );
+      dispatch({type: 'success', payload: true})
+    dispatch({type: "errMsg", payload: !response ? "processing..." : ""})
       console.log(JSON.stringify(response?.data));
       const accessToken = response?.data?.accessToken;
       const roles = response?.data?.roles;
@@ -120,7 +122,6 @@ const Login = () => {
       // get the user to where they wanted to go before they were kicked out to
       // the login page
       navigate(from, { replace: true });
-      dispatch({type: 'success', payload: true})
     } catch (err) {
       if (!err?.response) {
         dispatch({ type: "errMsg", payload: "No server Response" });
@@ -144,6 +145,7 @@ const Login = () => {
   useEffect(() => {
     localStorage.setItem("persistor", persistor);
   }, [persistor]);
+  console.log(auth)
 
   return (
     <section className="login">
@@ -152,7 +154,7 @@ const Login = () => {
         className={state.errMsg ? "errmsg" : "offscreen"}
         aria-live="assertive"
         style={{
-          color: queryParams !== null ? "white" : "red",
+          color: queryParams !== null  ? "white" : "red",
           width: "240px",
         }}
       >
