@@ -84,7 +84,11 @@ const NavBar = () => {
       className={
         location.pathname === "/login" ||
         location.pathname === "/" ||
-        location.pathname === "/register"
+        location.pathname === "/register" ||
+        location.pathname === "/image" ||
+        location.pathname === "/single-item" ||
+        location.pathname === "/user-settings"  ||
+        location.pathname === "/user-select"
           ? "plain-header"
           : "header"
       }
