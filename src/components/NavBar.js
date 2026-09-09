@@ -43,7 +43,7 @@ const NavBar = () => {
 
   const memUser = localStorage.getItem("memUser");
   const axiosPrivate = useAxiosPrivate();
-
+const path = location.pathname
   const workBar = () => {
     const navWidth = navRef.current.getBoundingClientRect().width;
     // setCurrentWidth(navWidth)
@@ -195,9 +195,13 @@ const NavBar = () => {
             )}
           {
             // location.pathname !== "/login" &&
-            location.pathname !== "/" &&
-            location.pathname !== "/login" &&
-            location.pathname !== "/register" ? (
+            path !== "/" &&
+            path !== "/login" &&
+            path !== "/register"  && 
+            path !== "/single-item"&&
+            path !== "/image" && 
+            path !== "/user-select" &&
+            path !== "/user-settings" ? (
               <Link to={"/cart"} className="nav-cart-link">
                 <p className="cart-length">{newCartLength}</p>
                 <FontAwesomeIcon icon={faShoppingCart} role="button" />
