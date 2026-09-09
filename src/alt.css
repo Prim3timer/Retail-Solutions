@@ -18,6 +18,7 @@
   display: flex;
   flex-direction: column;
   /* align-items: center; */
+  /* justify-content: center; */
   color: navy;
   /* overflow-y: auto; */
 
@@ -192,11 +193,12 @@
   flex-direction: column;
   align-items: center;
   row-gap: 1rem;
-
+/* margin-top: 3rem; */
   background-color: mediumaquamarine;
   padding: 1rem 4rem;
   width: 95%;
-  justify-self: center;
+  /* height: 100vh; */
+  /* justify-self: center; */
 }
 
 .login button {
@@ -1003,6 +1005,7 @@ border-radius: 10px;
   flex-direction: column;
   width: 300px;
 }
+
 
 .the-navbar {
   display: flex;
@@ -2396,7 +2399,7 @@ input {
   position: sticky;
   top: 0;
   background-color: #1e293b;
-  ;
+  align-items: end;
   padding: .5rem;
   color: whitesmoke;
   height: 3rem;
@@ -3843,15 +3846,6 @@ color: crimson;
     /* background: darkslategray; */
     /* transform: scale(1.3, 1.3); */
     /* transform: scale(1.1); */
-  }
-
-
-  .header>*:nth-child(2) {
-    /* display: none; */
-  }
-
-  .home-cont h3 {
-    /* background-color: red; */
   }
 
   .home {
