@@ -974,6 +974,7 @@ border-radius: 10px;
   .searcher input {
     position: relative;
     width: 50% !important;
+    flex: 0 1 100%;
 
   }
 
