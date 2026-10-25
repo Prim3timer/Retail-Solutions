@@ -82,7 +82,7 @@ export const AuthProvider = ({ children }) => {
     "Groceries",
     "Incubator",
     "Power Accessories",
-    "E-Bikes",
+    "Electric Bicycle",
     "Car Accessories",
   ];
 
@@ -181,10 +181,11 @@ export const AuthProvider = ({ children }) => {
       dispatch({ type: "errMsg", payload: "loading..." });
       const response = await axios.get("/items");
       console.log(response.data.items);
+      const eBikes = response.data.items.filter((item) => item.category == "E-Bikes")
+      console.log(eBikes)
       dispatch({ type: "errMsg", payload: "" });
       if (response) {
         dispatch({ type: "items", payload: response.data.items });
-        console.log(response.data.items);
       }
     } catch (error) {
       console.log(error);
